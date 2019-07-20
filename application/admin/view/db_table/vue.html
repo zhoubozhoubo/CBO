@@ -97,9 +97,11 @@
                     {elseif condition="$v.components eq 'TextArea'"}
                     <Input type="textarea" :rows="4" v-model="formItem.{$v.key}" placeholder="{$v.name}"/>
                     {elseif condition="$v.components eq 'UploadFile'"}
+                    <input v-if="formItem.{$v.key}" v-model="formItem.{$v.key}" type="hidden" name="{$v.key}">
                     <Upload :action="uploadUrl"
                             :headers="uploadHeader"
                             :max-size="5120"
+                            :default-file-list="formItem.{$v.key}"
                             :on-success="handleFileSuccess"
                             :on-remove="handleFileRemove"
                             :on-exceeded-size="handleFileMaxSize">
@@ -280,7 +282,7 @@
                     img: '',
                     show: false
                 },
-                {if condition="count($img) > 0 || count($editor) > 0"}
+                {if condition="count($img) > 0 || count($editor) > 0 || count($file) > 0"}
                 uploadUrl: '',
                 uploadHeader: {},
                 {/if}
@@ -319,7 +321,7 @@
         created() {
             this.init()
             this.getList()
-            {if condition="count($img) > 0 || count($editor) > 0"}
+            {if condition="count($img) > 0 || count($editor) > 0 || count($file) > 0"}
                 this.uploadUrl = config.baseUrl + 'Index/upload';
                 this.uploadHeader = {'ApiAuth': sessionStorage.getItem('apiAuth')};
             {/if}

@@ -6,7 +6,10 @@
                 <!--搜索表单-->
                 <Form inline>
                                         <FormItem style="margin-bottom: 0">
-                        <Input v-model="searchConf.title" clearable placeholder="图集标题"></Input>
+                        <Input v-model="searchConf.file_name" clearable placeholder="文件名称"></Input>
+                    </FormItem>
+                                        <FormItem style="margin-bottom: 0">
+                    <DatePicker type="daterange" @on-change="searchConf.date=$event" placeholder="选择日期范围" style="width: 200px"></DatePicker>
                     </FormItem>
                                         <FormItem style="margin-bottom: 0">
                         <Button type="primary" shape="circle" icon="ios-search" @click="search">查询/刷新</Button>
@@ -39,32 +42,23 @@
                 <span>{{formItem.id ? '编辑' : '新增'}}</span>
             </p>
             <Form ref="myForm" :rules="ruleValidate" :model="formItem" :label-width="100">
-                                <FormItem label="图集标题" prop="title">
-                                        <Input v-model="formItem.title" placeholder="图集标题"/>
+                                <FormItem label="文件名称" prop="file_name">
+                                        <Input v-model="formItem.file_name" placeholder="文件名称"/>
                                     </FormItem>
-                                <FormItem label="图集图片" prop="img">
-                                        <div class="demo-upload-list" v-if="formItem.img">
-                        <img :src="formItem.img">
-                        <div class="demo-upload-list-cover">
-                            <Icon type="ios-eye-outline" @click.native="handleView()"></Icon>
-                            <Icon type="ios-trash-outline" @click.native="handleImgRemove()"></Icon>
-                        </div>
-                    </div>
-                    <input v-if="formItem.img" v-model="formItem.img" type="hidden" name="image">
-                    <Upload type="drag"
-                            v-if="!formItem.img"
-                            :action="uploadUrl"
+                                <FormItem label="上传文件" prop="file">
+                                    <input v-if="formItem.file" v-model="formItem.file" type="hidden" name="file">
+                                        <Upload :action="uploadUrl"
                             :headers="uploadHeader"
-                            :format="['jpg','jpeg','png']"
                             :max-size="5120"
-                            :on-success="handleImgSuccess"
-                            :on-format-error="handleImgFormatError"
-                            :on-exceeded-size="handleImgMaxSize"
-                            style="display: inline-block;width:58px;">
-                        <div style="width: 58px;height:58px;line-height: 58px;">
-                            <Icon type="ios-camera" size="20"></Icon>
-                        </div>
+                            :default-file-list="formItem.file"
+                            :on-success="handleFileSuccess"
+                            :on-remove="handleFileRemove"
+                            :on-exceeded-size="handleFileMaxSize">
+                        <Button icon="ios-cloud-upload-outline">上传文件</Button>
                     </Upload>
+                                    </FormItem>
+                                <FormItem label="文件日期" prop="date">
+                                        <DatePicker type="date" @on-change="formItem.date=$event" placeholder="选择日期" style="width: 200px"></DatePicker>
                                     </FormItem>
                             </Form>
             <div slot="footer">
@@ -83,7 +77,7 @@
 
 <script>
     import config from '../../../../build/config';
-    import {getDataList,coruData} from '@/api/cbo_wonderful_img_list'
+    import {getDataList,coruData} from '@/api/cbo_files_list'
         const editButton = (vm, h, currentRow, index) => {
         return h('Button', {
             props: {
@@ -95,8 +89,9 @@
             on: {
                 'click': () => {
                                         vm.formItem.id = currentRow.id;
-                                        vm.formItem.title = currentRow.title;
-                                        vm.formItem.img = currentRow.img;
+                                        vm.formItem.file_name = currentRow.file_name;
+                                        vm.formItem.file_url = currentRow.file_url;
+                                        vm.formItem.date = currentRow.date;
                                         vm.modalSetting.show = true
                     vm.modalSetting.index = index
                 }
@@ -144,7 +139,7 @@
         data() {
             return {
                 // 初始化表格列
-                columnsList:[{title:"图集id",key:"id",align:"center"},{title:"图集标题",key:"title",align:"center"},{title:"图集图片",key:"img",align:"center"},{title:"操作",key:"handle",align:"center",handle:["edit","delete"]}],
+                columnsList:[{title:"文件id",key:"id",align:"center"},{title:"文件名称",key:"file_name",align:"center"},{title:"文件地址",key:"file_url",align:"center"},{title:"文件日期",key:"date",align:"center"},{title:"操作",key:"handle",align:"center",handle:["edit","delete"]}],
                 // 表格数据
                 tableData: [],
                 // 表格显示分页属性
@@ -155,9 +150,9 @@
                     listCount: 0
                 },
                 // 搜索配置
-                                searchConf:{title:""},
+                                searchConf:{file_name:"",date:""},
                                 // 表单属性
-                                formItem:{id:"",title:"",img:""},
+                                formItem:{id:"",file: [],file_name:"",file_url:"",date:""},
                                 // modal属性
                 modalSetting: {
                     show: false,
@@ -169,7 +164,7 @@
                     img: '',
                     show: false
                 },
-                                uploadUrl: '',
+                uploadUrl: '',
                 uploadHeader: {},
                                 // 表单验证
                 ruleValidate:{}
@@ -178,8 +173,8 @@
         created() {
             this.init()
             this.getList()
-                            this.uploadUrl = config.baseUrl + 'Index/upload';
-                this.uploadHeader = {'ApiAuth': sessionStorage.getItem('apiAuth')};
+            this.uploadUrl = config.baseUrl + 'Index/upload';
+            this.uploadHeader = {'ApiAuth': sessionStorage.getItem('apiAuth')};
                     },
         methods: {
             // 页面初始化
@@ -195,34 +190,6 @@
                             ])
                                                     }
                     }
-                                            if (item.key === 'img') {
-                            item.render = (h, param) => {
-                                let currentRowData = vm.tableData[param.index];
-                                if (currentRowData.img) {
-                                    return h('img', {
-                                        style: {
-                                            width: '40px',
-                                            height: '40px',
-                                            cursor: 'pointer',
-                                            margin: '5px 0'
-                                        },
-                                        attrs: {
-                                            src: currentRowData.img,
-                                            shape: 'square',
-                                            size: 'large'
-                                        },
-                                        on: {
-                                            click: (e) => {
-                                                vm.modalSeeingImg.img = currentRowData.img;
-                                                vm.modalSeeingImg.show = true;
-                                            }
-                                        }
-                                    });
-                                } else {
-                                    return h('Tag', {}, '暂无图片');
-                                }
-                            };
-                        }
                                     })
             },
                         // 新增
@@ -230,29 +197,21 @@
                 this.formItem.id = 0
                 this.modalSetting.show = true
             },
-                        // 图片上传一系列
-            handleView() {
-                this.visible = true;
+                        // 文件上传一系列
+            handleFileRemove() {
+                this.formItem.file = [];
             },
-            handleImgRemove() {
-                this.formItem.img = '';
-            },
-            handleImgFormatError(file) {
-                this.$Notice.warning({
-                    title: '文件类型不合法',
-                    desc: file.name + '的文件类型不正确，请上传jpg或者png图片。'
-                });
-            },
-            handleImgMaxSize(file) {
+            handleFileMaxSize(file) {
                 this.$Notice.warning({
                     title: '文件大小不合法',
                     desc: file.name + '太大啦请上传小于5M的文件。'
                 });
             },
-            handleImgSuccess(response) {
+            handleFileSuccess(response) {
                 if (response.code === 1) {
                     this.$Message.success(response.msg);
-                    this.formItem.img = response.data.fileUrl;
+                    let file = { 'name': '', 'url': response.data.fileUrl }
+                    this.formItem.file.push(file)
                 } else {
                     this.$Message.error(response.msg);
                 }
@@ -316,42 +275,6 @@
 </script>
 
 <style scoped>
-.demo-upload-list{
-    display: inline-block;
-    width: 60px;
-    height: 60px;
-    text-align: center;
-    line-height: 60px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    overflow: hidden;
-    background: #fff;
-    position: relative;
-    box-shadow: 0 1px 1px rgba(0,0,0,.2);
-    margin-right: 4px;
-}
-.demo-upload-list img{
-    width: 100%;
-    height: 100%;
-}
-.demo-upload-list-cover{
-    display: none;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0,0,0,.6);
-}
-.demo-upload-list:hover .demo-upload-list-cover{
-    display: block;
-}
-.demo-upload-list-cover i{
-    color: #fff;
-    font-size: 20px;
-    cursor: pointer;
-    margin: 0 2px;
-}
 </style>
 <style>
 </style>

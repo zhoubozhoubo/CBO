@@ -221,6 +221,14 @@ export const appRouter = [
                 access: 'admin/WonderfulImg/getList',
                 title: "精彩图集管理",
                 component: () => import('@/views/content/cbo_wonderful_img/list.vue')
+            },
+            {
+                path: "files_list",
+                icon: "ios-folder-open",
+                name: "files_list",
+                access: 'admin/Files/getList',
+                title: "文件管理",
+                component: () => import('@/views/content/cbo_files/list.vue')
             }
         ]
     },

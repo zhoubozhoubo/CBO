@@ -8,14 +8,14 @@ use think\Exception;
 use think\exception\DbException;
 
 /**
- * WonderfulImgController
- * Class WonderfulImg
+ * FilesController
+ * Class Files
  * @package app\admin\controller
  */
-class WonderfulImg extends BaseController
+class Files extends BaseController
 {
 
-    public $table = 'CboWonderfulImg';
+    public $table = 'CboFiles';
 
     /**
      * 获取列表
@@ -31,7 +31,11 @@ class WonderfulImg extends BaseController
         if($searchConf){
             foreach ($searchConf as $key=>$val){
                 if($val !== ''){
-                    if($key === 'status'){
+                    if(in_array($key, ["date"])){
+                        if($val[0]&&$val[1]){
+                            $db->whereTime($key,'between', ["{$val[0]} 00:00:00", "{$val[1]} 23:59:59"]);
+                        }
+                    }else if($key === 'status'){
                         $where[$key] = $val;
                     }else {
                         $where[$key] = ['like', '%'.$val.'%'];
@@ -43,6 +47,12 @@ class WonderfulImg extends BaseController
         return $this->_list($db);
     }
 
+    public function _getList_data_filter(&$data){
+        foreach ($data as &$item){
+            $item['file'] = [['name' => '', 'url' => $item['file_url']]];
+        }
+    }
+
 
     /**
      * 新增/更新数据
@@ -51,6 +61,9 @@ class WonderfulImg extends BaseController
     public function coruData()
     {
         $postData = $this->request->post();
+        $postData['file_url'] = $postData['file'][0]['url'];
+        unset($postData['file']);
+        print_r($postData);exit;
         return $this->coruBase($postData);
     }
 }

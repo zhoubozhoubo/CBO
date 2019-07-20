@@ -367,5 +367,15 @@ Route::group('admin', function () use ($afterBehavior) {
             ['method' => 'post']
         ]
     ], ['after_behavior' => $afterBehavior]);
+    Route::group('Files', [
+        'getList' => [
+            'admin/Files/getList',
+            ['method' => 'get']
+        ],
+        'coruData' => [
+            'admin/Files/coruData',
+            ['method' => 'post']
+        ]
+    ], ['after_behavior' => $afterBehavior]);
     Route::miss('admin/Miss/index');
 });
