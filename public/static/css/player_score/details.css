@@ -1,0 +1,20 @@
+.content .player_score {
+    width: 1200px;
+    margin: 0 auto;
+    color: #FFFFFF;
+}
+.content .player_score .list li{
+    width: 1200px;
+    float: left;
+    border-bottom: 1px solid #15417e;
+}
+.content .player_score .list li h1{
+    float: left;
+    width: 6%;
+    font-size: 14px;
+    line-height: 50px;
+    text-align: center;
+}
+.content .player_score .list li h1:first-child{
+    width: 16%;
+}

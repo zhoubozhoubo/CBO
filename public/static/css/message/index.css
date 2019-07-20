@@ -1,0 +1,21 @@
+.content .message {
+    width: 1200px;
+    margin: 0 auto;
+    color: #FFFFFF;
+}
+.content .message .list li{
+    width: 1110px;
+    padding-left: 90px;
+    font-size: 16px;
+    line-height: 55px;
+    border-bottom: 1px solid #15417e;
+    background: url("../../images/listicon.png") no-repeat 60px 22px;
+}
+.content .message .list li:first-child{
+    border-top: 1px solid #15417e;
+}
+.content .message .list li .time{
+    float: right;
+    margin-right: 60px;
+    line-height: 55px;
+}

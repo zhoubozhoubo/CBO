@@ -1,0 +1,113 @@
+.content .competition_rules {
+    width: 1200px;
+    margin: 0 auto;
+    color: #FFFFFF;
+}
+
+.content .competition_rules .second_bar{
+    width: 880px;
+    height: 35px;
+    margin: 0 auto 50px;
+}
+.content .competition_rules .second_bar li{
+    float: left;
+    width: 140px;
+    height: 35px;
+    margin: 0 40px;
+    font-size: 14px;
+    line-height: 35px;
+    background-image: url("../../images/baomin.png");
+}
+.content .competition_rules .second_bar .action{
+    background-image: url("../../images/details.png");
+}
+
+.content .competition_rules .line{
+    width: 1200px;
+    height: 1px;
+    margin-bottom: 0;
+    background-color: #15417e;
+}
+.content .competition_rules .match_time_address .match_time li{
+    padding: 20px 120px;
+    background: url("../../images/listicon.png") no-repeat 120px 30px;
+}
+.content .competition_rules .match_time_address .match_time li .title{
+    font-size: 22px;
+    padding-left: 30px;
+    margin-bottom: 5px;
+}
+.content .competition_rules .match_time_address .match_time li .content{
+    font-size: 16px;
+    line-height: 30px;
+    text-indent: 2em;
+}
+.content .competition_rules .match_time_address .bottom_line{
+    width: 1200px;
+    height: 1px;
+    margin: 40px 0 80px;
+    background-color: #eaa232;
+}
+
+.content .competition_rules .match_way .line{
+    margin: 15px 0 35px;
+}
+.content .competition_rules .match_way .left_notice{
+    width: 300px;
+    padding: 20px;
+    margin: 0 30px 0 15px;
+}
+.content .competition_rules .match_way .left_notice .title{
+    padding-left: 30px;
+    font-size: 20px;
+    line-height: 45px;
+    background: url("../../images/listicon.png") no-repeat 0px 15px;
+}
+.content .competition_rules .match_way .left_notice .content{
+    font-size: 16px;
+    text-indent: 2em;
+    line-height: 30px;
+}
+.content .competition_rules .match_way .right_rule{
+    width: 770px;
+    margin: 0 15px 0 30px;
+}
+.content .competition_rules .match_way .right_rule .title{
+    width: 770px;
+    height: 30px;
+    font-size: 14px;
+    line-height: 30px;
+}
+.content .competition_rules .match_way .right_rule .group_list{
+    float: left;
+    margin-left: 182px;
+    margin-bottom: 10px;
+}
+.content .competition_rules .match_way .right_rule .group_list:first-child{
+    margin-left: 0;
+}
+.content .competition_rules .match_way .right_rule .group_list li{
+    width: 56px;
+    height: 16px;
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 5px;
+}
+.content .competition_rules .match_way .right_rule .group_list li:first-child{
+    margin: 10px 0;
+}
+
+
+
+
+.content .competition_rules .eligibility .left_line_title{
+    margin: 35px 0 40px;
+}
+.content .competition_rules .eligibility .eligibility_list{
+    margin: 25px 0;
+}
+.content .competition_rules .eligibility .eligibility_list li{
+    padding: 0 30px;
+    line-height: 40px;
+    background: url("../../images/listicon.png") no-repeat 0px 11px;
+}

@@ -1,0 +1,153 @@
+.content .player_score_list {
+    width: 1200px;
+    margin: 0 auto;
+    color: #FFFFFF;
+}
+.content .player_score_list .table_head{
+    width: 100%;
+    height: 40px;
+    background-color: #046eb8;
+}
+.content .player_score_list .table_head h1{
+    float: left;
+    font-size: 14px;
+    line-height: 40px;
+    text-align: center;
+}
+.content .player_score_list .table_head .left .rank{
+    width: 10%;
+}
+.content .player_score_list .table_head .left .team{
+    width: 15%;
+}
+.content .player_score_list .table_head .left .name{
+    width: 10%;
+}
+.content .player_score_list .table_head .left .score{
+    width: 15%;
+}
+.content .player_score_list .table_head .right .rank{
+    width: 15%;
+}
+.content .player_score_list .table_head .right .team{
+    width: 15%;
+}
+.content .player_score_list .table_head .right .name{
+    width: 10%;
+}
+.content .player_score_list .table_head .right .score{
+    width: 10%;
+}
+
+
+
+.content .player_score_list .player_list{
+    position: relative;
+    overflow: hidden;
+}
+.content .player_score_list .player_list .line{
+    position: absolute;
+    width: 1px;
+    height: 910px;
+    background-color: #15417e;
+    left: 50%;
+}
+.content .player_score_list .player_list li{
+    width: 50%;
+    float: left;
+}
+.content .player_score_list .player_list li>*{
+    float: left;
+    font-size: 14px;
+    line-height: 90px;
+    text-align: center;
+    border-bottom: 1px solid #15417e;
+}
+.content .player_score_list .player_list li:nth-child(odd){
+    /*border-right: 1px solid #15417e;*/
+}
+.content .player_score_list .player_list .left .rank{
+    width: 20%;
+    color: #eaa232;
+}
+.content .player_score_list .player_list .left .team{
+    width: 30%;
+    text-align: center;
+}
+.content .player_score_list .player_list .left .team img{
+    float: left;
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    margin: 20px 20px 20px 30px;
+    border-radius: 50%;
+    background-color: #15417e;
+}
+.content .player_score_list .player_list .left .team h1{
+    float: left;
+    font-size: 14px;
+    line-height: 90px;
+}
+.content .player_score_list .player_list .left .name{
+    width: 20%;
+}
+.content .player_score_list .player_list .left .score{
+    width: 16%;
+    padding-right: 4%;
+    text-align: right;
+    color: #eaa232;
+}
+.content .player_score_list .player_list .left .none{
+    width: 10%;
+    height: 90px;
+    border-bottom: none;
+}
+.content .player_score_list .player_list .right .rank{
+    width: 16%;
+    padding-left: 4%;
+    text-align: left;
+    color: #eaa232;
+}
+.content .player_score_list .player_list .right .team{
+    width: 30%;
+    text-align: center;
+}
+.content .player_score_list .player_list .right .team img{
+    float: left;
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    margin: 20px 20px 20px 30px;
+    border-radius: 50%;
+    background-color: #15417e;
+}
+.content .player_score_list .player_list .right .team h1{
+    float: left;
+    font-size: 14px;
+    line-height: 90px;
+}
+.content .player_score_list .player_list .right .name{
+    width: 20%;
+}
+.content .player_score_list .player_list .right .score{
+    width: 20%;
+    color: #eaa232;
+}
+.content .player_score_list .player_list .right .none{
+    width: 10%;
+    height: 90px;
+    border-bottom: none;
+}
+.content .player_score_list .player_list .level_line{
+    position: absolute;
+    height: 1px;
+    bottom: 0px;
+    margin: 0;
+    background-color: #192e61;
+}
+
+.content .player_score_list .see_more{
+    margin-top: 10px;
+    margin-bottom: 35px;
+}
+

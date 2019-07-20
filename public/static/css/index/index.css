@@ -1,0 +1,201 @@
+.content .about {
+    width: 995px;
+    height: 201px;
+    padding: 20px 0 20px 45px;
+    margin: 0 auto 80px;
+    color: #FFFFFF;
+    background-image: url("../../images/dakuang.png");
+}
+
+.content .about * {
+    float: left;
+}
+
+.content .about .about_left {
+    width: 770px;
+}
+
+.content .about .about_right {
+    width: 225px;
+    text-align: center;
+}
+
+.content .about .about_right *{
+    float: none;
+}
+
+.content .about .title {
+    font-size: 24px;
+    line-height: 60px;
+}
+
+.content .about .math_rule {
+    width: 108px;
+    height: 28px;
+    margin: 15px 0 0 15px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 28px;
+    border: 1px solid #eaa232;
+}
+
+.content .about .content_text {
+    font-size: 14px;
+    line-height: 28px;
+}
+
+.content .about .logo {
+    width: 86px;
+    height: 86px;
+    margin: 20px 0 45px;
+}
+
+.content .about .details {
+    float: none;
+    width: 138px;
+    height: 34px;
+    margin: 0 auto;
+    font-size: 14px;
+    text-align: center;
+    line-height: 34px;
+    background-image: url("../../images/details.png");
+}
+.content .message{
+    width: 1200px;
+    margin: 0 auto;
+    color: #FFFFFF;
+}
+.content .message>*{
+    float: left;
+}
+.content .message .image {
+    width: 400px;
+    height: 400px;
+    margin-right: 19px;
+}
+.content .message .info {
+    width: 380px;
+}
+.content .message .info .title{
+    height: 60px;
+    font-size: 24px;
+    line-height: 60px;
+    text-align: center;
+}
+.content .message .info li {
+    width: 340px;
+    padding: 32px 0 32px 40px;
+    font-size: 14px;
+    border-bottom: 1px solid #15417e;
+    background: url("../../images/listicon.png") no-repeat 15px 35px;
+}
+.content .message .info .more{
+    float: right;
+    font-size: 14px;
+    text-align: right;
+    line-height: 40px;
+}
+.content .message .info .more_icon{
+    float: right;
+    margin: 13px 0 0 5px;
+    width: 14px;
+    height: 14px;
+}
+.content .message .vertical_line {
+    width: 1px;
+    height: 400px;
+    margin: 0 10px;
+    background-color: #15417e;
+}
+.content .wonderful_images {
+    width: 1200px;
+    margin: 0 auto;
+}
+.content .wonderful_images .image{
+    position: relative;
+}
+.content .wonderful_images .image_title{
+    position: absolute;
+    color: #c9cacb;
+    bottom: 0;
+    width: 100%;
+    font-size: 12px;
+    line-height: 25px;
+    background-color: #1b3155;
+}
+.content .wonderful_images .image_title .image_title_icon{
+    margin: 0 8px 0 20px;
+}
+.content .wonderful_images .image_one{
+    width: 420px;
+    height: 195px;
+    margin-right: 5px;
+}
+.content .wonderful_images .image_two{
+    width: 340px;
+    height: 95px;
+    margin-right: 5px;
+}
+.content .wonderful_images .image_three{
+    width: 430px;
+    height: 95px;
+}
+.content .wonderful_images .image_four{
+    width: 340px;
+    height: 95px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+.content .wonderful_images .image_five{
+    width: 430px;
+    height: 95px;
+    margin-top: 5px;
+}
+.content .wonderful_images .more{
+    float: right;
+    font-size: 14px;
+    text-align: right;
+    line-height: 40px;
+    color: #FFFFFF;
+}
+.content .wonderful_images .more_icon{
+    float: right;
+    margin: 13px 0 0 5px;
+    width: 14px;
+    height: 14px;
+}
+.content .team_situation {
+    width: 1200px;
+    margin: 20px auto;
+    color: #FFFFFF;
+}
+.content .team_situation .left_line_title{
+    float: left;
+}
+.content .team_situation .click{
+    float: right;
+    width: 138px;
+    height: 34px;
+    margin-top: 23px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 34px;
+    background-image: url("../../images/details.png");
+}
+.content .team_situation .select{
+    float: right;
+    width: 130px;
+    height: 34px;
+    font-size: 14px;
+    padding-left: 10px;
+    margin: 23px 20px 0 15px;
+    line-height: 34px;
+    border: 1px solid #15417e;
+    border-radius: 4px;
+    color: #FFFFFF;
+}
+.content .team_situation .choose{
+    float: right;
+    font-size: 14px;
+    line-height: 80px;
+}

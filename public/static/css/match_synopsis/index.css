@@ -1,0 +1,24 @@
+.content .logo {
+    width: 86px;
+    height: 86px;
+    display: block;
+    margin: 0 auto 60px;
+}
+.content .synopsis {
+    width: 950px;
+    padding: 20px 45px 40px;
+    margin: 0 auto 80px;
+    color: #FFFFFF;
+    background-image: url("../../images/dakuang.png");
+}
+
+.content .synopsis .title {
+    font-size: 24px;
+    line-height: 60px;
+}
+
+.content .synopsis .content_text {
+    text-indent: 2em;
+    font-size: 14px;
+    line-height: 28px;
+}

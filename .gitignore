@@ -1,0 +1,10 @@
+!.gitignore
+!.gitattributes
+/.idea
+/.svn
+/.git
+/.env
+/runtime
+/nbproject
+/composer.lock
+/static/upload

@@ -1,0 +1,99 @@
+.content .news {
+    width: 1236px;
+    margin-left: -18px;
+    color: #FFFFFF;
+}
+.content .news .left_line_title {
+    width: 1174px;
+    margin: 25px auto!important;
+}
+.content .news .big{
+    width: 1200px;
+    margin: 0 auto 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #15417e;
+}
+.content .news .big .title{
+    background-color: #1b3155;
+}
+.content .news .big .one{
+    width: 730px;
+    height: 400px;
+    float: left;
+    margin-right: 70px;
+}
+.content .news .big .one .image{
+    width: 730px;
+    height: 340px;
+}
+.content .news .big .one .title{
+    font-size: 24px;
+    line-height: 60px;
+}
+.content .news .big .one .title img{
+    float: left;
+    margin: 22px 20px 0 30px;
+}
+.content .news .big .two{
+    width: 400px;
+    height: 190px;
+    float: left;
+}
+.content .news .big .two .image{
+    width: 400px;
+    height: 165px;
+}
+.content .news .big .two .title{
+    font-size: 14px;
+    line-height: 25px;
+}
+.content .news .big .two .title img{
+    float: left;
+    margin: 8px 10px 0 20px;
+}
+.content .news .big .three{
+    width: 400px;
+    height: 190px;
+    float: left;
+    margin-top: 20px;
+}
+.content .news .big .three .image{
+    width: 400px;
+    height: 165px;
+}
+.content .news .big .three .title{
+    font-size: 14px;
+    line-height: 25px;
+}
+.content .news .big .three .title img{
+    float: left;
+    margin: 8px 10px 0 20px;
+}
+.content .news .list li{
+    width: 273px;
+    float: left;
+    margin: 0 18px 30px;
+}
+.content .news .list li .image{
+    width: 273px;
+    height: 273px;
+}
+.content .news .list li .text{
+    height: 68px;
+    margin-top: 15px;
+    border-top: 1px solid #15417e;
+    border-bottom: 1px solid #15417e;
+    padding: 10px 20px;
+    background: url("../../images/listicon.png") no-repeat 0 15px;
+}
+.content .news .list li .text .title{
+    font-size: 14px;
+}
+.content .news .list li .text .time{
+    font-size: 14px;
+    margin-top: 10px;
+}
+.content .news .see_more {
+    width: 1200px;
+    margin: 40px auto 80px;
+}
