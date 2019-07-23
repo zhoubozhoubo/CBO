@@ -55,7 +55,6 @@ class News extends BaseController
     public function coruData()
     {
         $postData = $this->request->post();
-        print_r($postData);exit;
         return $this->coruBase($postData);
     }
 }

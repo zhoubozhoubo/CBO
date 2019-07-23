@@ -6,14 +6,44 @@
     <div class="message">
         <h1 class="left_line_title">公告</h1>
         <ul class="list">
-            <li>胜负时刻:北京因何击败浙江完成复仇？<span class="time">2019-07-17</span></li>
-            <li>胜负时刻:北京因何击败浙江完成复仇？<span class="time">2019-07-17</span></li>
-            <li>胜负时刻:北京因何击败浙江完成复仇？<span class="time">2019-07-17</span></li>
-            <li>胜负时刻:北京因何击败浙江完成复仇？<span class="time">2019-07-17</span></li>
-            <li>胜负时刻:北京因何击败浙江完成复仇？<span class="time">2019-07-17</span></li>
+            {volist name="message_list" id="vo"}
+            <li><a href="{:url('/index/message/details')}?id={$vo.id}">{$vo.title}</a><span class="time">{$vo.date}</span></li>
+            {/volist}
         </ul>
-        <div class="see_more text_center bg_color cursor">查看更多</div>
+        <div class="see_more text_center bg_color cursor" onclick="seeMore()">查看更多</div>
     </div>
     <div class="clear"></div>
 </div>
 {include file="public/footer"}
+
+<script>
+    let page = 1
+    let pages = {$message_pages}
+
+    if(pages === 1){
+        $('.see_more').addClass('hide')
+    }
+
+    function seeMore() {
+        if(page < pages){
+            $.ajax({
+                type: "GET",
+                url: "{:url('index/message/index')}",
+                data: {page: ++page},
+                dataType: "json",
+                success: function (data) {
+                    let str = ''
+                    $.each(data, function(k, v){
+                        str += '<li><a href="{:url(\'/index/message/details\')}?id='+v.id+'">'+v.title+'</a><span class="time">'+v.date+'</span></li>'
+                        console.log(str)
+                        $('.message .list').append(str)
+                    })
+                    if(page === pages){
+                        $('.see_more').addClass('hide')
+                    }
+                }
+            })
+        }
+
+    }
+</script>

@@ -44,6 +44,11 @@
     line-height: 28px;
 }
 
+.content .about p {
+    font-size: 14px;
+    line-height: 28px;
+}
+
 .content .about .logo {
     width: 86px;
     height: 86px;
@@ -72,6 +77,17 @@
     width: 400px;
     height: 400px;
     margin-right: 19px;
+}
+.content .message .image .img_div{
+    width: 400px;
+    height: 400px;
+    display: table-cell;
+    vertical-align:middle;
+}
+.content .message .image .img_div img{
+    float: left;
+    width: 100%;
+    /*max-height: 100%;*/
 }
 .content .message .info {
     width: 380px;
@@ -113,6 +129,13 @@
 }
 .content .wonderful_images .image{
     position: relative;
+    display: table-cell;
+    vertical-align:middle;
+}
+.content .wonderful_images .image>img{
+    float: left;
+    width: 100%;
+    /*max-height: 100%;*/
 }
 .content .wonderful_images .image_title{
     position: absolute;

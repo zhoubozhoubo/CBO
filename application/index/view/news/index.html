@@ -6,53 +6,101 @@
     <div class="news">
         <h1 class="left_line_title">新闻</h1>
         <div class="big">
+            {if condition = 'count($news_list_big) > 0' }
             <div class="one">
-                <div class="image bg_color"></div>
-                <p class="title"><img src="__STATIC__/images/listicon.png"/>红牛安奈吉总裁现场指导</p>
+                <div class="image bg_color">
+                    <a href="{:url('/index/news/details')}?id={$news_list_big[0]['id']}">
+                        <img src="{$news_list_big[0]['img']}"/>
+                    </a>
+                </div>
+                <p class="title"><img src="__STATIC__/images/listicon.png"/><a
+                        href="{:url('/index/news/details')}?id={$news_list_big[0]['id']}">{$news_list_big[0]['title']}</a>
+                </p>
             </div>
+            {/if}
+            {if condition = 'count($news_list_big) > 1' }
             <div class="two">
-                <div class="image bg_color"></div>
-                <p class="title"><img src="__STATIC__/images/listicongray.png"/>红牛安奈吉总裁现场指导</p>
+                <div class="image bg_color">
+                    <a href="{:url('/index/news/details')}?id={$news_list_big[1]['id']}">
+                        <img src="{$news_list_big[1]['img']}"/>
+                    </a>
+                </div>
+                <p class="title"><img src="__STATIC__/images/listicon.png"/><a
+                        href="{:url('/index/news/details')}?id={$news_list_big[1]['id']}">{$news_list_big[1]['title']}</a>
+                </p>
             </div>
+            {/if}
+            {if condition = 'count($news_list_big) > 2' }
             <div class="three">
-                <div class="image bg_color"></div>
-                <p class="title"><img src="__STATIC__/images/listicongray.png"/>红牛安奈吉总裁现场指导</p>
+                <div class="image bg_color">
+                    <a href="{:url('/index/news/details')}?id={$news_list_big[2]['id']}">
+                        <img src="{$news_list_big[2]['img']}"/>
+                    </a>
+                </div>
+                <p class="title"><img src="__STATIC__/images/listicon.png"/><a
+                        href="{:url('/index/news/details')}?id={$news_list_big[2]['id']}">{$news_list_big[2]['title']}</a>
+                </p>
             </div>
+            {/if}
             <div class="clear"></div>
         </div>
         <ul class="list">
+            {volist name="news_list" id="vo"}
             <li>
-                <div class="image bg_color"></div>
+                <div class="image bg_color">
+                    <a href="{:url('/index/news/details')}?id={$vo.id}"><img src="{$vo.img}"/></a>
+                </div>
                 <div class="text">
-                    <h2 class="title">中澳国际男篮对抗赛中国男篮</h2>
-                    <p class="time">2019-07-17</p>
+                    <h2 class="title">{$vo.title}</h2>
+                    <p class="time">{$vo.date}</p>
                 </div>
             </li>
-            <li>
-                <div class="image bg_color"></div>
-                <div class="text">
-                    <h2 class="title">中澳国际男篮对抗赛中国男篮两胜一负,CBO联赛球员表现出色</h2>
-                    <p class="time">2019-07-17</p>
-                </div>
-            </li>
-            <li>
-                <div class="image bg_color"></div>
-                <div class="text">
-                    <h2 class="title">中澳国际男篮对抗赛中国男篮两胜一负,CBO联赛球员表现出色</h2>
-                    <p class="time">2019-07-17</p>
-                </div>
-            </li>
-            <li>
-                <div class="image bg_color"></div>
-                <div class="text">
-                    <h2 class="title">中澳国际男篮对抗赛中国男篮两胜一负,CBO联赛球员表现出色</h2>
-                    <p class="time">2019-07-17</p>
-                </div>
-            </li>
+            {/volist}
         </ul>
         <div class="clear"></div>
-        <div class="see_more text_center bg_color cursor">查看更多</div>
+        <div class="see_more text_center bg_color cursor" onclick="seeMore()">查看更多</div>
     </div>
     <div class="clear"></div>
 </div>
 {include file="public/footer"}
+
+<script>
+    let page = 1
+    let pages = {$news_pages}
+
+    if(pages === 1){
+        $('.see_more').addClass('hide')
+    }
+
+    function seeMore() {
+        if(page < pages){
+            $.ajax({
+                type: "GET",
+                url: "{:url('index/news/index')}",
+                data: {page: ++page},
+                dataType: "json",
+                success: function (data) {
+                    let str = ''
+                    $.each(data, function(k, v){
+                        str += '\n' +
+                            '            <li>\n' +
+                            '                <div class="image bg_color">\n' +
+                            '                    <a href="{:url(\'/index/news/details\')}?id='+v.id+'"><img src="'+v.img+'"/></a>\n' +
+                            '                </div>\n' +
+                            '                <div class="text">\n' +
+                            '                    <h2 class="title">'+v.title+'</h2>\n' +
+                            '                    <p class="time">'+v.date+'</p>\n' +
+                            '                </div>\n' +
+                            '            </li>'
+                        console.log(str)
+                        $('.news .list').append(str)
+                    })
+                    if(page === pages){
+                       $('.see_more').addClass('hide')
+                    }
+                }
+            })
+        }
+
+    }
+</script>

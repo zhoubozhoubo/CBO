@@ -375,6 +375,20 @@ Route::group('admin', function () use ($afterBehavior) {
         'coruData' => [
             'admin/Files/coruData',
             ['method' => 'post']
+        ],
+        'download' => [
+            'admin/Files/download',
+            ['method' => 'get']
+        ]
+    ], ['after_behavior' => $afterBehavior]);
+    Route::group('BasicConf', [
+        'getDetails' => [
+            'admin/BasicConf/getDetails',
+            ['method' => 'get']
+        ],
+        'coruData' => [
+            'admin/BasicConf/coruData',
+            ['method' => 'post']
         ]
     ], ['after_behavior' => $afterBehavior]);
     Route::miss('admin/Miss/index');

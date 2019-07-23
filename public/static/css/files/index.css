@@ -1,15 +1,15 @@
-.content .download {
+.content .files {
     width: 1200px;
     margin: 0 auto;
     color: #FFFFFF;
 }
-.content .download .search{
+.content .files .search{
     width: 1200px;
     font-size: 16px;
     padding-bottom: 50px;
     border-bottom: 1px solid #15417e;
 }
-.content .download .search .click_search{
+.content .files .search .click_search{
     float: right;
     width: 138px;
     height: 34px;
@@ -18,7 +18,7 @@
     line-height: 34px;
     background-image: url("../../images/details.png");
 }
-.content .download .search .search_input{
+.content .files .search .search_input{
     float: right;
     width: 260px;
     height: 32px;
@@ -30,13 +30,13 @@
     border: 1px solid #FFFFFF;
     color: #FFFFFF;
 }
-.content .download .table_head{
+.content .files .table_head{
     width: 1200px;
     font-size: 16px;
     padding: 40px 0;
     margin-bottom: 20px;
 }
-.content .download .table_head div{
+.content .files .table_head div{
     float: right;
     width: 130px;
     height: 33px;
@@ -44,34 +44,36 @@
     line-height: 33px;
     border-radius: 4px;
 }
-.content .download .table_head .updatt_time{
+.content .files .table_head .updatt_time{
     margin-right: 190px;
 }
-.content .download .table_head div:first-child{
+.content .files .table_head div:first-child{
     float: left;
 }
 
-.content .download .list{
+.content .files .list{
+    height: 489px;
+    overflow-y:auto;
     padding-bottom: 40px;
     margin-bottom: 80px;
     border-bottom: 1px solid #15417e;
 }
-.content .download .list li{
-    width: 1180px;
+.content .files .list li{
+    width: 1165px;
     padding-left: 20px;
     font-size: 16px;
     line-height: 60px;
     border-bottom: 1px solid #eaa232;
 }
-.content .download .list li:first-child{
+.content .files .list li:first-child{
     border-top: 1px solid #eaa232;
 }
-.content .download .list li .time{
+.content .files .list li .time{
     float: right;
     margin-right: 270px;
     line-height: 55px;
 }
-.content .download .list li .download_icon{
+.content .files .list li .download_icon{
     float: right;
     width: 15px;
     height: 15px;

@@ -2,64 +2,85 @@
 <link rel="stylesheet" href="__STATIC__/css/index/index.css">
 <div class="content">
     <!--关于-->
-    <div class="about">
+    <div class="about bg_size">
         <div class="about_left">
-            <h1 class="title">关于2019中国篮球公开赛</h1>
-            <p class="math_rule cursor">比赛规则</p>
-            <p class="content_text">中国篮球公开赛(CHINA BASKETBALL OPEN，简称:CBO)是由中国篮球协会主办，各地市级篮球协会承办，为落实全民健身国家战略、倡导文明，健康生活方式、促进全民健身与全民健康深度融合，并进一步推动我国篮球运动的发展，加快篮球文化在中国的普及和宣导，而推出的一项由中国3亿篮球爱好者参与的全国性大型公益篮球赛事活动平台。</p>
-            <h1 class="title">谁将登顶2019中国篮球公开赛总冠军？让我们一起敬请期待！</h1>
+            <!--<h1 class="title">关于2019中国篮球公开赛</h1>-->
+            <!--<p class="math_rule cursor">比赛规则</p>-->
+            <!--<p class="content_text">中国篮球公开赛(CHINA BASKETBALL OPEN，简称:CBO)是由中国篮球协会主办，各地市级篮球协会承办，为落实全民健身国家战略、倡导文明，健康生活方式、促进全民健身与全民健康深度融合，并进一步推动我国篮球运动的发展，加快篮球文化在中国的普及和宣导，而推出的一项由中国3亿篮球爱好者参与的全国性大型公益篮球赛事活动平台。</p>-->
+            <!--<h1 class="title">谁将登顶2019中国篮球公开赛总冠军？让我们一起敬请期待！</h1>-->
+
+            <div class="ql-editor">
+                {$index_introduce.value}
+            </div>
         </div>
         <div class="about_right">
             <img class="logo" src="__STATIC__/images/logo.png">
-            <div class="details bg_size cursor">详&nbsp;&nbsp;&nbsp;&nbsp;情</div>
+            <div class="details bg_size cursor"><a href="/index/match_synopsis">详&nbsp;&nbsp;&nbsp;&nbsp;情</a></div>
         </div>
     </div>
     <img class="line" src="__STATIC__/images/line.png">
     <!--消息-->
     <div class="message">
-        <div class="image bg_color"></div>
+        <div class="image bg_color">
+            <div class="img_div">
+                <img src="{$news_list[0]['img']}" />
+            </div>
+        </div>
         <div class="info">
             <h1 class="title bg_color">新闻动态</h1>
             <ul>
-                <li><a href="#">胜负时刻：北京因何击败浙江完成复仇？</a></li>
-                <li><a href="#">胜负时刻：北京因何击败浙江完成复仇？</a></li>
-                <li><a href="#">胜负时刻：北京因何击败浙江完成复仇？</a></li>
-                <li><a href="#">胜负时刻：北京因何击败浙江完成复仇？</a></li>
+                {volist name="news_list" id="vo"}
+                <li><a href="{:url('/index/news/details')}?id={$vo.id}">{$vo.title}</a></li>
+                {/volist}
             </ul>
-            <p class="more cursor">更多<img class="more_icon" src="__STATIC__/images/pageright.png"></p>
+            <p class="more cursor"><a href="{:url('index/news/index')}">更多<img class="more_icon" src="__STATIC__/images/pageright.png"></a></p>
         </div>
         <div class="vertical_line"></div>
         <div class="info">
             <h1 class="title bg_color">官方消息</h1>
             <ul>
-                <li><a href="#">胜负时刻：北京因何击败浙江完成复仇？</a></li>
-                <li><a href="#">胜负时刻：北京因何击败浙江完成复仇？</a></li>
-                <li><a href="#">胜负时刻：北京因何击败浙江完成复仇？</a></li>
-                <li><a href="#">胜负时刻：北京因何击败浙江完成复仇？</a></li>
+                {volist name="message_list" id="vo"}
+                <li><a href="{:url('/index/message/details')}?id={$vo.id}">{$vo.title}</a></li>
+                {/volist}
             </ul>
-            <p class="more cursor">更多<img class="more_icon" src="__STATIC__/images/pageright.png"></p>
+            <p class="more cursor"><a href="{:url('index/message/index')}">更多<img class="more_icon" src="__STATIC__/images/pageright.png"></a></p>
         </div>
     </div>
     <div class="clear"></div>
     <!--精彩图集-->
     <div class="wonderful_images">
         <h1 class="left_line_title">精彩图集</h1>
-        <div class="image image_one float_left bg_color">
-            <p class="image_title"><img class="image_title_icon" src="__STATIC__/images/listicongray.png"/>胜负时刻：北京因何击败浙江完成复仇？</p>
+        {if condition = 'count($wonderful_img_list) > 0' }
+        <div class="image image_one float_left bg_color over_hide">
+            <img src="{$wonderful_img_list[0]['img']}" />
+            <p class="image_title"><img class="image_title_icon" src="__STATIC__/images/listicongray.png"/>{$wonderful_img_list[0]['title']}</p>
         </div>
-        <div class="image image_two float_left bg_color">
-            <p class="image_title"><img class="image_title_icon" src="__STATIC__/images/listicongray.png"/>来（抖音）看CBO独家小视频</p>
+        {/if}
+        {if condition = 'count($wonderful_img_list) > 1' }
+        <div class="image image_two float_left bg_color over_hide">
+            <img src="{$wonderful_img_list[1]['img']}" />
+            <p class="image_title"><img class="image_title_icon" src="__STATIC__/images/listicongray.png"/>{$wonderful_img_list[1]['title']}</p>
         </div>
-        <div class="image image_three float_left bg_color">
-            <p class="image_title"><img class="image_title_icon" src="__STATIC__/images/listicongray.png"/>来（抖音）看CBO独家小视频</p>
+        {/if}
+        {if condition = 'count($wonderful_img_list) > 2' }
+        <div class="image image_three float_left bg_color over_hide">
+            <img src="{$wonderful_img_list[2]['img']}" />
+            <p class="image_title"><img class="image_title_icon" src="__STATIC__/images/listicongray.png"/>{$wonderful_img_list[2]['title']}</p>
         </div>
-        <div class="image image_four float_left bg_color">
-            <p class="image_title"><img class="image_title_icon" src="__STATIC__/images/listicongray.png"/>来（抖音）看CBO独家小视频</p>
+        {/if}
+        {if condition = 'count($wonderful_img_list) > 3' }
+        <div class="image image_four float_left bg_color over_hide">
+            <img src="{$wonderful_img_list[3]['img']}" />
+            <p class="image_title"><img class="image_title_icon" src="__STATIC__/images/listicongray.png"/>{$wonderful_img_list[3]['title']}</p>
         </div>
-        <div class="image image_five float_left bg_color">
-            <p class="image_title"><img class="image_title_icon" src="__STATIC__/images/listicongray.png"/>来（抖音）看CBO独家小视频</p>
+        {/if}
+        {if condition = 'count($wonderful_img_list) > 4' }
+        <div class="image image_five float_left bg_color over_hide">
+            <img src="{$wonderful_img_list[4]['img']}" />
+            <p class="image_title"><img class="image_title_icon" src="__STATIC__/images/listicongray.png"/>{$wonderful_img_list[4]['title']}</p>
         </div>
-        <p class="more cursor">更多<img class="more_icon" src="__STATIC__/images/pageright.png"></p>
+        {/if}
+        <p class="more cursor"><a href="{:url('index/wonderful_img/index')}">更多<img class="more_icon" src="__STATIC__/images/pageright.png"></a></p>
     </div>
     <div class="clear"></div>
     <!--球队战况-->

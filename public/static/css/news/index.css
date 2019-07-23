@@ -22,6 +22,15 @@
     float: left;
     margin-right: 70px;
 }
+.content .news .big .image{
+    display: table-cell;
+    vertical-align:middle;
+}
+.content .news .big .image img{
+    float: left;
+    width: 100%;
+    max-height: 100%;
+}
 .content .news .big .one .image{
     width: 730px;
     height: 340px;
@@ -77,6 +86,13 @@
 .content .news .list li .image{
     width: 273px;
     height: 273px;
+    display: table-cell;
+    vertical-align:middle;
+}
+.content .news .list li .image img{
+    float: left;
+    width: 100%;
+    max-height: 100%;
 }
 .content .news .list li .text{
     height: 68px;

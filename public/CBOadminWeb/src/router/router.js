@@ -229,6 +229,22 @@ export const appRouter = [
                 access: 'admin/Files/getList',
                 title: "文件管理",
                 component: () => import('@/views/content/cbo_files/list.vue')
+            },
+            {
+                path: "match_synopsis",
+                icon: "ios-folder-open",
+                name: "match_synopsis",
+                access: 'admin/BasicConf/getDetails',
+                title: "赛事简介管理",
+                component: () => import('@/views/basic_conf/match_synopsis/index.vue')
+            },
+            {
+                path: "index_introduce",
+                icon: "ios-folder-open",
+                name: "index_introduce",
+                access: 'admin/BasicConf/getDetails',
+                title: "首页介绍管理",
+                component: () => import('@/views/basic_conf/index_introduce/index.vue')
             }
         ]
     },

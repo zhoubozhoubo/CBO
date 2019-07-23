@@ -23,4 +23,11 @@ export const getDataList = (pageData, searchConf) => {
 export const coruData = (data) => {
     return axios.post('Files/coruData', data)
 }
+export const download = (data) => {
+    return axios.get('Files/download', {
+        params: {
+            'id': 5
+        }
+    })
+}
 

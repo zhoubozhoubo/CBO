@@ -1,0 +1,40 @@
+.content .wonderful_img {
+    width: 1236px;
+    margin-left: -18px;
+    color: #FFFFFF;
+}
+.content .wonderful_img .left_line_title {
+    width: 1174px;
+    margin: 25px auto!important;
+}
+.content .wonderful_img .list li{
+    width: 273px;
+    float: left;
+    margin: 0 18px 30px;
+}
+.content .wonderful_img .list li .image{
+    width: 273px;
+    height: 273px;
+    display: table-cell;
+    vertical-align:middle;
+}
+.content .wonderful_img .list li .image img{
+    float: left;
+    width: 100%;
+    max-height: 100%;
+}
+.content .wonderful_img .list li .text{
+    /*height: 68px;*/
+    margin-top: 15px;
+    border-top: 1px solid #15417e;
+    border-bottom: 1px solid #15417e;
+    padding: 10px 20px;
+    background: url("../../images/listicon.png") no-repeat 0 15px;
+}
+.content .wonderful_img .list li .text .title{
+    font-size: 14px;
+}
+.content .wonderful_img .see_more {
+    width: 1200px;
+    margin: 40px auto 80px;
+}

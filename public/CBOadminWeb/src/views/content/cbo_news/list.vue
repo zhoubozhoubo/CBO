@@ -2,37 +2,39 @@
     <div>
         <Row>
             <Col span="24">
-            <Card style="margin-bottom: 10px">
-                <!--搜索表单-->
-                <Form inline>
-                                        <FormItem style="margin-bottom: 0">
-                        <Input v-model="searchConf.title" clearable placeholder="新闻标题"></Input>
-                    </FormItem>
-                                        <FormItem style="margin-bottom: 0">
-                    <DatePicker type="daterange" @on-change="searchConf.date=$event" placeholder="选择日期范围" style="width: 200px"></DatePicker>
-                    </FormItem>
-                                        <FormItem style="margin-bottom: 0">
-                        <Button type="primary" shape="circle" icon="ios-search" @click="search">查询/刷新</Button>
-                    </FormItem>
-                </Form>
-            </Card>
+                <Card style="margin-bottom: 10px">
+                    <!--搜索表单-->
+                    <Form inline>
+                        <FormItem style="margin-bottom: 0">
+                            <Input v-model="searchConf.title" clearable placeholder="新闻标题"></Input>
+                        </FormItem>
+                        <FormItem style="margin-bottom: 0">
+                            <DatePicker type="daterange" @on-change="searchConf.date=$event" placeholder="选择日期范围"
+                                        style="width: 200px"></DatePicker>
+                        </FormItem>
+                        <FormItem style="margin-bottom: 0">
+                            <Button type="primary" shape="circle" icon="ios-search" @click="search">查询/刷新</Button>
+                        </FormItem>
+                    </Form>
+                </Card>
             </Col>
         </Row>
         <Row>
             <Col span="24">
-            <Card>
-                                <p slot="title" style="height: 40px">
-                    <Button type="primary" @click="alertAdd" icon="md-add">新增</Button>
-                </p>
-                                <div>
-                    <Table :loading="tableShow.loading" :columns="columnsList" :data="tableData" border disabled-hover></Table>
-                </div>
-                <div style="text-align: center;margin-top: 15px">
-                    <Page :total="tableShow.listCount" :current="tableShow.currentPage"
-                          :page-size="tableShow.pageSize" @on-change="changePage"
-                          @on-page-size-change="changeSize" show-elevator show-sizer show-total></Page>
-                </div>
-            </Card>
+                <Card>
+                    <p slot="title" style="height: 40px">
+                        <Button type="primary" @click="alertAdd" icon="md-add">新增</Button>
+                    </p>
+                    <div>
+                        <Table :loading="tableShow.loading" :columns="columnsList" :data="tableData" border
+                               disabled-hover></Table>
+                    </div>
+                    <div style="text-align: center;margin-top: 15px">
+                        <Page :total="tableShow.listCount" :current="tableShow.currentPage"
+                              :page-size="tableShow.pageSize" @on-change="changePage"
+                              @on-page-size-change="changeSize" show-elevator show-sizer show-total></Page>
+                    </div>
+                </Card>
             </Col>
         </Row>
         <!--新增、编辑Modal-->
@@ -42,22 +44,11 @@
                 <span>{{formItem.id ? '编辑' : '新增'}}</span>
             </p>
             <Form ref="myForm" :rules="ruleValidate" :model="formItem" :label-width="100">
-                                <FormItem label="新闻标题" prop="title">
-                                        <Input v-model="formItem.title" placeholder="新闻标题"/>
-                                    </FormItem>
-                                <FormItem label="上传文件" prop="file">
-                                    <Upload :action="uploadUrl"
-                                            :headers="uploadHeader"
-                                            :max-size="5120"
-                                            :on-success="handleFileSuccess"
-                                            :on-remove="handleFileRemove"
-                                            :on-format-error="handleFileFormatError"
-                                            :on-exceeded-size="handleFileMaxSize">
-                                        <Button icon="ios-cloud-upload-outline">上传文件</Button>
-                                    </Upload>
-                                    </FormItem>
-                                <FormItem label="新闻封面" prop="img">
-                                        <div class="demo-upload-list" v-if="formItem.img">
+                <FormItem label="新闻标题" prop="title">
+                    <Input v-model="formItem.title" placeholder="新闻标题"/>
+                </FormItem>
+                <FormItem label="新闻封面" prop="img">
+                    <div class="demo-upload-list" v-if="formItem.img">
                         <img :src="formItem.img">
                         <div class="demo-upload-list-cover">
                             <Icon type="ios-eye-outline" @click.native="handleView()"></Icon>
@@ -79,9 +70,9 @@
                             <Icon type="ios-camera" size="20"></Icon>
                         </div>
                     </Upload>
-                                    </FormItem>
-                                <FormItem label="新闻内容" prop="content">
-                                        <Upload
+                </FormItem>
+                <FormItem label="新闻内容" prop="content">
+                    <Upload
                             id="iviewUp"
                             ref="upload"
                             :show-upload-list="false"
@@ -106,11 +97,15 @@
                             @focus="onEditorFocus($event)"
                             @change="onEditorChange($event)">
                     </quill-editor>
-                                    </FormItem>
-                                <FormItem label="新闻日期" prop="date">
-                                        <DatePicker type="date" @on-change="formItem.date=$event" placeholder="选择日期" style="width: 200px"></DatePicker>
-                                    </FormItem>
-                            </Form>
+                </FormItem>
+                <FormItem label="新闻作者" prop="author">
+                    <Input v-model="formItem.author" placeholder="新闻作者"/>
+                </FormItem>
+                <FormItem label="新闻日期" prop="date">
+                    <DatePicker type="date" @on-change="formItem.date=$event" :value="formItem.date" placeholder="选择日期"
+                                style="width: 200px"></DatePicker>
+                </FormItem>
+            </Form>
             <div slot="footer">
                 <Button type="text" @click="cancel" style="margin-right: 8px">取消</Button>
                 <Button type="primary" @click="submit" :loading="modalSetting.loading">确定</Button>
@@ -122,14 +117,27 @@
                class-name="fl-image-modal">
             <img :src="modalSeeingImg.img" style="width: 100%">
         </Modal>
+        <!--查看详情-->
+        <Modal v-model="modalSeeingCon.show"
+               :title="modalSeeingCon.title"
+               footer-hide
+               width="1200"
+               :styles="{top: '30px'}">
+            <div class="ql-container ql-snow">
+                <div class="ql-editor ql-editor_big">
+                    <div v-html="modalSeeingCon.content"></div>
+                </div>
+            </div>
+        </Modal>
     </div>
 </template>
 
 <script>
     import config from '../../../../build/config';
-    import {getDataList,coruData} from '@/api/cbo_news_list'
-        import {quillEditor} from 'vue-quill-editor';
-        const editButton = (vm, h, currentRow, index) => {
+    import {getDataList, coruData} from '@/api/cbo_news_list'
+    import {quillEditor} from 'vue-quill-editor';
+
+    const editButton = (vm, h, currentRow, index) => {
         return h('Button', {
             props: {
                 type: 'primary'
@@ -139,18 +147,19 @@
             },
             on: {
                 'click': () => {
-                                        vm.formItem.id = currentRow.id;
-                                        vm.formItem.title = currentRow.title;
-                                        vm.formItem.img = currentRow.img;
-                                        vm.formItem.content = currentRow.content;
-                                        vm.formItem.date = currentRow.date;
-                                        vm.modalSetting.show = true
+                    vm.formItem.id = currentRow.id;
+                    vm.formItem.title = currentRow.title;
+                    vm.formItem.img = currentRow.img;
+                    vm.formItem.content = currentRow.content;
+                    vm.formItem.author = currentRow.author;
+                    vm.formItem.date = currentRow.date;
+                    vm.modalSetting.show = true
                     vm.modalSetting.index = index
                 }
             }
         }, '编辑')
     }
-        const deleteButton = (vm, h, currentRow, index) => {
+    const deleteButton = (vm, h, currentRow, index) => {
         return h('Poptip', {
             props: {
                 confirm: true,
@@ -183,15 +192,45 @@
             }, '删除')
         ])
     }
-    
+    const detailsButton = (vm, h, currentRow, index) => {
+        return h('Button', {
+            props: {
+                type: 'success',
+                size: 'small'
+            },
+            style: {
+                margin: '0 5px'
+            },
+            on: {
+                'click': () => {
+                    vm.modalSeeingCon.title = currentRow.title;
+                    vm.modalSeeingCon.content = currentRow.content;
+                    vm.modalSeeingCon.show = true;
+                }
+            }
+        }, '查看');
+    };
+
     export default {
         name: 'list',
-        components: {
-        },
+        components: {},
         data() {
             return {
                 // 初始化表格列
-                columnsList:[{title:"新闻id",key:"id",align:"center"},{title:"新闻标题",key:"title",align:"center"},{title:"新闻封面",key:"img",align:"center"},{title:"新闻内容",key:"content",align:"center"},{title:"新闻日期",key:"date",align:"center"},{title:"操作",key:"handle",align:"center",handle:["edit","delete"]}],
+                columnsList: [{title: "新闻id", key: "id", align: "center"}, {
+                    title: "新闻标题",
+                    key: "title",
+                    align: "center"
+                }, {title: "新闻封面", key: "img", align: "center"}, {
+                    title: "新闻内容",
+                    key: "content",
+                    align: "center"
+                }, {title: "新闻作者", key: "author", align: "center"}, {title: "新闻日期", key: "date", align: "center"}, {
+                    title: "操作",
+                    key: "handle",
+                    align: "center",
+                    handle: ["edit", "delete"]
+                }],
                 // 表格数据
                 tableData: [],
                 // 表格显示分页属性
@@ -202,10 +241,10 @@
                     listCount: 0
                 },
                 // 搜索配置
-                                searchConf:{title:"",date:""},
-                                // 表单属性
-                                formItem:{id:"",title:"",img:"",content:"",date:"",file:""},
-                                // modal属性
+                searchConf: {title: "", date: ""},
+                // 表单属性
+                formItem: {id: "", title: "", img: "", content: "", author: "", date: ""},
+                // modal属性
                 modalSetting: {
                     show: false,
                     loading: false,
@@ -216,23 +255,29 @@
                     img: '',
                     show: false
                 },
-                                uploadUrl: '',
+                // 详情modal
+                modalSeeingCon: {
+                    title: '',
+                    content: '',
+                    show: false
+                },
+                uploadUrl: '',
                 uploadHeader: {},
-                                editorOption: {
+                editorOption: {
                     modules: {
                         toolbar: {
                             container: [
-                                [{ 'size': ['small', false, 'large', 'huge'] }],
-                                [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                                [{'size': ['small', false, 'large', 'huge']}],
+                                [{'header': [1, 2, 3, 4, 5, 6, false]}],
                                 ['bold', 'italic', 'underline', 'strike', 'blockquote', 'clean'],
-                                [{ 'header': 1 }, { 'header': 2 }],
-                                [{'list': 'ordered'}, { 'list': 'bullet' }],
-                                [{'script': 'sub'}, { 'script': 'super' }],
-                                [{ 'align': [] }],
-                                [{ 'color': [] }, { 'background': [] }],
+                                [{'header': 1}, {'header': 2}],
+                                [{'list': 'ordered'}, {'list': 'bullet'}],
+                                [{'script': 'sub'}, {'script': 'super'}],
+                                [{'align': []}],
+                                [{'color': []}, {'background': []}],
                                 ['image']
                             ],
-                                handlers: {
+                            handlers: {
                                 'image': function (value) {
                                     if (value) {
                                         document.querySelector('#iviewUp input').click();
@@ -244,16 +289,16 @@
                         }
                     }
                 },
-                                // 表单验证
-                ruleValidate:{}
+                // 表单验证
+                ruleValidate: {}
             }
         },
         created() {
             this.init()
             this.getList()
-                            this.uploadUrl = config.baseUrl + 'Index/upload';
-                this.uploadHeader = {'ApiAuth': sessionStorage.getItem('apiAuth')};
-                    },
+            this.uploadUrl = config.baseUrl + 'Index/upload';
+            this.uploadHeader = {'ApiAuth': sessionStorage.getItem('apiAuth')};
+        },
         methods: {
             // 页面初始化
             init() {
@@ -262,48 +307,56 @@
                     if (item.key === 'handle') {
                         item.render = (h, param) => {
                             let currentRowData = vm.tableData[param.index]
-                                                        return h('div', [
+                            return h('div', [
                                 editButton(vm, h, currentRowData, param.index),
                                 deleteButton(vm, h, currentRowData, param.index)
                             ])
-                                                    }
-                    }
-                                            if (item.key === 'img') {
-                            item.render = (h, param) => {
-                                let currentRowData = vm.tableData[param.index];
-                                if (currentRowData.img) {
-                                    return h('img', {
-                                        style: {
-                                            width: '40px',
-                                            height: '40px',
-                                            cursor: 'pointer',
-                                            margin: '5px 0'
-                                        },
-                                        attrs: {
-                                            src: currentRowData.img,
-                                            shape: 'square',
-                                            size: 'large'
-                                        },
-                                        on: {
-                                            click: (e) => {
-                                                vm.modalSeeingImg.img = currentRowData.img;
-                                                vm.modalSeeingImg.show = true;
-                                            }
-                                        }
-                                    });
-                                } else {
-                                    return h('Tag', {}, '暂无图片');
-                                }
-                            };
                         }
-                                    })
+                    }
+                    if (item.key === 'img') {
+                        item.render = (h, param) => {
+                            let currentRowData = vm.tableData[param.index];
+                            if (currentRowData.img) {
+                                return h('img', {
+                                    style: {
+                                        width: '40px',
+                                        height: '40px',
+                                        cursor: 'pointer',
+                                        margin: '5px 0'
+                                    },
+                                    attrs: {
+                                        src: currentRowData.img,
+                                        shape: 'square',
+                                        size: 'large'
+                                    },
+                                    on: {
+                                        click: (e) => {
+                                            vm.modalSeeingImg.img = currentRowData.img;
+                                            vm.modalSeeingImg.show = true;
+                                        }
+                                    }
+                                });
+                            } else {
+                                return h('Tag', {}, '暂无图片');
+                            }
+                        };
+                    }
+                    if (item.key === 'content') {
+                        item.render = (h, param) => {
+                            let currentRowData = vm.tableData[param.index];
+                            return h('div', [
+                                detailsButton(vm, h, currentRowData, param.index)
+                            ]);
+                        };
+                    }
+                })
             },
-                        // 新增
+            // 新增
             alertAdd() {
                 this.formItem.id = 0
                 this.modalSetting.show = true
             },
-                        // 图片上传一系列
+            // 图片上传一系列
             handleView() {
                 this.visible = true;
             },
@@ -330,58 +383,34 @@
                     desc: file.name + '太大啦请上传小于5M的文件。'
                 });
             },
-            //上传文件一系列
-            handleFileSuccess(response) {
-                if (response.code === 1) {
-                    this.$Message.success(response.msg);
-                    this.formItem.file = response.data.fileUrl;
+            // 富文本编辑器一系列
+            handleSingleSuccess(res, file) {
+                // 获取富文本组件实例
+                let vm = this
+                let quill = this.$refs.myQuillEditor.quill
+                // 如果上传成功
+                if (res.code === 1) {
+                    // 获取光标所在位置
+                    let length = quill.getSelection().index;
+                    // 插入图片  res.info为服务器返回的图片地址
+                    quill.insertEmbed(length, 'image', res.data.fileUrl)
+                    // 调整光标到最后
+                    quill.setSelection(length + 1);
                 } else {
-                    this.$Message.error(response.msg);
+                    vm.$Message.error('图片插入失败');
                 }
             },
-            handleFileRemove() {
-                this.formItem.file = '';
+            handleFormatError() {
             },
-            handleFileFormatError(file) {
-                this.$Notice.warning({
-                    title: '文件类型不合法',
-                    desc: file.name + '的文件类型不正确。'
-                });
+            handleBeforeUpload() {
             },
-            handleFileMaxSize(file) {
-                this.$Notice.warning({
-                    title: '文件大小不合法',
-                    desc: file.name + '太大啦请上传小于5M的文件。'
-                });
+            onEditorBlur() {
             },
-                            // 富文本编辑器一系列
-                handleSingleSuccess (res, file) {
-                    // 获取富文本组件实例
-                    let vm = this
-                    let quill = this.$refs.myQuillEditor.quill
-                    // 如果上传成功
-                    if (res.code === 1) {
-                        // 获取光标所在位置
-                        let length = quill.getSelection().index;
-                        // 插入图片  res.info为服务器返回的图片地址
-                        quill.insertEmbed(length, 'image', res.data.fileUrl)
-                        // 调整光标到最后
-                        quill.setSelection(length + 1);
-                    } else {
-                        vm.$Message.error('图片插入失败');
-                    }
-                },
-                handleFormatError () {
-                },
-                handleBeforeUpload () {
-                },
-                onEditorBlur () {
-                },
-                onEditorFocus () {
-                },
-                onEditorChange () {
-                },
-                        // 提交
+            onEditorFocus() {
+            },
+            onEditorChange() {
+            },
+            // 提交
             submit() {
                 this.$refs['myForm'].validate((valid) => {
                     if (valid) {
@@ -440,45 +469,53 @@
 </script>
 
 <style scoped>
-.demo-upload-list{
-    display: inline-block;
-    width: 60px;
-    height: 60px;
-    text-align: center;
-    line-height: 60px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    overflow: hidden;
-    background: #fff;
-    position: relative;
-    box-shadow: 0 1px 1px rgba(0,0,0,.2);
-    margin-right: 4px;
-}
-.demo-upload-list img{
-    width: 100%;
-    height: 100%;
-}
-.demo-upload-list-cover{
-    display: none;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0,0,0,.6);
-}
-.demo-upload-list:hover .demo-upload-list-cover{
-    display: block;
-}
-.demo-upload-list-cover i{
-    color: #fff;
-    font-size: 20px;
-    cursor: pointer;
-    margin: 0 2px;
-}
+    .demo-upload-list {
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+        text-align: center;
+        line-height: 60px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        overflow: hidden;
+        background: #fff;
+        position: relative;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+        margin-right: 4px;
+    }
+
+    .demo-upload-list img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .demo-upload-list-cover {
+        display: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, .6);
+    }
+
+    .demo-upload-list:hover .demo-upload-list-cover {
+        display: block;
+    }
+
+    .demo-upload-list-cover i {
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+        margin: 0 2px;
+    }
 </style>
 <style>
-.ql-editor,.ql-blank{
-    height: 200px;
-}
+    .ql-editor {
+        height: 300px;
+    }
+
+    .ql-editor_big {
+        height: 600px;
+    }
 </style>

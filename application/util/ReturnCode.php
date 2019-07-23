@@ -37,6 +37,7 @@ class ReturnCode {
     const UPDATE_FAILED = -22; // 更新记录失败
 
     const CODE_ERROR = -23; // 验证码错误
+    const FILE_NOT_FOUND = -24; // 文件不存在
 
     const DATA_REPEAT = -993; // 数据重复
 

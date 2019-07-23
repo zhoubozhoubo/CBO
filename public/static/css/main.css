@@ -106,6 +106,9 @@ ul,ol,li{
 .bg .main .content .text_center{
     text-align: center;
 }
+.bg .main .content .text_right{
+    text-align: right;
+}
 
 
 .bg .footer{
@@ -121,22 +124,31 @@ ul,ol,li{
     height: 330px;
     /*background-color: #15417e;*/
 }
-.bg .footer .info ul{
-    width: 1050px;
+.bg .footer .info .content{
+    width: 1200px;
     margin: 0 auto;
+    /*background-color: #15417e;*/
+    border-bottom: 2px solid #152f5c;
+}
+.bg .footer .info ul{
+    float: left;
+    width: 900px;
+    /*margin: 0 auto;*/
     padding: 40px 0;
     font-size: 14px;
     color: #c9cacb;
     line-height: 40px;
-    border-bottom: 2px solid #152f5c;
 }
-.bg .footer .info .one_li{
+.bg .footer .info ul li{
     float: left;
-    width: 23%;
+    width: 33%;
 }
 .bg .footer .info .partners{
+    width: 300px;
+    font-size: 14px;
+    color: #c9cacb;
     float: right;
-    line-height: 120px;
+    line-height: 200px;
 }
 
 
@@ -187,6 +199,9 @@ ul,ol,li{
 }
 .bg .hide{
     display: none!important;
+}
+.bg .over_hide{
+    overflow: hidden;
 }
 .bg .clear{
     clear: both!important;

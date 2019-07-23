@@ -2,7 +2,9 @@
 
 namespace app\admin\controller;
 
+use app\admin\model\CboFiles;
 use app\util\BaseController;
+use app\util\ReturnCode;
 use think\Db;
 use think\Exception;
 use think\exception\DbException;
@@ -49,7 +51,8 @@ class Files extends BaseController
 
     public function _getList_data_filter(&$data){
         foreach ($data as &$item){
-            $item['file'] = [['name' => '', 'url' => $item['file_url']]];
+            $fileUrl = explode('/', $item['file_url']);
+            $item['file_url'] =$fileUrl[count($fileUrl)-1];
         }
     }
 
@@ -61,9 +64,35 @@ class Files extends BaseController
     public function coruData()
     {
         $postData = $this->request->post();
-        $postData['file_url'] = $postData['file'][0]['url'];
+        $postData['file_url'] = $postData['file']['url'];
         unset($postData['file']);
-        print_r($postData);exit;
         return $this->coruBase($postData);
+    }
+
+    public function download(){
+        $getData = $this->request->get();
+        $id = $getData['id'];
+        $file = CboFiles::get($id);
+        $fileUrl = explode('/', $file['file_url']);
+        $fileUrl = $_SERVER['DOCUMENT_ROOT'].'/upload/'.$fileUrl[count($fileUrl)-2].'/'.$fileUrl[count($fileUrl)-1];
+        if(!isset($fileUrl)||trim($fileUrl)==''){
+            return $this->buildFailed(ReturnCode::FILE_NOT_FOUND,'文件不存在1','');
+        }
+        if(!file_exists($fileUrl)){ //检查文件是否存在
+            return $this->buildFailed(ReturnCode::FILE_NOT_FOUND,'文件不存在2','');
+        }
+        $file_name=basename($fileUrl);
+//        $file_type=explode('.',$file['file_url']);
+//        $file_type=$file_type[count($file_type)-1];
+        $file_name=trim($file['file_name']=='')?$file_name:urlencode($file['file_name']);
+        $file=fopen($fileUrl,'r'); //打开文件
+        //输入文件标签
+        header("Content-type: application/octet-stream");
+        header("Accept-Ranges: bytes");
+        header("Accept-Length: ".filesize($file['file_url']));
+        header("Content-Disposition: attachment; filename=".$file_name);
+        //输出文件内容
+        return fread($file,filesize($fileUrl));
+        fclose($file);
     }
 }

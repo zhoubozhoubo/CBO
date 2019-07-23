@@ -50,11 +50,13 @@
                                         <Upload :action="uploadUrl"
                             :headers="uploadHeader"
                             :max-size="5120"
-                            :default-file-list="formItem.file"
+                            :show-upload-list="false"
+                            :before-upload="handleFileRemove"
                             :on-success="handleFileSuccess"
                             :on-remove="handleFileRemove"
                             :on-exceeded-size="handleFileMaxSize">
                         <Button icon="ios-cloud-upload-outline">上传文件</Button>
+                                            <p v-if="formItem.file">{{formItem.file.url}}</p>
                     </Upload>
                                     </FormItem>
                                 <FormItem label="文件日期" prop="date">
@@ -77,8 +79,9 @@
 
 <script>
     import config from '../../../../build/config';
-    import {getDataList,coruData} from '@/api/cbo_files_list'
-        const editButton = (vm, h, currentRow, index) => {
+    import {getDataList,coruData,download} from '@/api/cbo_files_list'
+
+    const downloadButton = (vm, h, currentRow, index) => {
         return h('Button', {
             props: {
                 type: 'primary'
@@ -88,16 +91,22 @@
             },
             on: {
                 'click': () => {
-                                        vm.formItem.id = currentRow.id;
-                                        vm.formItem.file_name = currentRow.file_name;
-                                        vm.formItem.file_url = currentRow.file_url;
-                                        vm.formItem.date = currentRow.date;
-                                        vm.modalSetting.show = true
-                    vm.modalSetting.index = index
+                    window.location.href = config.baseUrl + 'Files/download?id=5'
+                    // download({id: currentRow.id}).then(res => {
+                    //     if (res.data.code === 1) {
+                    //         vm.tableData.splice(index, 1)
+                    //         vm.$Message.success(res.data.msg)
+                    //     } else {
+                    //         vm.$Message.error(res.data.msg)
+                    //     }
+                    // }, err => {
+                    //     vm.$Message.error(err.data.msg)
+                    // })
                 }
             }
-        }, '编辑')
+        }, '下载')
     }
+
         const deleteButton = (vm, h, currentRow, index) => {
         return h('Poptip', {
             props: {
@@ -139,7 +148,7 @@
         data() {
             return {
                 // 初始化表格列
-                columnsList:[{title:"文件id",key:"id",align:"center"},{title:"文件名称",key:"file_name",align:"center"},{title:"文件地址",key:"file_url",align:"center"},{title:"文件日期",key:"date",align:"center"},{title:"操作",key:"handle",align:"center",handle:["edit","delete"]}],
+                columnsList:[{title:"文件id",key:"id",align:"center"},{title:"文件名称",key:"file_name",align:"center"},{title:"源文件",key:"file_url",align:"center"},{title:"文件日期",key:"date",align:"center"},{title:"操作",key:"handle",align:"center",handle:["download", "delete"]}],
                 // 表格数据
                 tableData: [],
                 // 表格显示分页属性
@@ -185,7 +194,7 @@
                         item.render = (h, param) => {
                             let currentRowData = vm.tableData[param.index]
                                                         return h('div', [
-                                editButton(vm, h, currentRowData, param.index),
+                                // downloadButton(vm, h, currentRowData, param.index),
                                 deleteButton(vm, h, currentRowData, param.index)
                             ])
                                                     }
@@ -210,8 +219,7 @@
             handleFileSuccess(response) {
                 if (response.code === 1) {
                     this.$Message.success(response.msg);
-                    let file = { 'name': '', 'url': response.data.fileUrl }
-                    this.formItem.file.push(file)
+                    this.formItem.file = { 'name': '', 'url': response.data.fileUrl }
                 } else {
                     this.$Message.error(response.msg);
                 }

@@ -1,0 +1,21 @@
+.content .details {
+    width: 1200px;
+    margin: 0 auto 40px;
+    color: #FFFFFF;
+}
+.content .details .author{
+    font-size: 18px;
+    line-height: 35px;
+}
+.content .details .date{
+    font-size: 18px;
+    line-height: 35px;
+}
+.content .details .ql-editor p{
+    line-height: 35px;
+}
+.content .details .ql-editor img{
+    max-width: 96%;
+    padding: 2%;
+    background-color: #15417e;
+}

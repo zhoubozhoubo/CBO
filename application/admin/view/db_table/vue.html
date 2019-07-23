@@ -87,11 +87,11 @@
                     {elseif condition="$v.components eq 'Slider'"}
                     <Slider v-model="formItem.{$v.key}"></Slider>
                     {elseif condition="$v.components eq 'DatePicker'"}
-                    <DatePicker type="date" @on-change="formItem.{$v.key}=$event" placeholder="选择日期" style="width: 200px"></DatePicker>
+                    <DatePicker type="date" @on-change="formItem.{$v.key}=$event" :value="formItem.{$v.key}" placeholder="选择日期" style="width: 200px"></DatePicker>
                     {elseif condition="$v.components eq 'DateRangePicker'"}
-                    <DatePicker type="daterange" @on-change="formItem.{$v.key}=$event" placeholder="选择日期范围" style="width: 200px"></DatePicker>
+                    <DatePicker type="daterange" @on-change="formItem.{$v.key}=$event" :value="formItem.{$v.key}" placeholder="选择日期范围" style="width: 200px"></DatePicker>
                     {elseif condition="$v.components eq 'TimePicker'"}
-                    <TimePicker type="time" placeholder="选择时间" style="width: 168px"></TimePicker>
+                    <TimePicker type="time" placeholder="选择时间" :value="formItem.{$v.key}" style="width: 168px"></TimePicker>
                     {elseif condition="$v.components eq 'InputNumber'"}
                     <InputNumber :max="10" :min="1" :step="1" v-model="formItem.{$v.key}"></InputNumber>
                     {elseif condition="$v.components eq 'TextArea'"}
