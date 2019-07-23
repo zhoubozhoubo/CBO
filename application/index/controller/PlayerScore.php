@@ -15,6 +15,7 @@ class PlayerScore extends Controller{
         return $this->fetch();
     }
     public function details(){
+        $this->assign('action_page', 5);
         return $this->fetch();
     }
 }

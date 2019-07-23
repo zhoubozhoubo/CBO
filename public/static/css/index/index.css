@@ -223,8 +223,7 @@
     line-height: 80px;
 }
 .content .data_statistics {
-    float: left;
-    width: 760px;
+    width: 765px;
     margin: 20px auto;
     color: #FFFFFF;
 }
@@ -257,4 +256,152 @@
     float: right;
     font-size: 14px;
     line-height: 80px;
+}
+.content .data_statistics .type_action li{
+    float: left;
+    width: 151px;
+    height: 7px;
+    border-top: 3px solid #1b3155;
+    border-left: 1px solid #1b3155;
+    border-right: 1px solid #1b3155;
+}
+.content .data_statistics .type_action .action{
+    border-top: 3px solid #eaa232;
+    border-left: 1px solid #eaa232;
+    border-right: 1px solid #eaa232;
+}
+.content .data_statistics .type li{
+    width: 151px;
+    font-size: 14px;
+    line-height: 30px;
+    border: 1px solid #eaa232;
+}
+.content .data_statistics .type .action{
+    border-top: none;
+    border-bottom: none;
+}
+.content .data_statistics .list{
+    position: relative;
+    margin-top: 15px;
+    border-top: 1px solid #15417e;
+}
+.content .data_statistics .list li{
+    width: 230px;
+    margin: 0 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #15417e;
+}
+.content .data_statistics .list .left_li{
+    margin-left: 0;
+}
+.content .data_statistics .list li img{
+    width: 56px;
+    height: 40px;
+    margin-top: 4px;
+    margin-right: 5px;
+}
+.content .data_statistics .list li .info h1{
+    font-size: 12px;
+    line-height: 16px;
+}
+.content .data_statistics .list li h2{
+    font-size: 30px;
+    line-height: 48px;
+    color: #046eb8;
+}
+.content .data_statistics .list .big{
+    position: relative;
+    padding: 25px 0;
+}
+.content .data_statistics .list .big .number{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    background-color: #15417e;
+    left: 0;
+    top: 29px;
+}
+.content .data_statistics .list .big img{
+    width: 86px;
+    height: 105px;
+    margin-right: 15px;
+}
+.content .data_statistics .list .big .info h1{
+    font-size: 12px;
+    line-height: 18px;
+}
+.content .data_statistics .list .big h2{
+    font-size: 36px;
+    line-height: 60px;
+    color: #046eb8;
+}
+.content .data_statistics .list .line{
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background-color: #15417e;
+}
+.content .data_statistics .list .one {
+    left: 245px;
+}
+.content .data_statistics .list .two {
+    left: 505px;
+}
+.content .data_statistics .list .three {
+    left: 765px;
+}
+.content .player_score{
+    width: 400px;
+    margin: 20px auto;
+}
+.content .player_score .head {
+    background-color: #046eb8;
+}
+.content .player_score .head h1{
+    font-size: 16px;
+    color: #FFFFFF;
+    line-height: 55px;
+}
+.content .player_score .head .rank{
+    width: 20%;
+}
+.content .player_score .head .team{
+    width: 30%;
+}
+.content .player_score .head .name{
+    width: 30%;
+}
+.content .player_score .head .score{
+    width: 20%;
+}
+.content .player_score .list {
+    height: 325px;
+    border-bottom: 1px solid #15417e;
+}
+.content .player_score .list li {
+    height: 80px;
+    border-top: 1px solid #15417e;
+}
+.content .player_score .list li *{
+    float: left;
+    font-size: 16px;
+    line-height: 80px;
+    color: #FFFFFF;
+}
+.content .player_score .list li .rank{
+    width: 20%;
+}
+.content .player_score .list li .team{
+    width: 30%;
+}
+.content .player_score .list li .team img{
+    max-width: 35px;
+    margin: 25px 20px 0 10px;
+}
+.content .player_score .list li .name{
+    width: 30%;
+}
+.content .player_score .list li .score{
+    width: 20%;
 }
