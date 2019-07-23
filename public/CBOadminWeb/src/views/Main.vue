@@ -12,8 +12,10 @@
                 :open-names="openedSubmenuArr"
                 :menu-list="menuList">
                 <div slot="top" class="logo-con">
-                    <img v-show="!shrink"  src="../images/logo.jpg" key="max-logo" />
-                    <img v-show="shrink" src="../images/logo-min.jpg" key="min-logo" />
+                    <!--<img v-show="!shrink"  src="../images/logo.jpg" key="max-logo" />-->
+                    <!--<img v-show="shrink" src="../images/logo-min.jpg" key="min-logo" />-->
+                    <h1 style="color: #FFFFFF;" v-show="!shrink">CBO管理后台</h1>
+                    <h1 style="color: #FFFFFF;" v-show="shrink">CBO</h1>
                 </div>
             </shrinkable-menu>
         </div>
