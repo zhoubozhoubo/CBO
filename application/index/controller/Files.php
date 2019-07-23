@@ -20,11 +20,10 @@ class Files extends Controller{
             $where['file_name'] = ['like',"%{$file_name}%"];
         }
         $filesList = CboFiles::where($where)->field('gmt_modified,is_delete', true)->order('date desc, id desc')->select();
-//        print_r($filesList);exit;
         $this->assign('action_page', 6);
         $this->assign('files_list', $filesList);
 
-        if($file_name){
+        if($file_name||$file_name===''){
             if($filesList){
                 return json($filesList);
             }else{

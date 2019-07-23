@@ -222,3 +222,39 @@
     font-size: 14px;
     line-height: 80px;
 }
+.content .data_statistics {
+    float: left;
+    width: 760px;
+    margin: 20px auto;
+    color: #FFFFFF;
+}
+.content .data_statistics .left_line_title{
+    float: left;
+}
+.content .data_statistics .click{
+    float: right;
+    width: 138px;
+    height: 34px;
+    margin-top: 23px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 34px;
+    background-image: url("../../images/details.png");
+}
+.content .data_statistics .select{
+    float: right;
+    width: 130px;
+    height: 34px;
+    font-size: 14px;
+    padding-left: 10px;
+    margin: 23px 20px 0 15px;
+    line-height: 34px;
+    border: 1px solid #15417e;
+    border-radius: 4px;
+    color: #FFFFFF;
+}
+.content .data_statistics .choose{
+    float: right;
+    font-size: 14px;
+    line-height: 80px;
+}
