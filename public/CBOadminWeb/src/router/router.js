@@ -248,6 +248,39 @@ export const appRouter = [
             }
         ]
     },
+    {
+        path: "/competition_rules",
+        icon: "md-cube",
+        name: "competition_rules",
+        title: "竞赛规程管理",
+        component: Main,
+        children: [
+            {
+                path: "cbo_match_time_address",
+                icon: "ios-folder-open",
+                name: "cbo_match_time_address",
+                access: 'admin/MatchTimeAddress/getList',
+                title: "比赛时间地点管理",
+                component: () => import('@/views/competition_rules/cbo_match_time_address/index.vue')
+            },
+            {
+                path: "cbo_match_way",
+                icon: "ios-folder-open",
+                name: "cbo_match_way",
+                access: 'admin/MatchWay/getList',
+                title: "比赛办法管理",
+                component: () => import('@/views/competition_rules/cbo_match_way/index.vue')
+            },
+            {
+                path: "cbo_eligibility",
+                icon: "ios-folder-open",
+                name: "cbo_eligibility",
+                access: 'admin/Eligibility/getList',
+                title: "参赛资格管理",
+                component: () => import('@/views/competition_rules/cbo_eligibility/index.vue')
+            }
+        ]
+    },
     // {
     //     path: '/international',
     //     icon: 'earth',

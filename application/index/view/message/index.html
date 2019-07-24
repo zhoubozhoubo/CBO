@@ -35,9 +35,9 @@
                     let str = ''
                     $.each(data, function(k, v){
                         str += '<li><a href="{:url(\'/index/message/details\')}?id='+v.id+'">'+v.title+'</a><span class="time">'+v.date+'</span></li>'
-                        console.log(str)
-                        $('.message .list').append(str)
                     })
+                    console.log(str)
+                    $('.message .list').append(str)
                     if(page === pages){
                         $('.see_more').addClass('hide')
                     }

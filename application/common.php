@@ -99,6 +99,136 @@ function local_image($url)
  */
 function ymd($datetime, $format = 'Y年m月d日')
 {
-    $time= date($format, strtotime($datetime));
+    $time = date($format, strtotime($datetime));
     return $time;
 }
+
+/**
+ * curlPOST请求
+ * @param $url
+ * @param string $requestString
+ * @param int $timeout
+ * @return bool|string
+ */
+function doCurlPostRequest($url, $requestString = '', $timeout = 5)
+{
+    if ($url == '' || $timeout <= 0) {
+        return false;
+    }
+    $headers = ["Content-type: application/json;charset='utf-8'", "Accept: application/json", "Cache-Control: no-cache", "Pragma: no-cache"];
+    $con = curl_init((string)$url);
+    curl_setopt($con, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($con, CURLOPT_HEADER, false);
+    curl_setopt($con, CURLOPT_POSTFIELDS, $requestString);
+    curl_setopt($con, CURLOPT_POST, true);
+    curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($con, CURLOPT_TIMEOUT, (int)$timeout);
+    $output = curl_exec($con);
+    if ($output === FALSE) {
+        return [];
+    }
+    curl_close($con);
+    return $output;
+}
+
+/**
+ * 获取赛季
+ * @return bool|string
+ */
+function getCompetitionSeason()
+{
+    $playerScoreListCurl = "https://minidev.woaolanqiu.cn/cbo/data/competition/season";
+    return doCurlPostRequest($playerScoreListCurl);
+}
+
+/**
+ * 获取赛季阶段
+ * @param $requestArray
+ * @return bool|string
+ */
+function getSeasonStage($requestArray)
+{
+    $seasonStageCurl = "https://minidev.woaolanqiu.cn/cbo/data/competition/season/stage";
+    $requestString = json_encode($requestArray);
+    return doCurlPostRequest($seasonStageCurl, $requestString);
+}
+
+/**
+ * 获取赛区
+ * @param $requestArray
+ * @return bool|string
+ */
+function getArea($requestArray)
+{
+    $areaCurl = "https://minidev.woaolanqiu.cn/cbo/data/area";
+    $requestString = json_encode($requestArray);
+    return doCurlPostRequest($areaCurl, $requestString);
+}
+
+/**
+ * 获取球员积分排行
+ * @param $requestArray
+ * @return bool|string
+ */
+function getPlayerScoreRanking($requestArray)
+{
+    $playerScoreRankingStageCurl = "https://minidev.woaolanqiu.cn/cbo/data/player/score/ranking";
+    $requestString = json_encode($requestArray);
+    return doCurlPostRequest($playerScoreRankingStageCurl, $requestString);
+}
+
+/**
+ * 获取球员在球队中统计信息
+ * @param $requestArray
+ * @return bool|string
+ */
+function getPlayerTeamStatistics($requestArray)
+{
+    $playerTeamStatisticsCurl = "https://minidev.woaolanqiu.cn/cbo/data/player/team/statistics";
+    $requestString = json_encode($requestArray);
+    return doCurlPostRequest($playerTeamStatisticsCurl, $requestString);
+}
+
+/**
+ * 获取球员统计信息-通过不同类型
+ * @param $requestArray
+ * @return bool|string
+ */
+function getPlayerTypeStatistics($requestArray)
+{
+    $playerTypeStatisticsCurl = "https://minidev.woaolanqiu.cn/cbo/data/player/type/statistics";
+    $requestString = json_encode($requestArray);
+    return doCurlPostRequest($playerTypeStatisticsCurl, $requestString);
+}
+
+
+function testCurlData()
+{
+//    $res = getCompetitionSeason();
+//        $res = getSeasonStage(["seasonId"=>"75"]);
+//        $res = getArea(["seasonId"=>"75"]);
+//        $res = getPlayerScoreRanking(["pageNum"=>0,"pageSize"=>10,"seasonId"=>"75","stageId"=>"17"]);
+//        $res = getPlayerTeamStatistics(["pageNum"=>0,"pageSize"=>10,"seasonId"=>"75","stageId"=>"17","userId"=>"2137317"]);
+        $res = getPlayerTypeStatistics(["pageNum"=>0,"pageSize"=>10,"seasonId"=>"75","stageId"=>"18","provinceId"=>"","cityId"=>"","type"=>"score"]);
+    print_r($res);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

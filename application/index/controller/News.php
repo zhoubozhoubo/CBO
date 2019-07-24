@@ -22,14 +22,14 @@ class News extends Controller
         $newsListBig = CboNews::where($where)->field('gmt_modified,is_delete', true)->order('date desc, id desc')->limit(3)->select();
         $newsList = CboNews::where($where)->field('gmt_modified,is_delete', true)->order('date desc, id desc')->page($page, $size)->select();
         $newsCount = CboNews::where($where)->count();
-        $newsPages = ceil($newsCount/$size);
+        $newsPages = ceil($newsCount / $size);
 
         $this->assign('action_page', 3);
         $this->assign('news_list_big', $newsListBig);
         $this->assign('news_list', $newsList);
         $this->assign('news_pages', $newsPages);
 
-        if($page !== 1){
+        if ($page !== 1) {
             return json($newsList);
         }
         return $this->fetch();

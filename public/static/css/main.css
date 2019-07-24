@@ -8,6 +8,9 @@ a{
 }
 h1,h2,h3,h4,h5,h6{
     font-weight: normal!important;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 ul,ol,li{
     list-style: none;
@@ -95,7 +98,7 @@ ul,ol,li{
     padding-left: 20px;
     color: #FFFFFF;
     margin: 25px 0;
-    line-height: 30px;
+    line-height: 40px;
 }
 .bg .main .content .float_left{
     float: left;
@@ -183,13 +186,16 @@ ul,ol,li{
 .bg .page ul li{
     float: left;
     height: 20px;
-    padding: 0 10px;
+    padding: 5px 10px;
 }
-.bg .page ul li:first-child{
-    background-image: url("../images/pageleft.png");
+.bg .page ul .action{
+    background-color: #15417e;
 }
-.bg .page ul li:last-child{
-    background-image: url("../images/pageright.png");
+.bg .page ul .first_page{
+    background: url("../images/pageleft.png") no-repeat 0;
+}
+.bg .page ul .last_page{
+    background: url("../images/pageright.png") no-repeat 0;
 }
 .bg .bold{
     font-weight: bold!important;

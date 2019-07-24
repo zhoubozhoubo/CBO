@@ -5,7 +5,7 @@
     <!--竞赛规程-->
     <div class="competition_rules">
         <ul class="second_bar">
-            <li class="bg_size cursor text_center action" onclick="actionPageTwo(0)">比赛地点及时间</li>
+            <li class="bg_size cursor text_center action" onclick="actionPageTwo(0)">比赛时间及地点</li>
             <li class="bg_size cursor text_center" onclick="actionPageTwo(1)">竞赛办法</li>
             <li class="bg_size cursor text_center" onclick="actionPageTwo(2)">参赛资格</li>
             <li class="bg_size cursor text_center" onclick="actionPageTwo(3)">报名方式</li>
@@ -16,7 +16,13 @@
             <h1 class="left_line_title bold">比赛时间</h1>
             <div class="line"></div>
             <ul class="match_time">
+                {volist name="match_time_address" id="vo"}
                 <li>
+                    <h1 class="title bold">{$vo.match_type}</h1>
+                    <p class="content">{$vo.match_time}</p>
+                </li>
+                {/volist}
+                <!--<li>
                     <h1 class="title bold">城市预选赛</h1>
                     <p class="content">比赛时间为2019年8月10日至2019年9月8日,共5个周末,10个比赛日,各承办城市按照本城市实际情况选择相应的比赛日完成比赛。</p>
                 </li>
@@ -31,13 +37,19 @@
                 <li>
                     <h1 class="title bold">女子冠军赛</h1>
                     <p class="content">为赛会制比赛,比赛时间为2019年10月16日至2019年10月23日举行举行(具体时间另行通知),各赛区城市申办举行,由各省推荐女子篮球队参加(球队16支,即:每个省或自治区报名一支参赛队,共涉及16个省),比赛为时5天。</p>
-                </li>
+                </li>-->
             </ul>
             <div class="bottom_line"></div>
             <h1 class="left_line_title bold">比赛地点</h1>
             <div class="line"></div>
             <ul class="match_time">
+                {volist name="match_time_address" id="vo"}
                 <li>
+                    <h1 class="title bold">{$vo.match_type}</h1>
+                    <p class="content">{$vo.match_address}</p>
+                </li>
+                {/volist}
+                <!--<li>
                     <h1 class="title bold">城市预选赛:32个省</h1>
                     <p class="content">江苏、浙江、福建、广东、海南、台湾、江西、安徽、香港、澳门、云南 、广西、贵州、湖南、湖北、重庆、四川、西藏,新疆,青海,甘肃,宁夏,陕西、辽宁、吉林、黑龙江、山东、河北、天津、北京、内蒙古、青海、山西。</p>
                 </li>
@@ -52,7 +64,7 @@
                 <li>
                     <h1 class="title bold">女子冠军赛</h1>
                     <p class="content"></p>
-                </li>
+                </li>-->
             </ul>
         </div>
         <!--竞赛办法-->
@@ -112,19 +124,17 @@
             <h1 class="left_line_title bold">中国篮球公开赛城市赛参赛资格</h1>
             <div class="line"></div>
             <ul class="eligibility_list">
-                <li>A、年满18周岁的中华人民共和国合法公民且是所属赛区本省户籍(报名时运动员需提交身份证号,且户籍落户本省不得少于1年,时间节点 );大学生集体户口有效。</li>
-                <li>A、年满18周岁的中华人民共和国合法公民且是所属赛区本省户籍(报名时运动员需提交身份证号,且户籍落户本省不得少于1年,时间节点 );大学生集体户口有效。</li>
-                <li>A、年满18周岁的中华人民共和国合法公民且是所属赛区本省户籍(报名时运动员需提交身份证号,且户籍落户本省不得少于1年,时间节点 );大学生集体户口有效。</li>
-                <li>A、年满18周岁的中华人民共和国合法公民且是所属赛区本省户籍(报名时运动员需提交身份证号,且户籍落户本省不得少于1年,时间节点 );大学生集体户口有效。</li>
+                {volist name="eligibility_type_one" id="vo"}
+                <li>{$vo.letter}、{$vo.content}</li>
+                {/volist}
             </ul>
             <div class="line"></div>
-            <h1 class="left_line_title bold">中国篮球公开赛城市赛参赛资格</h1>
+            <h1 class="left_line_title bold">中国篮球公开赛女子冠军赛参赛资格</h1>
             <div class="line"></div>
             <ul class="eligibility_list">
-                <li>A、年满18周岁的中华人民共和国合法公民且是所属赛区本省户籍(报名时运动员需提交身份证号,且户籍落户本省不得少于1年,时间节点 );大学生集体户口有效。</li>
-                <li>A、年满18周岁的中华人民共和国合法公民且是所属赛区本省户籍(报名时运动员需提交身份证号,且户籍落户本省不得少于1年,时间节点 );大学生集体户口有效。</li>
-                <li>A、年满18周岁的中华人民共和国合法公民且是所属赛区本省户籍(报名时运动员需提交身份证号,且户籍落户本省不得少于1年,时间节点 );大学生集体户口有效。</li>
-                <li>A、年满18周岁的中华人民共和国合法公民且是所属赛区本省户籍(报名时运动员需提交身份证号,且户籍落户本省不得少于1年,时间节点 );大学生集体户口有效。</li>
+                {volist name="eligibility_type_two" id="vo"}
+                <li>{$vo.letter}、{$vo.content}</li>
+                {/volist}
             </ul>
         </div>
         <!--报名方式-->

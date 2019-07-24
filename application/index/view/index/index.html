@@ -120,6 +120,7 @@
             <option>北京3</option>
         </select>
         <p class="choose">选择省份</p>
+        <div class="clear"></div>
         <ul class="type_action">
             <li></li>
             <li class="action"></li>
@@ -127,6 +128,7 @@
             <li></li>
             <li></li>
         </ul>
+        <div class="clear"></div>
         <ul class="type">
             <li class="text_center float_left cursor">得&nbsp;&nbsp;&nbsp;&nbsp;分</li>
             <li class="text_center float_left cursor action">篮&nbsp;&nbsp;&nbsp;&nbsp;板</li>
@@ -238,15 +240,17 @@
             <div class="clear"></div>
         </div>
         <ul class="list">
+            {volist name="player_score_ranking_list" id="vo"}
             <li>
-                <h1 class="rank text_center">1</h1>
+                <h1 class="rank text_center">{$vo.ranking}</h1>
                 <div class="team">
-                    <img src="__STATIC__/images/teamlogo.png"/>
-                    <h1 class="team text_center">球队</h1>
+                    <img src="{$vo.teamLogo}"/>
+                    <h1 class="team text_center">{$vo.teamName}</h1>
                 </div>
-                <h1 class="name text_center">1</h1>
-                <h1 class="score text_center">1</h1>
+                <h1 class="name text_center">{$vo.playerName}</h1>
+                <h1 class="score text_center">{$vo.point}</h1>
             </li>
+            {/volist}
         </ul>
         <div class="see_more text_center bg_color cursor" onclick="seeMorePlayerScore()">查看更多</div>
     </div>
@@ -264,12 +268,12 @@
 </script>
 <script>
     $(function () {
-        getPlayerScoreRanking()
+        // getPlayerScoreRanking()
     })
 
     //球员积分排行
     function getPlayerScoreRanking() {
-        let jsonData = {"pageNum" : 0,"pageSize" : 10,"seasonId":"75","stageId" : "17"}
+        /*let jsonData = {"pageNum" : 0,"pageSize" : 4,"seasonId":"75","stageId" : "17"}
         $.ajax({
             type: "POST",
             url: "https://minidev.woaolanqiu.cn/cbo/data/player/score/ranking",
@@ -281,33 +285,21 @@
                     let list = data.data.list
                     $('.player_score .list').html('')
                     let str = ''
-                    for(let i = 0; i<4; i++){
+                    $.each(list, function (k, v) {
                         str += '\n' +
                             '            <li>\n' +
-                            '                <h1 class="rank text_center">'+list[i].ranking+'</h1>\n' +
+                            '                <h1 class="rank text_center">'+v.ranking+'</h1>\n' +
                             '                <div class="team">\n' +
-                            '                    <img src="'+list[i].teamLogo+'"/>\n' +
-                            '                    <h1 class="team text_center">'+list[i].teamName+'</h1>\n' +
+                            '                    <img src="'+v.teamLogo+'"/>\n' +
+                            '                    <h1 class="team text_center">'+v.teamName+'</h1>\n' +
                             '                </div>\n' +
-                            '                <h1 class="name text_center">'+list[i].playerName+'</h1>\n' +
-                            '                <h1 class="score text_center">'+list[i].point+'</h1>\n' +
+                            '                <h1 class="name text_center">'+v.playerName+'</h1>\n' +
+                            '                <h1 class="score text_center">'+v.point+'</h1>\n' +
                             '            </li>'
-                    }
-                    // $.each(list, function (k, v) {
-                    //     str += '\n' +
-                    //         '            <li>\n' +
-                    //         '                <h1 class="rank text_center">'+v.ranking+'</h1>\n' +
-                    //         '                <div class="team">\n' +
-                    //         '                    <img src="'+v.teamLogo+'"/>\n' +
-                    //         '                    <h1 class="team text_center">'+v.teamName+'</h1>\n' +
-                    //         '                </div>\n' +
-                    //         '                <h1 class="name text_center">'+v.playerName+'</h1>\n' +
-                    //         '                <h1 class="score text_center">'+v.point+'</h1>\n' +
-                    //         '            </li>'
-                    // })
+                    })
                     $('.player_score .list').html(str)
                 }
             }
-        })
+        })*/
     }
 </script>

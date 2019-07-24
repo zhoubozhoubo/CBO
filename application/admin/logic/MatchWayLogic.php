@@ -2,16 +2,16 @@
 
 namespace app\admin\logic;
 
-use app\admin\model\CboMessage;
+use app\admin\model\CboMatchWay;
 use app\util\BaseLogic;
 use app\util\ReturnCode;
 
 /**
- * MessageLogic
- * Class MessageLogic
+ * MatchWayLogic
+ * Class MatchWayLogic
  * @package app\admin\logic
  */
-class MessageLogic extends BaseLogic
+class MatchWayLogic extends BaseLogic
 {
     /**
      * 创建OR更新
@@ -20,7 +20,7 @@ class MessageLogic extends BaseLogic
      */
     public function coru($param){
         //实力化操作模型
-        $model = new CboMessage();
+        $model = new CboMatchWay();
         //判断创建OR更新
         if (!$param['id']) {
             return $res = $this->createBase($model,$param);

@@ -4,7 +4,7 @@ namespace app\admin\model;
 
 use think\Model;
 
-class CboBasicConf extends Model
+class Area extends Model
 {
 
 }

@@ -178,7 +178,9 @@
 </template>
 
 <script>
+    {if condition="count($img) > 0 || count($editor) > 0 || count($file) > 0"}
     import config from '../../../../build/config';
+    {/if}
     import {getDataList,coruData} from '@/api/{$groupName}_{$vueName}'
     {if condition="count($editor) > 0"}
     import {quillEditor} from 'vue-quill-editor';

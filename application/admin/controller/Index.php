@@ -2,7 +2,7 @@
 
 namespace app\admin\controller;
 
-
+use app\admin\model\Area;
 use app\util\ReturnCode;
 
 class Index extends Base {
@@ -49,5 +49,10 @@ class Index extends Base {
         } else {
             return $this->buildFailed(ReturnCode::FILE_SAVE_ERROR, '文件上传失败');
         }
+    }
+
+    public function getProvinceList(){
+        $provinceList = Area::where('level',1)->select();
+        return $this->buildSuccess($provinceList);
     }
 }

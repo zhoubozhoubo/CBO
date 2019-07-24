@@ -31,12 +31,30 @@ class Index extends Controller{
         $messageList = CboMessage::where($where)->field('id,title')->order('date desc, id desc')->limit(4)->select();
         //精彩图集
         $wonderfulImgList = CboWonderfulImg::where($where)->field('gmt_modified,is_delete', true)->order('gmt_create desc')->limit(5)->select();
+        // TODO 数据统计
+        //球员积分排名
+        $page = 1;
+        $size = 4;
+        $playerScoreRankingArray=[
+            "pageNum"=>$page,
+            "pageSize"=>$size,
+            "seasonId"=>"75",
+            "stageId"=>"17"
+        ];
+        $playerScoreRanking = getPlayerScoreRanking($playerScoreRankingArray);
+        $playerScoreRanking = json_decode($playerScoreRanking, true);
+        if($playerScoreRanking && $playerScoreRanking['code'] === 200){
+            $playerScoreRankingList = $playerScoreRanking['data']['list'];
+        }else{
+            $playerScoreRankingList=[];
+        }
 
         $this->assign('action_page', 0);
         $this->assign('index_introduce', $indexIntroduce);
         $this->assign('news_list', $newsList);
         $this->assign('message_list', $messageList);
         $this->assign('wonderful_img_list', $wonderfulImgList);
+        $this->assign('player_score_ranking_list', $playerScoreRankingList);
         return $this->fetch();
     }
 }

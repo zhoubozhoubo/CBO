@@ -25,6 +25,16 @@ Route::group('admin', function () use ($afterBehavior) {
                 ]
             ]
         ],
+        'Index/getProvinceList' => [
+            'admin/Index/getProvinceList',
+            [
+                'method' => 'get',
+                'after_behavior' => [
+                    '\app\admin\behavior\ApiAuth',
+                    '\app\admin\behavior\AdminLog'
+                ]
+            ]
+        ],
         'Login/logout' => [
             'admin/Login/logout',
             [
@@ -388,6 +398,36 @@ Route::group('admin', function () use ($afterBehavior) {
         ],
         'coruData' => [
             'admin/BasicConf/coruData',
+            ['method' => 'post']
+        ]
+    ], ['after_behavior' => $afterBehavior]);
+    Route::group('MatchTimeAddress', [
+        'getList' => [
+            'admin/MatchTimeAddress/getList',
+            ['method' => 'get']
+        ],
+        'coruData' => [
+            'admin/MatchTimeAddress/coruData',
+            ['method' => 'post']
+        ]
+    ], ['after_behavior' => $afterBehavior]);
+    Route::group('MatchWay', [
+        'getList' => [
+            'admin/MatchWay/getList',
+            ['method' => 'get']
+        ],
+        'coruData' => [
+            'admin/MatchWay/coruData',
+            ['method' => 'post']
+        ]
+    ], ['after_behavior' => $afterBehavior]);
+    Route::group('Eligibility', [
+        'getList' => [
+            'admin/Eligibility/getList',
+            ['method' => 'get']
+        ],
+        'coruData' => [
+            'admin/Eligibility/coruData',
             ['method' => 'post']
         ]
     ], ['after_behavior' => $afterBehavior]);
