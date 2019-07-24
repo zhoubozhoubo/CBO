@@ -1,4 +1,4 @@
-webpackJsonp([22],{167:function(t,e,n){"use strict";function r(t){var e=new a(t),n=i(a.prototype.request,e);return o.extend(n,a.prototype,e),o.extend(n,e),n}var o=n(3),i=n(85),a=n(169),s=n(52),c=r(s);c.Axios=a,c.create=function(t){return r(o.merge(s,t))},c.Cancel=n(89),c.CancelToken=n(182),c.isCancel=n(88),c.all=function(t){return Promise.all(t)},c.spread=n(183),t.exports=c,t.exports.default=c},168:function(t,e){/*!
+webpackJsonp([25],{167:function(t,e,n){"use strict";function r(t){var e=new a(t),n=i(a.prototype.request,e);return o.extend(n,a.prototype,e),o.extend(n,e),n}var o=n(3),i=n(85),a=n(169),s=n(52),c=r(s);c.Axios=a,c.create=function(t){return r(o.merge(s,t))},c.Cancel=n(89),c.CancelToken=n(182),c.isCancel=n(88),c.all=function(t){return Promise.all(t)},c.spread=n(183),t.exports=c,t.exports.default=c},168:function(t,e){/*!
  * Determine if an object is a Buffer
  *
  * @author   Feross Aboukhadijeh <https://feross.org>
