@@ -231,6 +231,14 @@ export const appRouter = [
                 component: () => import('@/views/content/cbo_files/list.vue')
             },
             {
+                path: "cbo_team_situation_img",
+                icon: "ios-folder-open",
+                name: "cbo_team_situation_img",
+                access: 'admin/TeamSituationImg/getList',
+                title: "球队战况管理",
+                component: () => import('@/views/content/cbo_team_situation_img/list.vue')
+            },
+            {
                 path: "match_synopsis",
                 icon: "ios-folder-open",
                 name: "match_synopsis",

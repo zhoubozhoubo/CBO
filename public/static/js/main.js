@@ -70,3 +70,21 @@ function nextPage() {
     page++
     getList()
 }
+
+//跳转到table_bar
+function gotoTableBar() {
+    // document.getElementById("table_bar").scrollIntoView()
+    $("html,body").animate({scrollTop: $("#table_bar").offset().top}, 500)
+}
+
+
+
+
+
+
+
+
+
+
+
+

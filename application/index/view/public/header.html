@@ -4,25 +4,44 @@
     <meta charset="UTF-8">
     <title>Index</title>
     <link rel="stylesheet" href="__STATIC__/css/main.css">
-    <link href="__STATIC__/css/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="__STATIC__/css/quill.snow.css">
+    <link rel="stylesheet" href="__STATIC__/css/swiper/normal.css">
+    <link rel="stylesheet" href="__STATIC__/css/swiper/swiper.min.css">
+    <link rel="stylesheet" href="__STATIC__/css/swiper/index.v100.css">
     <script src="__STATIC__/js/jquery.min.js" charset="utf-8"></script>
+    <script src="__STATIC__/js/swiper/swiper.min.js"></script>
 </head>
 <style>
-    .ql-editor{
+    .ql-editor {
         padding: 0;
     }
 </style>
 <body>
 <div class="bg">
+    <div class="header">
+        <div class="title_div">
+            <h1 class="title">中国篮球公开赛<span> (CHINA BASKETBALL OPEN)</span></h1>
+            <div class="sign_up bg_size cursor">我要报名</div>
+        </div>
+        <div class="swiper-container" id="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="__STATIC__/images/banner.png"></div>
+                <div class="swiper-slide"><img src="__STATIC__/images/banner.png"></div>
+                <div class="swiper-slide"><img src="__STATIC__/images/banner.png"></div>
+            </div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
     <div class="main">
-        <div class="header">
+        <!--<div class="header">
             <h1 class="title">中国篮球公开赛<span> (CHINA BASKETBALL OPEN)</span></h1>
             <div class="sign_up bg_size cursor">我要报名</div>
             <img class="banner" src="__STATIC__/images/banner.png"/>
             <img class="logo" src="__STATIC__/images/logo.png"/>
             <img class="banner_text" src="__STATIC__/images/ldry.png"/>
-        </div>
-        <ul class="bar">
+        </div>-->
+        <ul class="bar" id="table_bar">
             <li><a href="{:url('/index/index/index')}">首页</a></li>
             <li><a href="{:url('/index/match_synopsis/index')}">赛事简介</a></li>
             <li><a href="{:url('/index/message/index')}">官方消息</a></li>
@@ -32,3 +51,19 @@
             <li><a href="{:url('/index/files/index')}">下载专区</a></li>
         </ul>
         <div class="clear"></div>
+<script>
+    // 400 * 170 => 400 / 170 = width / height => height = 400 / 170 * width
+    var width = window.screen.width;
+    var height = width * 170 / 400;
+
+    document.querySelector('#swiper-container').style.height = height + 'px';
+
+    var mySwiper = new Swiper('.swiper-container', {
+        loop: true, // 循环模式选项
+
+        // 如果需要分页器
+        pagination: {
+            el: '.swiper-pagination',
+        },
+    })
+</script>

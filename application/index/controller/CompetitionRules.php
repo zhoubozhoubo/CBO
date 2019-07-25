@@ -4,6 +4,7 @@ namespace app\index\controller;
 
 use app\index\model\CboEligibility;
 use app\index\model\CboMatchTimeAddress;
+use app\index\model\CboMatchWay;
 use think\Controller;
 
 /**
@@ -29,6 +30,12 @@ class CompetitionRules extends Controller{
             'is_delete' => 0
         ];
         $eligibilityTypeTwo = CboEligibility::where($where)->field('gmt_create,gmt_modified,is_delete', true)->order('sort asc')->select();
+        //比赛办法
+        $where = [
+            'is_delete' => 0
+        ];
+        $matchWay = CboMatchWay::where($where)->field('gmt_create,gmt_modified,is_delete', true)->order('id desc')->select();
+
         //字母列表
         $letter = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
         foreach ($eligibilityTypeOne as $key=>&$val){
@@ -42,6 +49,7 @@ class CompetitionRules extends Controller{
         $this->assign('match_time_address', $matchTimeAddress);
         $this->assign('eligibility_type_one', $eligibilityTypeOne);
         $this->assign('eligibility_type_two', $eligibilityTypeTwo);
+        $this->assign('match_way', $matchWay);
         return $this->fetch();
     }
 }

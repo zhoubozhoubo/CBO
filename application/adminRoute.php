@@ -391,6 +391,28 @@ Route::group('admin', function () use ($afterBehavior) {
             ['method' => 'get']
         ]
     ], ['after_behavior' => $afterBehavior]);
+    Route::group('TeamSituationImg', [
+        'getList' => [
+            'admin/TeamSituationImg/getList',
+            ['method' => 'get']
+        ],
+        'coruData' => [
+            'admin/TeamSituationImg/coruData',
+            ['method' => 'post']
+        ],
+        'getCompetitionSeason' => [
+            'admin/TeamSituationImg/getCompetitionSeason',
+            ['method' => 'get']
+        ],
+        'getSeasonStage' => [
+            'admin/TeamSituationImg/getSeasonStage',
+            ['method' => 'get']
+        ],
+        'getArea' => [
+            'admin/TeamSituationImg/getArea',
+            ['method' => 'get']
+        ]
+    ], ['after_behavior' => $afterBehavior]);
     Route::group('BasicConf', [
         'getDetails' => [
             'admin/BasicConf/getDetails',

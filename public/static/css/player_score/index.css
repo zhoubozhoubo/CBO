@@ -43,7 +43,7 @@
 
 .content .player_score_list .player_list{
     position: relative;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 .content .player_score_list .player_list .line{
     position: absolute;

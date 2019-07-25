@@ -59,8 +59,8 @@
     border-bottom: 1px solid #15417e;
 }
 .content .files .list li{
-    width: 1165px;
-    padding-left: 20px;
+    width: 1150px;
+    padding-left: 35px;
     font-size: 16px;
     line-height: 60px;
     border-bottom: 1px solid #eaa232;
@@ -80,6 +80,6 @@
     padding: 5px;
     border-radius: 50%;
     margin-top: 15px;
-    margin-right: 50px;
+    margin-right: 35px;
     /*background-color: #FFFFFF;*/
 }

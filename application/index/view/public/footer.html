@@ -45,10 +45,14 @@
 </div>
 </body>
 
+<script src="__STATIC__/js/main.js"></script>
 <script>
     let actionPage = '{$action_page}'
     if(actionPage >= 0){
         $('.bar li').eq(actionPage).addClass('action')
+    }
+    if(actionPage > 0){
+        gotoTableBar()
     }
 </script>
 </html>

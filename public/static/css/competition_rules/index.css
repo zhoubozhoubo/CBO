@@ -54,7 +54,8 @@
 }
 .content .competition_rules .match_way .left_notice{
     width: 300px;
-    padding: 20px;
+    min-height: 285px;
+    padding: 22px 20px;
     margin: 0 30px 0 15px;
 }
 .content .competition_rules .match_way .left_notice .title{
@@ -95,6 +96,12 @@
 }
 .content .competition_rules .match_way .right_rule .group_list li:first-child{
     margin: 10px 0;
+}
+.content .competition_rules .match_way .bottom_line{
+    width: 1200px;
+    height: 1px;
+    margin: 40px 0 80px;
+    background-color: #15417e;
 }
 
 

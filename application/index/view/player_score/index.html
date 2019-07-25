@@ -3,7 +3,7 @@
 <div class="content">
     <img class="line" src="__STATIC__/images/line.png">
     <!--球员积分榜-->
-    <div class="player_score_list">
+    <div class="player_score_list" id="player_score_list">
         <div class="table_head">
             <div class="left">
                 <h1 class="rank">排名</h1>
@@ -107,5 +107,12 @@
             }
         })
         changePage()
+        // gotoPlayerScoreList()
+        gotoTableBar()
+    }
+</script>
+<script>
+    function gotoPlayerScoreList(){
+        $("html,body").animate({scrollTop: $("#player_score_list").offset().top}, 500)
     }
 </script>

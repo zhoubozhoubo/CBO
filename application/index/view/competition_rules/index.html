@@ -70,54 +70,219 @@
         <!--竞赛办法-->
         <div class="match_way show_div hide">
             <h1 class="title bold text_center">采用中国篮协最新审定的《篮球规则》</h1>
-            <div class="line"></div>
-            <div class="left_notice bg_color float_left">
-                <h1 class="title">城市预选赛</h1>
-                <p class="content">各承办城市定向招募16支球队,赛前进行抽签分组,采用小组单循环+淘汰赛的赛制;小组单循环阶段采用积分赛制,累计积分:胜积2分负积1分,弃权球队得0分,弃权场次达两场即取消参赛资格;小组积分第一进入淘汰赛阶段比赛前三节毛时,第四节最后2分钟净时,全场比赛双方运动队暂停时停表,其余时间不停表</p>
-            </div>
-            <div class="right_rule float_right">
-                <h1 class="title text_center bg_color">第一阶段小组赛(单循环)每组别第一名晋级四强</h1>
-                <ol>
-                    <li class="group_list">
-                        <ul>
-                            <li class="bg_color text_center">A(组)</li>
-                            <li class="bg_color text_center">A1</li>
-                            <li class="bg_color text_center">A2</li>
-                            <li class="bg_color text_center">A3</li>
-                            <li class="bg_color text_center">A4</li>
-                        </ul>
-                    </li>
-                    <li class="group_list">
-                        <ul>
-                            <li class="bg_color text_center">B(组)</li>
-                            <li class="bg_color text_center">B1</li>
-                            <li class="bg_color text_center">B2</li>
-                            <li class="bg_color text_center">B3</li>
-                            <li class="bg_color text_center">B4</li>
-                        </ul>
-                    </li>
-                    <li class="group_list">
-                        <ul>
-                            <li class="bg_color text_center">C(组)</li>
-                            <li class="bg_color text_center">C1</li>
-                            <li class="bg_color text_center">C2</li>
-                            <li class="bg_color text_center">C3</li>
-                            <li class="bg_color text_center">C4</li>
-                        </ul>
-                    </li>
-                    <li class="group_list">
-                        <ul>
-                            <li class="bg_color text_center">D(组)</li>
-                            <li class="bg_color text_center">D1</li>
-                            <li class="bg_color text_center">D2</li>
-                            <li class="bg_color text_center">D3</li>
-                            <li class="bg_color text_center">D4</li>
-                        </ul>
-                    </li>
-                </ol>
+            <div>
+                <div class="line"></div>
+                <div class="left_notice bg_color float_left">
+                    <h1 class="title">{$match_way[0]['match_type']}</h1>
+                    <p class="content">{$match_way[0]['match_way']}</p>
+                </div>
+                <div class="right_rule float_right">
+                    <h1 class="title text_center bg_color">第一阶段小组赛(单循环)每组别第一名晋级四强</h1>
+                    <ol>
+                        <li class="group_list">
+                            <ul>
+                                <li class="bg_color text_center">A(组)</li>
+                                <li class="bg_color text_center">A1</li>
+                                <li class="bg_color text_center">A2</li>
+                                <li class="bg_color text_center">A3</li>
+                                <li class="bg_color text_center">A4</li>
+                            </ul>
+                        </li>
+                        <li class="group_list">
+                            <ul>
+                                <li class="bg_color text_center">B(组)</li>
+                                <li class="bg_color text_center">B1</li>
+                                <li class="bg_color text_center">B2</li>
+                                <li class="bg_color text_center">B3</li>
+                                <li class="bg_color text_center">B4</li>
+                            </ul>
+                        </li>
+                        <li class="group_list">
+                            <ul>
+                                <li class="bg_color text_center">C(组)</li>
+                                <li class="bg_color text_center">C1</li>
+                                <li class="bg_color text_center">C2</li>
+                                <li class="bg_color text_center">C3</li>
+                                <li class="bg_color text_center">C4</li>
+                            </ul>
+                        </li>
+                        <li class="group_list">
+                            <ul>
+                                <li class="bg_color text_center">D(组)</li>
+                                <li class="bg_color text_center">D1</li>
+                                <li class="bg_color text_center">D2</li>
+                                <li class="bg_color text_center">D3</li>
+                                <li class="bg_color text_center">D4</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <div class="clear"></div>
+                    <h1 class="title text_center bg_color">第二阶段淘汰赛(单淘赛制)</h1>
+                    <img src="__STATIC__/images/way_one.png"/>
+                    <h1 class="title text_center bg_color"></h1>
+                </div>
                 <div class="clear"></div>
-                <h1 class="title text_center bg_color">第二阶段淘汰赛(单淘赛制)</h1>
             </div>
+            <div>
+                <div class="line"></div>
+                <div class="left_notice bg_color float_left">
+                    <h1 class="title">{$match_way[1]['match_type']}</h1>
+                    <p class="content">{$match_way[1]['match_way']}</p>
+                </div>
+                <div class="right_rule float_right">
+                    <h1 class="title text_center bg_color">第一阶段小组赛(单循环)每组别第一名晋级四强</h1>
+                    <ol>
+                        <li class="group_list">
+                            <ul>
+                                <li class="bg_color text_center">A(组)</li>
+                                <li class="bg_color text_center">A1</li>
+                                <li class="bg_color text_center">A2</li>
+                                <li class="bg_color text_center">A3</li>
+                                <li class="bg_color text_center">A4</li>
+                            </ul>
+                        </li>
+                        <li class="group_list">
+                            <ul>
+                                <li class="bg_color text_center">B(组)</li>
+                                <li class="bg_color text_center">B1</li>
+                                <li class="bg_color text_center">B2</li>
+                                <li class="bg_color text_center">B3</li>
+                                <li class="bg_color text_center">B4</li>
+                            </ul>
+                        </li>
+                        <li class="group_list">
+                            <ul>
+                                <li class="bg_color text_center">C(组)</li>
+                                <li class="bg_color text_center">C1</li>
+                                <li class="bg_color text_center">C2</li>
+                                <li class="bg_color text_center">C3</li>
+                                <li class="bg_color text_center">C4</li>
+                            </ul>
+                        </li>
+                        <li class="group_list">
+                            <ul>
+                                <li class="bg_color text_center">D(组)</li>
+                                <li class="bg_color text_center">D1</li>
+                                <li class="bg_color text_center">D2</li>
+                                <li class="bg_color text_center">D3</li>
+                                <li class="bg_color text_center">D4</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <div class="clear"></div>
+                    <h1 class="title text_center bg_color">第二阶段淘汰赛(单淘赛制)</h1>
+                    <img src="__STATIC__/images/way_two.png"/>
+                    <h1 class="title text_center bg_color"></h1>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div>
+                <div class="line"></div>
+                <div class="left_notice bg_color float_left">
+                    <h1 class="title">{$match_way[2]['match_type']}</h1>
+                    <p class="content">{$match_way[2]['match_way']}</p>
+                </div>
+                <div class="right_rule float_right">
+                    <h1 class="title text_center bg_color">第一阶段小组赛(单循环)每组别第一名晋级四强</h1>
+                    <ol>
+                        <li class="group_list">
+                            <ul>
+                                <li class="bg_color text_center">A(组)</li>
+                                <li class="bg_color text_center">A1</li>
+                                <li class="bg_color text_center">A2</li>
+                                <li class="bg_color text_center">A3</li>
+                                <li class="bg_color text_center">A4</li>
+                            </ul>
+                        </li>
+                        <li class="group_list">
+                            <ul>
+                                <li class="bg_color text_center">B(组)</li>
+                                <li class="bg_color text_center">B1</li>
+                                <li class="bg_color text_center">B2</li>
+                                <li class="bg_color text_center">B3</li>
+                                <li class="bg_color text_center">B4</li>
+                            </ul>
+                        </li>
+                        <li class="group_list">
+                            <ul>
+                                <li class="bg_color text_center">C(组)</li>
+                                <li class="bg_color text_center">C1</li>
+                                <li class="bg_color text_center">C2</li>
+                                <li class="bg_color text_center">C3</li>
+                                <li class="bg_color text_center">C4</li>
+                            </ul>
+                        </li>
+                        <li class="group_list">
+                            <ul>
+                                <li class="bg_color text_center">D(组)</li>
+                                <li class="bg_color text_center">D1</li>
+                                <li class="bg_color text_center">D2</li>
+                                <li class="bg_color text_center">D3</li>
+                                <li class="bg_color text_center">D4</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <div class="clear"></div>
+                    <h1 class="title text_center bg_color">第二阶段淘汰赛(单淘赛制)</h1>
+                    <img src="__STATIC__/images/way_one.png"/>
+                    <h1 class="title text_center bg_color"></h1>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div>
+                <div class="line"></div>
+                <div class="left_notice bg_color float_left">
+                    <h1 class="title">{$match_way[3]['match_type']}</h1>
+                    <p class="content">{$match_way[3]['match_way']}</p>
+                </div>
+                <div class="right_rule float_right">
+                    <h1 class="title text_center bg_color">第一阶段小组赛(单循环)每组别第一名晋级四强</h1>
+                    <ol>
+                        <li class="group_list">
+                            <ul>
+                                <li class="bg_color text_center">A(组)</li>
+                                <li class="bg_color text_center">A1</li>
+                                <li class="bg_color text_center">A2</li>
+                                <li class="bg_color text_center">A3</li>
+                                <li class="bg_color text_center">A4</li>
+                            </ul>
+                        </li>
+                        <li class="group_list">
+                            <ul>
+                                <li class="bg_color text_center">B(组)</li>
+                                <li class="bg_color text_center">B1</li>
+                                <li class="bg_color text_center">B2</li>
+                                <li class="bg_color text_center">B3</li>
+                                <li class="bg_color text_center">B4</li>
+                            </ul>
+                        </li>
+                        <li class="group_list">
+                            <ul>
+                                <li class="bg_color text_center">C(组)</li>
+                                <li class="bg_color text_center">C1</li>
+                                <li class="bg_color text_center">C2</li>
+                                <li class="bg_color text_center">C3</li>
+                                <li class="bg_color text_center">C4</li>
+                            </ul>
+                        </li>
+                        <li class="group_list">
+                            <ul>
+                                <li class="bg_color text_center">D(组)</li>
+                                <li class="bg_color text_center">D1</li>
+                                <li class="bg_color text_center">D2</li>
+                                <li class="bg_color text_center">D3</li>
+                                <li class="bg_color text_center">D4</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <div class="clear"></div>
+                    <h1 class="title text_center bg_color">第二阶段淘汰赛(单淘赛制)</h1>
+                    <img src="__STATIC__/images/way_one.png"/>
+                    <h1 class="title text_center bg_color"></h1>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="line bottom_line"></div>
         </div>
         <!--参赛资格-->
         <div class="eligibility show_div hide">
@@ -139,7 +304,7 @@
         </div>
         <!--报名方式-->
         <div class="sign_up_way show_div hide">
-
+            <img src="__STATIC__/images/sign_up_way.png" />
         </div>
     </div>
     <div class="clear"></div>

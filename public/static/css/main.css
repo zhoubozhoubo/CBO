@@ -11,6 +11,7 @@ h1,h2,h3,h4,h5,h6{
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    margin: 0!important;
 }
 ul,ol,li{
     list-style: none;
@@ -19,36 +20,36 @@ ul,ol,li{
     background-image: url("../images/bg.png");
     background-size: auto 3769px;
 }
-.bg .main{
+.bg .header{
+    /*width: 1200px;*/
+    color: #FFFFFF;
+    /*position: relative;*/
+}
+.bg .header .title_div{
     width: 1200px;
     margin: 0 auto;
 }
-.bg .main .header{
-    width: 1200px;
-    color: #FFFFFF;
-    position: relative;
-}
-.bg .main .header .title{
+.bg .header .title{
     float: left;
     font-size: 28px;
-    margin-left: 50px;
     line-height: 100px;
+    margin: 0 0 0 50px;
 }
-.bg .main .header .title span{
+.bg .header .title span{
     font-size: 14px;
 }
-.bg .main .header .sign_up{
+.bg .header .sign_up{
     float: right;
     width: 136px;
     height: 34px;
-    margin-top: 40px;
+    margin-top: 33px;
     margin-right: 54px;
     font-size: 12px;
     text-align: center;
     line-height: 34px;
     background-image: url("../images/baomin.png");
 }
-.bg .main .header .banner{
+.bg .header .banner{
     width: 1200px;
     display: block;
     margin: 0 auto;
@@ -56,16 +57,20 @@ ul,ol,li{
     border-top: 2px solid #eaa232;
     border-bottom: 2px solid #eaa232;
 }
-.bg .main .header .logo{
+/*.bg .header .logo{
     position: absolute;
     top: 150px;
     right: 50px;
 }
-.bg .main .header .banner_text{
+.bg .header .banner_text{
     position: absolute;
     top: 275px;
     left: 50%;
     margin-left: -294px;
+}*/
+.bg .main{
+    width: 1200px;
+    margin: 0 auto;
 }
 .bg .main .bar li{
     float: left;
@@ -97,7 +102,7 @@ ul,ol,li{
     border-left: 6px solid #FFFFFF;
     padding-left: 20px;
     color: #FFFFFF;
-    margin: 25px 0;
+    margin: 25px 0!important;
     line-height: 40px;
 }
 .bg .main .content .float_left{
