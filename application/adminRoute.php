@@ -453,5 +453,15 @@ Route::group('admin', function () use ($afterBehavior) {
             ['method' => 'post']
         ]
     ], ['after_behavior' => $afterBehavior]);
+    Route::group('WebsiteBottomConf', [
+        'getList' => [
+            'admin/WebsiteBottomConf/getList',
+            ['method' => 'get']
+        ],
+        'coruData' => [
+            'admin/WebsiteBottomConf/coruData',
+            ['method' => 'post']
+        ]
+    ], ['after_behavior' => $afterBehavior]);
     Route::miss('admin/Miss/index');
 });

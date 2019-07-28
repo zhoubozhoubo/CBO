@@ -86,15 +86,15 @@
         data() {
             return {
                 // 初始化表格列
-                columnsList: [{title: "数据id", key: "id", align: "center"}, {
+                columnsList: [{title: "序号", type: "index", align: "center", width: "60"}, {
                     title: "比赛类型",
                     key: "match_type",
-                    align: "center"
+                    align: "center", width: "150"
                 }, {title: "比赛时间", key: "match_time", align: "center"}, {
                     title: "比赛地点",
                     key: "match_address",
                     align: "center"
-                }, {title: "操作", key: "handle", align: "center", handle: ["edit"]}],
+                }, {title: "操作", key: "handle", align: "center", width: "200", handle: ["edit"]}],
                 // 表格数据
                 tableData: [],
                 // 表格显示分页属性

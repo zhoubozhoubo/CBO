@@ -3,6 +3,7 @@
 namespace app\index\controller;
 
 use app\index\model\CboNews;
+use app\index\model\CboWebsiteBottomConf;
 use think\Controller;
 
 /**
@@ -14,6 +15,7 @@ class News extends Controller
 {
     public function index()
     {
+        $websiteBottomConf = CboWebsiteBottomConf::where(['is_delete'=>0])->field('gmt_create,gmt_modified,is_delete', true)->select();
         $page = $this->request->get('page', 1);
         $size = 8;
         $where = [
@@ -28,6 +30,7 @@ class News extends Controller
         $this->assign('news_list_big', $newsListBig);
         $this->assign('news_list', $newsList);
         $this->assign('news_pages', $newsPages);
+        $this->assign('website_bottom_conf', $websiteBottomConf);
 
         if ($page !== 1) {
             return json($newsList);
@@ -37,6 +40,7 @@ class News extends Controller
 
     public function details()
     {
+        $websiteBottomConf = CboWebsiteBottomConf::where(['is_delete'=>0])->field('gmt_create,gmt_modified,is_delete', true)->select();
         $getData = $this->request->get();
         $id = $getData['id'];
 
@@ -47,6 +51,7 @@ class News extends Controller
 
         $this->assign('action_page', 3);
         $this->assign('news', $news);
+        $this->assign('website_bottom_conf', $websiteBottomConf);
         return $this->fetch();
     }
 }

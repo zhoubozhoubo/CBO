@@ -2,37 +2,39 @@
     <div>
         <Row>
             <Col span="24">
-            <Card style="margin-bottom: 10px">
-                <!--搜索表单-->
-                <Form inline>
-                                        <FormItem style="margin-bottom: 0">
-                        <Input v-model="searchConf.file_name" clearable placeholder="文件名称"></Input>
-                    </FormItem>
-                                        <FormItem style="margin-bottom: 0">
-                    <DatePicker type="daterange" @on-change="searchConf.date=$event" placeholder="选择日期范围" style="width: 200px"></DatePicker>
-                    </FormItem>
-                                        <FormItem style="margin-bottom: 0">
-                        <Button type="primary" shape="circle" icon="ios-search" @click="search">查询/刷新</Button>
-                    </FormItem>
-                </Form>
-            </Card>
+                <Card style="margin-bottom: 10px">
+                    <!--搜索表单-->
+                    <Form inline>
+                        <FormItem style="margin-bottom: 0">
+                            <Input v-model="searchConf.file_name" clearable placeholder="文件名称"></Input>
+                        </FormItem>
+                        <FormItem style="margin-bottom: 0">
+                            <DatePicker type="daterange" @on-change="searchConf.date=$event" placeholder="选择日期范围"
+                                        style="width: 200px"></DatePicker>
+                        </FormItem>
+                        <FormItem style="margin-bottom: 0">
+                            <Button type="primary" shape="circle" icon="ios-search" @click="search">查询/刷新</Button>
+                        </FormItem>
+                    </Form>
+                </Card>
             </Col>
         </Row>
         <Row>
             <Col span="24">
-            <Card>
-                                <p slot="title" style="height: 40px">
-                    <Button type="primary" @click="alertAdd" icon="md-add">新增</Button>
-                </p>
-                                <div>
-                    <Table :loading="tableShow.loading" :columns="columnsList" :data="tableData" border disabled-hover></Table>
-                </div>
-                <div style="text-align: center;margin-top: 15px">
-                    <Page :total="tableShow.listCount" :current="tableShow.currentPage"
-                          :page-size="tableShow.pageSize" @on-change="changePage"
-                          @on-page-size-change="changeSize" show-elevator show-sizer show-total></Page>
-                </div>
-            </Card>
+                <Card>
+                    <p slot="title" style="height: 40px">
+                        <Button type="primary" @click="alertAdd" icon="md-add">新增</Button>
+                    </p>
+                    <div>
+                        <Table :loading="tableShow.loading" :columns="columnsList" :data="tableData" border
+                               disabled-hover></Table>
+                    </div>
+                    <div style="text-align: center;margin-top: 15px">
+                        <Page :total="tableShow.listCount" :current="tableShow.currentPage"
+                              :page-size="tableShow.pageSize" @on-change="changePage"
+                              @on-page-size-change="changeSize" show-elevator show-sizer show-total></Page>
+                    </div>
+                </Card>
             </Col>
         </Row>
         <!--新增、编辑Modal-->
@@ -42,12 +44,15 @@
                 <span>{{formItem.id ? '编辑' : '新增'}}</span>
             </p>
             <Form ref="myForm" :rules="ruleValidate" :model="formItem" :label-width="100">
-                                <FormItem label="文件名称" prop="file_name">
-                                        <Input v-model="formItem.file_name" placeholder="文件名称"/>
-                                    </FormItem>
-                                <FormItem label="上传文件" prop="file">
-                                    <input v-if="formItem.file" v-model="formItem.file" type="hidden" name="file">
-                                        <Upload :action="uploadUrl"
+                <FormItem label="文件名称" prop="file_name">
+                    <Input v-model="formItem.file_name" placeholder="文件名称"/>
+                </FormItem>
+                <FormItem label="文件描述" prop="synopsis">
+                    <Input type="textarea" :rows="2" v-model="formItem.synopsis" placeholder="文件描述"/>
+                </FormItem>
+                <FormItem label="上传文件" prop="file">
+                    <input v-if="formItem.file" v-model="formItem.file" type="hidden" name="file">
+                    <Upload :action="uploadUrl"
                             :headers="uploadHeader"
                             :max-size="5120"
                             :show-upload-list="false"
@@ -56,13 +61,14 @@
                             :on-remove="handleFileRemove"
                             :on-exceeded-size="handleFileMaxSize">
                         <Button icon="ios-cloud-upload-outline">上传文件</Button>
-                                            <p v-if="formItem.file">{{formItem.file.url}}</p>
+                        <p v-if="formItem.file">{{formItem.file.url}}</p>
                     </Upload>
-                                    </FormItem>
-                                <FormItem label="文件日期" prop="date">
-                                        <DatePicker type="date" @on-change="formItem.date=$event" placeholder="选择日期" style="width: 200px"></DatePicker>
-                                    </FormItem>
-                            </Form>
+                </FormItem>
+                <FormItem label="文件日期" prop="date">
+                    <DatePicker type="date" @on-change="formItem.date=$event" placeholder="选择日期"
+                                style="width: 200px"></DatePicker>
+                </FormItem>
+            </Form>
             <div slot="footer">
                 <Button type="text" @click="cancel" style="margin-right: 8px">取消</Button>
                 <Button type="primary" @click="submit" :loading="modalSetting.loading">确定</Button>
@@ -79,7 +85,7 @@
 
 <script>
     import config from '../../../../build/config';
-    import {getDataList,coruData,download} from '@/api/cbo_files_list'
+    import {getDataList, coruData, download} from '@/api/cbo_files_list'
 
     const downloadButton = (vm, h, currentRow, index) => {
         return h('Button', {
@@ -107,7 +113,7 @@
         }, '下载')
     }
 
-        const deleteButton = (vm, h, currentRow, index) => {
+    const deleteButton = (vm, h, currentRow, index) => {
         return h('Poptip', {
             props: {
                 confirm: true,
@@ -140,15 +146,22 @@
             }, '删除')
         ])
     }
-    
+
     export default {
         name: 'list',
-        components: {
-        },
+        components: {},
         data() {
             return {
                 // 初始化表格列
-                columnsList:[{title:"文件id",key:"id",align:"center"},{title:"文件名称",key:"file_name",align:"center"},{title:"源文件",key:"file_url",align:"center"},{title:"文件日期",key:"date",align:"center"},{title:"操作",key:"handle",align:"center",handle:["download", "delete"]}],
+                columnsList: [{title: "序号", type: "index", align: "center", width: "60"}, {
+                    title: "文件名称",
+                    key: "file_name",
+                    align: "center"
+                }, {title: "文件描述", key: "synopsis", align: "center"}, {title: "源文件", key: "file_url", align: "center"}, {
+                    title: "文件日期",
+                    key: "date",
+                    align: "center", width: "100"
+                }, {title: "操作", key: "handle", align: "center", width: "200", handle: ["download", "delete"]}],
                 // 表格数据
                 tableData: [],
                 // 表格显示分页属性
@@ -159,10 +172,10 @@
                     listCount: 0
                 },
                 // 搜索配置
-                                searchConf:{file_name:"",date:""},
-                                // 表单属性
-                                formItem:{id:"",file: [],file_name:"",file_url:"",date:""},
-                                // modal属性
+                searchConf: {file_name: "", date: ""},
+                // 表单属性
+                formItem: {id: "", file: [], file_name: "", file_url: "", date: ""},
+                // modal属性
                 modalSetting: {
                     show: false,
                     loading: false,
@@ -175,8 +188,12 @@
                 },
                 uploadUrl: '',
                 uploadHeader: {},
-                                // 表单验证
-                ruleValidate:{}
+                // 表单验证
+                ruleValidate: {
+                    file_name: [{ required: true, message: "请输入名称", trigger: "blur" }],
+                    file: [{ required: true, message: "请上传文件"}],
+                    date: [{ required: true, message: "请输入日期", trigger: "blur" }],
+                }
             }
         },
         created() {
@@ -184,7 +201,7 @@
             this.getList()
             this.uploadUrl = config.baseUrl + 'Index/upload';
             this.uploadHeader = {'ApiAuth': sessionStorage.getItem('apiAuth')};
-                    },
+        },
         methods: {
             // 页面初始化
             init() {
@@ -193,20 +210,20 @@
                     if (item.key === 'handle') {
                         item.render = (h, param) => {
                             let currentRowData = vm.tableData[param.index]
-                                                        return h('div', [
+                            return h('div', [
                                 // downloadButton(vm, h, currentRowData, param.index),
                                 deleteButton(vm, h, currentRowData, param.index)
                             ])
-                                                    }
+                        }
                     }
-                                    })
+                })
             },
-                        // 新增
+            // 新增
             alertAdd() {
                 this.formItem.id = 0
                 this.modalSetting.show = true
             },
-                        // 文件上传一系列
+            // 文件上传一系列
             handleFileRemove() {
                 this.formItem.file = [];
             },
@@ -219,12 +236,12 @@
             handleFileSuccess(response) {
                 if (response.code === 1) {
                     this.$Message.success(response.msg);
-                    this.formItem.file = { 'name': '', 'url': response.data.fileUrl }
+                    this.formItem.file = {'name': '', 'url': response.data.fileUrl}
                 } else {
                     this.$Message.error(response.msg);
                 }
             },
-                        // 提交
+            // 提交
             submit() {
                 this.$refs['myForm'].validate((valid) => {
                     if (valid) {

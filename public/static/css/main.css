@@ -49,6 +49,9 @@ ul,ol,li{
     line-height: 34px;
     background-image: url("../images/baomin.png");
 }
+.bg .header .sign_up a{
+    display: inline-block;
+}
 .bg .header .banner{
     width: 1200px;
     display: block;
@@ -201,6 +204,9 @@ ul,ol,li{
 }
 .bg .page ul .last_page{
     background: url("../images/pageright.png") no-repeat 0;
+}
+.bg .border_red{
+    border-color: #FF0000!important;
 }
 .bg .bold{
     font-weight: bold!important;

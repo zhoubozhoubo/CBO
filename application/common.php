@@ -208,8 +208,8 @@ function testCurlData()
 //        $res = getSeasonStage(["seasonId"=>"75"]);
 //        $res = getArea(["seasonId"=>"75","stageId"=>"17"]);
 //        $res = getPlayerScoreRanking(["pageNum"=>0,"pageSize"=>10,"seasonId"=>"75","stageId"=>"17"]);
-//        $res = getPlayerTeamStatistics(["pageNum"=>0,"pageSize"=>10,"seasonId"=>"75","stageId"=>"17","userId"=>"2137317"]);
-        $res = getPlayerTypeStatistics(["pageNum"=>0,"pageSize"=>10,"seasonId"=>"75","stageId"=>"18","provinceId"=>"","cityId"=>"","type"=>"score"]);
+        $res = getPlayerTeamStatistics(["pageNum"=>0,"pageSize"=>10,"seasonId"=>"75","stageId"=>"17","userId"=>"2137317"]);
+//        $res = getPlayerTypeStatistics(["pageNum"=>0,"pageSize"=>10,"seasonId"=>"75","stageId"=>"18","provinceId"=>"","cityId"=>"","type"=>"score"]);
     print_r($res);
 }
 

@@ -38,7 +38,7 @@
             </Col>
         </Row>
         <!--新增、编辑Modal-->
-        <Modal v-model="modalSetting.show" width="700" :styles="{top: '30px'}" @on-visible-change="doCancel">
+        <Modal fullscreen v-model="modalSetting.show" width="700" @on-visible-change="doCancel">
             <p slot="header" style="color:#2d8cf0;">
                 <Icon type="md-information-circle"></Icon>
                 <span>{{formItem.id ? '编辑' : '新增'}}</span>
@@ -217,18 +217,18 @@
         data() {
             return {
                 // 初始化表格列
-                columnsList: [{title: "新闻id", key: "id", align: "center"}, {
+                columnsList: [{title: "序号", type: "index", align: "center", width: "60"}, {
                     title: "新闻标题",
                     key: "title",
                     align: "center"
-                }, {title: "新闻封面", key: "img", align: "center"}, {
+                }, {title: "新闻封面", key: "img", align: "center", width: "100"}, {
                     title: "新闻内容",
                     key: "content",
-                    align: "center"
-                }, {title: "新闻作者", key: "author", align: "center"}, {title: "新闻日期", key: "date", align: "center"}, {
+                    align: "center", width: "100"
+                }, {title: "新闻作者", key: "author", align: "center", width: "150"}, {title: "新闻日期", key: "date", align: "center", width: "150"}, {
                     title: "操作",
                     key: "handle",
-                    align: "center",
+                    align: "center", width: "200",
                     handle: ["edit", "delete"]
                 }],
                 // 表格数据
@@ -290,7 +290,12 @@
                     }
                 },
                 // 表单验证
-                ruleValidate: {}
+                ruleValidate: {
+                    title: [{ required: true, message: "请输入标题", trigger: "blur" }],
+                    img: [{ required: true, message: "请上传封面", trigger: "change" }],
+                    author: [{ required: true, message: "请输入作者", trigger: "blur" }],
+                    date: [{ required: true, message: "请输入日期", trigger: "blur" }],
+                }
             }
         },
         created() {
@@ -317,25 +322,12 @@
                         item.render = (h, param) => {
                             let currentRowData = vm.tableData[param.index];
                             if (currentRowData.img) {
-                                return h('img', {
-                                    style: {
-                                        width: '40px',
-                                        height: '40px',
-                                        cursor: 'pointer',
-                                        margin: '5px 0'
-                                    },
+                                return h('a', {
                                     attrs: {
-                                        src: currentRowData.img,
-                                        shape: 'square',
-                                        size: 'large'
-                                    },
-                                    on: {
-                                        click: (e) => {
-                                            vm.modalSeeingImg.img = currentRowData.img;
-                                            vm.modalSeeingImg.show = true;
-                                        }
+                                        href: currentRowData.img,
+                                        target: '_black'
                                     }
-                                });
+                                }, '查看图片')
                             } else {
                                 return h('Tag', {}, '暂无图片');
                             }
@@ -358,7 +350,8 @@
             },
             // 图片上传一系列
             handleView() {
-                this.visible = true;
+                this.modalSeeingImg.show = true;
+                this.modalSeeingImg.img = this.formItem.img;
             },
             handleImgSuccess(response) {
                 if (response.code === 1) {

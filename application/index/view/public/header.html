@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="__STATIC__/css/swiper/swiper.min.css">
     <link rel="stylesheet" href="__STATIC__/css/swiper/index.v100.css">
     <script src="__STATIC__/js/jquery.min.js" charset="utf-8"></script>
+    <script src="__STATIC__/js/jquery.nicescroll.js"></script>
     <script src="__STATIC__/js/swiper/swiper.min.js"></script>
 </head>
 <style>
@@ -21,7 +22,7 @@
     <div class="header">
         <div class="title_div">
             <h1 class="title">中国篮球公开赛<span> (CHINA BASKETBALL OPEN)</span></h1>
-            <div class="sign_up bg_size cursor">我要报名</div>
+            <div class="sign_up bg_size cursor"><a href="{:url('/index/competition_rules/index')}" onclick="goToSignUp()">我要报名</a></div>
         </div>
         <div class="swiper-container" id="swiper-container">
             <div class="swiper-wrapper">
@@ -59,11 +60,18 @@
     document.querySelector('#swiper-container').style.height = height + 'px';
 
     var mySwiper = new Swiper('.swiper-container', {
-        loop: true, // 循环模式选项
+        loop: false, // 循环模式选项
 
         // 如果需要分页器
         pagination: {
-            el: '.swiper-pagination',
+            // el: '.swiper-pagination',
         },
     })
+</script>
+<script>
+    function goToSignUp(){
+        // console.log('123')
+        // actionPageTwo(3)
+        // window.location.herf = '/index/competition_rules/index#table_bar'
+    }
 </script>

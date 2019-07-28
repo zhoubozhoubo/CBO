@@ -57,7 +57,7 @@
                 <span>{{formItem.id ? '编辑' : '新增'}}</span>
             </p>
             <Form ref="myForm" :rules="ruleValidate" :model="formItem" :label-width="100">
-                <FormItem label="赛季" prop="season_id">
+                <!--<FormItem label="赛季" prop="season_id">
                     <Select v-model="formItem.season_id" disabled style="width:200px">
                         <Option v-for="(item, index) in competitionSeasonList" :value="item.seasonId">{{item.seasonName}}</Option>
                     </Select>
@@ -76,7 +76,7 @@
                     <Select v-model="formItem.city_id" disabled style="width:200px">
                         <Option v-for="(item, index) in cityList" :value="item.areaId">{{item.areaName}}</Option>
                     </Select>
-                </FormItem>
+                </FormItem>-->
                 <FormItem label="球队战况图片" prop="img">
                     <div class="demo-upload-list" v-if="formItem.img">
                         <img :src="formItem.img">
@@ -182,19 +182,24 @@
         data() {
             return {
                 // 初始化表格列
-                columnsList: [{title: "数据id", key: "id", align: "center"}, {
-                    title: "赛季id",
-                    key: "season_id",
-                    align: "center"
-                }, {title: "赛季阶段id", key: "stage_id", align: "center"}, {
-                    title: "省id",
-                    key: "province_id",
-                    align: "center"
-                }, {title: "市id", key: "city_id", align: "center"}, {
+                columnsList: [{title: "序号", type: "index", align: "center", width: "60"},
+                //     {
+                //     title: "赛季id",
+                //     key: "season_id",
+                //     align: "center"
+                // }, {title: "赛季阶段id", key: "stage_id", align: "center"}, {
+                //     title: "省id",
+                //     key: "province_id",
+                //     align: "center"
+                // }, {title: "市id", key: "city_id", align: "center"},
+                    {
                     title: "球队战况图片",
                     key: "img",
                     align: "center"
-                }, {title: "操作", key: "handle", align: "center", handle: ["edit", "delete"]}],
+                },
+                    {title: "添加时间", key: "gmt_create", align: "center"},
+                    {title: "最后更新时间", key: "gmt_modified", align: "center"},
+                    {title: "操作", key: "handle", align: "center", width: "200", handle: ["edit", "delete"]}],
                 // 表格数据
                 tableData: [],
                 // 表格显示分页属性
@@ -222,7 +227,9 @@
                 uploadUrl: '',
                 uploadHeader: {},
                 // 表单验证
-                ruleValidate: {},
+                ruleValidate: {
+                    img: [{ required: true, message: "请上传封面", trigger: "change" }],
+                },
                 // 搜索表单验证
                 searchRuleValidate: {
                     season_id: [{required: true, message: "请选择赛季", trigger: "change"}],
@@ -269,25 +276,12 @@
                         item.render = (h, param) => {
                             let currentRowData = vm.tableData[param.index];
                             if (currentRowData.img) {
-                                return h('img', {
-                                    style: {
-                                        width: '40px',
-                                        height: '40px',
-                                        cursor: 'pointer',
-                                        margin: '5px 0'
-                                    },
+                                return h('a', {
                                     attrs: {
-                                        src: currentRowData.img,
-                                        shape: 'square',
-                                        size: 'large'
-                                    },
-                                    on: {
-                                        click: (e) => {
-                                            vm.modalSeeingImg.img = currentRowData.img;
-                                            vm.modalSeeingImg.show = true;
-                                        }
+                                        href: currentRowData.img,
+                                        target: '_black'
                                     }
-                                });
+                                }, '查看图片')
                             } else {
                                 return h('Tag', {}, '暂无图片');
                             }
@@ -297,12 +291,17 @@
             },
             // 新增
             alertAdd() {
-                this.formItem.id = 0
-                this.modalSetting.show = true
+                this.$refs['searchForm'].validate((valid) => {
+                    if (valid) {
+                        this.formItem.id = 0
+                        this.modalSetting.show = true
+                    }
+                })
             },
             // 图片上传一系列
             handleView() {
-                this.visible = true;
+                this.modalSeeingImg.show = true;
+                this.modalSeeingImg.img = this.formItem.img;
             },
             handleImgRemove() {
                 this.formItem.img = '';
@@ -351,12 +350,12 @@
             },
             // 取消表单数据
             doCancel(data) {
-                if (!data) {
-                    this.formItem.id = 0
-                    this.$refs['myForm'].resetFields()
-                    this.modalSetting.loading = false
-                    this.modalSetting.index = 0
-                }
+                // if (!data) {
+                //     this.formItem.id = 0
+                //     this.$refs['myForm'].resetFields()
+                //     this.modalSetting.loading = false
+                //     this.modalSetting.index = 0
+                // }
             },
             // 数据分页一系列
             changePage(page) {
@@ -447,6 +446,7 @@
                 this.areaId = ''
                 this.searchConf.province_id = ''
                 this.formItem.province_id = ''
+                this.clearCity()
             },
             // 改变赛区市
             changeCity(cityId){

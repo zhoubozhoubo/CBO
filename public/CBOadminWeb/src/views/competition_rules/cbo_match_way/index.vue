@@ -78,14 +78,14 @@
         data() {
             return {
                 // 初始化表格列
-                columnsList: [{title: "数据id", key: "id", align: "center"}, {
+                columnsList: [{title: "序号", type: "index", align: "center", width: "60"}, {
                     title: "比赛类型",
                     key: "match_type",
-                    align: "center"
+                    align: "center", width: "150"
                 }, {title: "比赛办法", key: "match_way", align: "center"}, {
                     title: "操作",
                     key: "handle",
-                    align: "center",
+                    align: "center", width: "200",
                     handle: ["edit"]
                 }],
                 // 表格数据

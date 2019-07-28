@@ -3,6 +3,7 @@
 namespace app\index\controller;
 
 use app\index\model\CboBasicConf;
+use app\index\model\CboWebsiteBottomConf;
 use think\Controller;
 
 /**
@@ -12,6 +13,7 @@ use think\Controller;
  */
 class MatchSynopsis extends Controller{
     public function index(){
+        $websiteBottomConf = CboWebsiteBottomConf::where(['is_delete'=>0])->field('gmt_create,gmt_modified,is_delete', true)->select();
         $where = [
             'name'=>'match_synopsis',
             'is_delete'=>0
@@ -20,6 +22,7 @@ class MatchSynopsis extends Controller{
 
         $this->assign('action_page', 1);
         $this->assign('match_synopsis', $matchSynopsis);
+        $this->assign('website_bottom_conf', $websiteBottomConf);
         return $this->fetch();
     }
 }

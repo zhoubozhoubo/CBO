@@ -79,10 +79,10 @@
                             '            <li class="left">\n' +
                             '                <h1 class="rank">' + v.ranking + '</h1>\n' +
                             '                <div class="team">\n' +
-                            '                        <img src="' + v.teamLogo + '"/>\n' +
+                            '                        <img src="' + v.teamLogo + '" class="big_img"/>\n' +
                             '                        <h1>' + v.teamName + '</h1>\n' +
                             '                </div>\n' +
-                            '                <h1 class="name"><span class="cursor">' + v.playerName + '</span></h1>\n' +
+                            '                <h1 class="name"><a href="{:url(\'/index/player_score/details\')}?userId='+v.userId+'">' + v.playerName + '</a></h1>\n' +
                             '                <h1 class="score">' + v.point + '</h1>\n' +
                             '                <div class="none"></div>\n' +
                             '            </li>'
@@ -92,10 +92,10 @@
                             '                <div class="none"></div>\n' +
                             '                <h1 class="rank">' + v.ranking + '</h1>\n' +
                             '                <div class="team">\n' +
-                            '                    <img src="' + v.teamLogo + '"/>\n' +
+                            '                    <img src="' + v.teamLogo + '" class="big_img"/>\n' +
                             '                    <h1>' + v.teamName + '</h1>\n' +
                             '                </div>\n' +
-                            '                <h1 class="name"><span class="cursor">' + v.playerName + '</span></h1>\n' +
+                            '                <h1 class="name"><a href="{:url(\'/index/player_score/details\')}?userId='+v.userId+'">' + v.playerName + '</a></h1>\n' +
                             '                <h1 class="score">' + v.point + '</h1>\n' +
                             '            </li>'
                     }
@@ -104,15 +104,17 @@
                     '            <div class="level_line see_more"></div>\n' +
                     '            <div class="clear"></div>'
                 $('.player_score_list .player_list').html(str)
+                seeBigImg()
             }
         })
         changePage()
-        // gotoPlayerScoreList()
-        gotoTableBar()
+        gotoPlayerScoreList()
     }
 </script>
 <script>
     function gotoPlayerScoreList(){
-        $("html,body").animate({scrollTop: $("#player_score_list").offset().top}, 500)
+        setTimeout(function () {
+            $("html,body").animate({scrollTop: $("#player_score_list").offset().top}, 500)
+        }, 500 )
     }
 </script>

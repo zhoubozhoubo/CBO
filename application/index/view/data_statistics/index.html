@@ -3,33 +3,36 @@
 <div class="content">
     <img class="line" src="__STATIC__/images/line.png">
     <!--数据统计-->
-    <div class="data_statistics">
+    <div class="data_statistics" id="data_statistics">
         <h1 class="left_line_title">数据统计</h1>
-        <div class="click bg_size cursor">点击查询</div>
-        <select class="select bg_color">
-            <option>北京1</option>
+        <div class="click bg_size cursor" onclick="queryDataStatistics()">点击查询</div>
+        <select class="select bg_color" id="city" onclick="selectCity()">
+            <option value="">不限</option>
+            <!--<option>北京1</option>
             <option>北京2</option>
-            <option>北京3</option>
+            <option>北京3</option>-->
         </select>
-        <p class="choose">选择城市</p>
-        <select class="select bg_color">
-            <option>北京1</option>
+        <p class="choose">城市</p>
+        <select class="select bg_color" id="province" onclick="selectProvince()">
+            <option value="">不限</option>
+            <!--<option>北京1</option>
             <option>北京2</option>
-            <option>北京3</option>
+            <option>北京3</option>-->
         </select>
-        <p class="choose">选择省份</p>
-        <select class="select bg_color">
-            <option>北京1</option>
+        <p class="choose">省份</p>
+        <select class="select bg_color" id="season_stage" onclick="selectSeasonStage()">
+            <option value="0">请选择</option>
+            <!--<option>北京1</option>
             <option>北京2</option>
-            <option>北京3</option>
+            <option>北京3</option>-->
         </select>
-        <p class="choose">选择赛季阶段</p>
-        <select class="select bg_color">
-            <option>北京1</option>
+        <p class="choose">赛季阶段</p>
+        <select class="select bg_color" id="competition_season" onclick="selectCompetitionSeason()">
+            <!--<option>北京1</option>
             <option>北京2</option>
-            <option>北京3</option>
+            <option>北京3</option>-->
         </select>
-        <p class="choose">选择赛季</p>
+        <p class="choose">赛季</p>
         <div class="clear"></div>
         <ul class="type_action float_right">
             <li class="action"></li>
@@ -188,6 +191,151 @@
 
 <script src="__STATIC__/js/main.js"></script>
 <script>
+    let competitionSeasonList = ''
+    let seasonStageList = ''
+    let areaList = ''
+    let cityList = ''
+
+    let seasonId = ''
+    let stageId = ''
+    let provinceId = ''
+    let cityId = ''
+
+    $(function () {
+        getCompetitionSeason()
+    })
+
+    // 获取赛季
+    function getCompetitionSeason() {
+        $.ajax({
+            type: "GET",
+            url: "{:url('index/index/getCompetitionSeason')}",
+            data: {},
+            dataType: "json",
+            success: function (data) {
+                competitionSeasonList = data
+                $('#competition_season').html('')
+                let str = '<option value="0">请选择</option>'
+                $.each(data, function (k, v) {
+                    str += '\n' +
+                        '            <option value="'+v.seasonId+'">'+v.seasonName+'</option>'
+                })
+                $('#competition_season').html(str)
+            }
+        })
+    }
+
+    // 选择赛季
+    function selectCompetitionSeason() {
+        seasonId = $('#competition_season option:selected') .val();
+        if(seasonId != 0){
+            getSeasonStage()
+        }else{
+            $('#season_stage').html('')
+            let str = '<option value="0">请选择</option>'
+            $('#season_stage').html(str)
+        }
+    }
+
+    // 获取赛季阶段
+    function getSeasonStage() {
+        $.ajax({
+            type: "GET",
+            url: "{:url('index/index/getSeasonStage')}",
+            data: {seasonId: seasonId},
+            dataType: "json",
+            success: function (data) {
+                seasonStageList = data
+                $('#season_stage').html('')
+                let str = '<option value="0">请选择</option>'
+                $.each(data, function (k, v) {
+                    str += '\n' +
+                        '            <option value="'+v.stageId+'">'+v.stageName+'</option>'
+                })
+                $('#season_stage').html(str)
+            }
+        })
+    }
+
+    // 选择赛季阶段
+    function selectSeasonStage() {
+        stageId = $('#season_stage option:selected') .val();
+        if(seasonId != 0 && stageId != 0){
+            getArea()
+        }else{
+            $('#province').html('')
+            let str = '<option value="">不限</option>'
+            $('#province').html(str)
+        }
+    }
+
+    // 获取赛区
+    function getArea() {
+        $.ajax({
+            type: "GET",
+            url: "{:url('index/index/getArea')}",
+            data: {seasonId: seasonId, stageId: stageId},
+            dataType: "json",
+            success: function (data) {
+                areaList = data
+                $('#province').html('')
+                let str = '<option value="">不限</option>'
+                $.each(data, function (k, v) {
+                    str += '\n' +
+                        '            <option value="'+v.areaId+'">'+v.areaName+'</option>'
+                })
+                $('#province').html(str)
+            }
+        })
+    }
+
+    // 选择省份
+    function selectProvince() {
+        provinceId = $('#province option:selected') .val();
+        if(provinceId != 0){
+            areaList.map((item)=>{
+                if(provinceId === item.areaId){
+                    cityList = item.childList
+                    $('#city').html('')
+                    let str = '<option value="">不限</option>'
+                    $.each(cityList, function (k, v) {
+                        str += '\n' +
+                            '            <option value="'+v.areaId+'">'+v.areaName+'</option>'
+                    })
+                    $('#city').html(str)
+                }
+            })
+        }else{
+            $('#city').html('')
+            let str = '<option value="">不限</option>'
+            $('#city').html(str)
+        }
+    }
+
+    // 选择市
+    function selectCity() {
+        cityId = $('#city option:selected') .val();
+    }
+
+    // 查询数据统计
+    function queryDataStatistics(){
+        if(seasonId == 0 && stageId == 0){
+            $("#competition_season").addClass('border_red')
+            $("#season_stage").addClass('border_red')
+        }else if(seasonId == 0 && stageId != 0){
+            $("#competition_season").addClass('border_red')
+            $("#season_stage").removeClass('border_red')
+        }else if(seasonId != 0 && stageId == 0){
+            $("#competition_season").removeClass('border_red')
+            $("#season_stage").addClass('border_red')
+        }else{
+            $("#competition_season").removeClass('border_red')
+            $("#season_stage").removeClass('border_red')
+            page = 1
+            getList()
+        }
+    }
+
     let page = 1
     let type = 'score'
     let pages = {$player_type_statistics_pages}
@@ -201,16 +349,23 @@
         $.ajax({
             type: "GET",
             url: "{:url('index/data_statistics/index')}",
-            data: {page: page, type: type},
+            data: {
+                page:page,
+                type: type,
+                seasonId: seasonId,
+                stageId: stageId,
+                provinceId: provinceId,
+                cityId: cityId
+            },
             dataType: "json",
             success: function (data) {
                 $('.data_statistics .list').html('')
                 let str = ''
-                $.each(data, function (k, v) {
+                $.each(data.list, function (k, v) {
                     str += '\n' +
                         '            <li class="float_left big">\n' +
                         '                <h3 class="number text_center">1</h3>\n' +
-                        '                <img class="float_left" src="'+v.playerImage+'"/>\n' +
+                        '                <img class="float_left big_img" src="'+v.playerImage+'"/>\n' +
                         '                <h2 class="float_left">'+v.score+'</h2>\n' +
                         '                <div class="info float_left">\n' +
                         '                    <h1>姓名：'+v.playerName+'</h1>\n' +
@@ -227,9 +382,11 @@
                     '            <div class="line five"></div>\n' +
                     '            <div class="clear"></div>'
                 $('.data_statistics .list').html(str)
+                seeBigImg()
             }
         })
         changePage()
+        gotoDataStatisticsList()
     }
 </script>
 <script>
@@ -257,5 +414,12 @@
         }
         page = 1
         getList()
+    }
+</script>
+<script>
+    function gotoDataStatisticsList(){
+        setTimeout(function () {
+            $("html,body").animate({scrollTop: $("#data_statistics").offset().top}, 500)
+        }, 500 )
     }
 </script>

@@ -5,6 +5,7 @@ namespace app\index\controller;
 use app\index\model\CboEligibility;
 use app\index\model\CboMatchTimeAddress;
 use app\index\model\CboMatchWay;
+use app\index\model\CboWebsiteBottomConf;
 use think\Controller;
 
 /**
@@ -14,6 +15,10 @@ use think\Controller;
  */
 class CompetitionRules extends Controller{
     public function index(){
+        $websiteBottomConf = CboWebsiteBottomConf::where(['is_delete'=>0])->field('gmt_create,gmt_modified,is_delete', true)->select();
+        //二级bar选中状态
+        $actionTwo = $this->request->get('actionTwo', 0);
+
         //比赛时间及地点
         $where = [
             'is_delete' => 0
@@ -46,10 +51,12 @@ class CompetitionRules extends Controller{
         }
 
         $this->assign('action_page', 4);
+        $this->assign('action_two', $actionTwo);
         $this->assign('match_time_address', $matchTimeAddress);
         $this->assign('eligibility_type_one', $eligibilityTypeOne);
         $this->assign('eligibility_type_two', $eligibilityTypeTwo);
         $this->assign('match_way', $matchWay);
+        $this->assign('website_bottom_conf', $websiteBottomConf);
         return $this->fetch();
     }
 }

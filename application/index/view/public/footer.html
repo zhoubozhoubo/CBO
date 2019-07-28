@@ -6,14 +6,17 @@
         <div class="content">
             <ul>
                 <!--<li class="one_li">-->
-                <li>主办单位 : 中国篮球协会</li>
-                <li class="two_li">承办单位 : 中国篮球协会</li>
-                <li class="two_li">协办单位 : 中国篮球协会</li>
+                {volist name="website_bottom_conf" id="vo"}
+                <li>{$vo.name} : {$vo.value}</li>
+                {/volist}
+                <!--<li>主办单位 : 中国篮球协会</li>
+                <li>承办单位 : 中国篮球协会</li>
+                <li>协办单位 : 中国篮球协会</li>
                 <li>合作伙伴 : 红牛®安奈吉</li>
-                <li class="two_li">赞助商 : 中国篮球协会</li>
-                <li class="two_li">合作媒体 : </li>
+                <li>赞助商 : 中国篮球协会</li>
+                <li>合作媒体 : </li>
                 <li>赛事咨询 :</li>
-                <li class="two_li">Email :</li>
+                <li>Email :</li>-->
                 <!--</li>-->
                 <!--<li class="one_li">
                     <ol>
@@ -43,15 +46,29 @@
 </div>
 <div class="clear"></div>
 </div>
+<div id="outerdiv" style="position:fixed;top:0;left:0;background:rgba(0,0,0,0.7);z-index:2;width:100%;height:100%;display:none;"><div id="innerdiv" style="position:absolute;"><img id="bigimg" style="border:5px solid #fff;" src="" /></div></div>
 </body>
 
 <script src="__STATIC__/js/main.js"></script>
+<script>
+    // $(function () {
+        // $("html").niceScroll();
+        // $(".bg_img").click(function(){
+        //     console.log('bg_img')
+        //     return
+        //     let _this = $(this);//将当前的pimg元素作为_this传入函数
+        //     imgShow("#outerdiv", "#innerdiv", "#bigimg", _this);
+        // });
+    // })
+
+
+</script>
 <script>
     let actionPage = '{$action_page}'
     if(actionPage >= 0){
         $('.bar li').eq(actionPage).addClass('action')
     }
-    if(actionPage > 0){
+    if(actionPage != 0 && actionPage != 5 && actionPage != 7){
         gotoTableBar()
     }
 </script>

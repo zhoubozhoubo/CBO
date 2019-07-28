@@ -135,14 +135,14 @@
         data() {
             return {
                 // 初始化表格列
-                columnsList: [{title: "数据id", key: "id", align: "center"}, {
+                columnsList: [{title: "序号", type: "index", align: "center", width: "60"}, {
                     title: "资格类型",
                     key: "type",
-                    align: "center"
-                }, {title: "资格内容", key: "content", align: "center"}, {title: "排序", key: "sort", align: "center"}, {
+                    align: "center", width: "150"
+                }, {title: "资格内容", key: "content", align: "left"}, {title: "排序", key: "sort", align: "center", width: "100"}, {
                     title: "操作",
                     key: "handle",
-                    align: "center",
+                    align: "center", width: "200",
                     handle: ["edit", "delete"]
                 }],
                 // 表格数据
@@ -170,7 +170,9 @@
                     show: false
                 },
                 // 表单验证
-                ruleValidate: {}
+                ruleValidate: {
+                    type: [{ required: true, message: "请选择类型", trigger: "change" }],
+                }
             }
         },
         created() {

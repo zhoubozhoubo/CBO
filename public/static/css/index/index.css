@@ -222,19 +222,28 @@
     font-size: 14px;
     line-height: 90px;
 }
+.content .team_situation .situation_data{
+    height: 400px;
+}
+.content .team_situation .situation_data img{
+    height: 400px;
+}
+.content .team_situation .team_situation_img_page{
+    text-align: right;
+}
 .content .data_statistics {
     width: 765px;
     margin: 20px auto;
     color: #FFFFFF;
 }
 .content .data_statistics .left_line_title{
-    float: left;
+    float: none;
 }
 .content .data_statistics .click{
     float: right;
-    width: 138px;
+    width: 100px;
     height: 34px;
-    margin-top: 28px;
+    margin-top: 23px;
     font-size: 14px;
     text-align: center;
     line-height: 34px;
@@ -242,11 +251,11 @@
 }
 .content .data_statistics .select{
     float: right;
-    width: 110px;
+    width: 100px;
     height: 34px;
     font-size: 14px;
     padding-left: 10px;
-    margin: 28px 20px 0 15px;
+    margin: 23px 20px 0 10px;
     line-height: 34px;
     border: 1px solid #15417e;
     border-radius: 4px;
@@ -255,7 +264,7 @@
 .content .data_statistics .choose{
     float: right;
     font-size: 14px;
-    line-height: 90px;
+    line-height: 80px;
 }
 .content .data_statistics .type_action li{
     float: left;
@@ -376,7 +385,7 @@
     width: 20%;
 }
 .content .player_score .list {
-    height: 325px;
+    /*height: 325px;*/
     border-bottom: 1px solid #15417e;
 }
 .content .player_score .list li {

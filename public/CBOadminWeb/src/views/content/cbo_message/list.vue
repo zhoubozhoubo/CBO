@@ -38,7 +38,7 @@
             </Col>
         </Row>
         <!--新增、编辑Modal-->
-        <Modal v-model="modalSetting.show" width="700" :styles="{top: '30px'}" @on-visible-change="doCancel">
+        <Modal fullscreen v-model="modalSetting.show" width="700" @on-visible-change="doCancel">
             <p slot="header" style="color:#2d8cf0;">
                 <Icon type="md-information-circle"></Icon>
                 <span>{{formItem.id ? '编辑' : '新增'}}</span>
@@ -74,7 +74,7 @@
                             @change="onEditorChange($event)">
                     </quill-editor>
                 </FormItem>
-                <FormItem label="新闻作者" prop="author">
+                <FormItem label="消息作者" prop="author">
                     <Input v-model="formItem.author" placeholder="新闻作者"/>
                 </FormItem>
                 <FormItem label="消息日期" prop="date">
@@ -192,15 +192,15 @@
         data() {
             return {
                 // 初始化表格列
-                columnsList: [{title: "消息id", key: "id", align: "center"}, {
+                columnsList: [{title: "序号", type: "index", align: "center", width: "60"}, {
                     title: "消息标题",
                     key: "title",
                     align: "center"
-                }, {title: "消息内容", key: "content", align: "center"}, {
+                }, {title: "消息内容", key: "content", align: "center", width: "100"},{title: "消息作者", key: "author", align: "center", width: "150"},  {
                     title: "消息日期",
                     key: "date",
-                    align: "center"
-                }, {title: "操作", key: "handle", align: "center", handle: ["edit", "delete"]}],
+                    align: "center", width: "100"
+                }, {title: "操作", key: "handle", align: "center", width: "200", handle: ["edit", "delete"]}],
                 // 表格数据
                 tableData: [],
                 // 表格显示分页属性
@@ -260,7 +260,11 @@
                     }
                 },
                 // 表单验证
-                ruleValidate: {}
+                ruleValidate: {
+                    title: [{ required: true, message: "请输入标题", trigger: "blur" }],
+                    author: [{ required: true, message: "请输入作者", trigger: "blur" }],
+                    date: [{ required: true, message: "请输入日期", trigger: "blur" }],
+                }
             }
         },
         created() {

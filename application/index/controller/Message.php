@@ -3,6 +3,7 @@
 namespace app\index\controller;
 
 use app\index\model\CboMessage;
+use app\index\model\CboWebsiteBottomConf;
 use think\Controller;
 
 /**
@@ -12,6 +13,7 @@ use think\Controller;
  */
 class Message extends Controller{
     public function index(){
+        $websiteBottomConf = CboWebsiteBottomConf::where(['is_delete'=>0])->field('gmt_create,gmt_modified,is_delete', true)->select();
         $page = $this->request->get('page', 1);
         $size = 8;
         $where = [
@@ -24,6 +26,7 @@ class Message extends Controller{
         $this->assign('action_page', 2);
         $this->assign('message_list', $messageList);
         $this->assign('message_pages', $messagePages);
+        $this->assign('website_bottom_conf', $websiteBottomConf);
 
         if($page !== 1){
             return json($messageList);
@@ -33,6 +36,7 @@ class Message extends Controller{
 
     public function details()
     {
+        $websiteBottomConf = CboWebsiteBottomConf::where(['is_delete'=>0])->field('gmt_create,gmt_modified,is_delete', true)->select();
         $getData = $this->request->get();
         $id = $getData['id'];
 
@@ -43,6 +47,7 @@ class Message extends Controller{
 
         $this->assign('action_page', 2);
         $this->assign('news', $message);
+        $this->assign('website_bottom_conf', $websiteBottomConf);
         return $this->fetch();
     }
 }

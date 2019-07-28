@@ -16,7 +16,13 @@
         </div>
         <ul class="list">
             {volist name="files_list" id="vo"}
-            <li>{$vo.file_name}<img class="download_icon bg_color cursor" src="__STATIC__/images/down.png"/><span class="time">{$vo.date}</span></li>
+            <li>
+                <h1 class="float_left" title="{$vo.synopsis}">{$vo.file_name}</h1>
+                <a href="{$vo.file_url}" download="{$vo.file_name}">
+                    <img class="download_icon bg_color cursor" src="__STATIC__/images/down.png"/>
+                </a>
+                <span class="time">{$vo.date}</span>
+            </li>
             {/volist}
         </ul>
         <div class="see_more text_center bg_color cursor hide">暂无您想要的资料</div>
@@ -26,29 +32,48 @@
 {include file="public/footer"}
 
 <script>
+    $(function () {
+        $(".files .list").niceScroll();
+    })
+</script>
+<script>
     function search() {
         let search_value = $('.search_input').val()
-        $.ajax({
-            type: "GET",
-            url: "{:url('index/files/index')}",
-            data: {search_value: search_value},
-            dataType: "json",
-            success: function (data) {
-                if(data !== 0){
-                    $('.files .list').html('')
-                    $('.files .list').removeClass('hide')
-                    $('.files .see_more').addClass('hide')
-                    let str = ''
-                    $.each(data, function (k, v) {
-                        str += '<li>'+v.file_name+'<img class="download_icon bg_color cursor" src="__STATIC__/images/down.png"/><span class="time">'+v.date+'</span></li>'
-                    })
-                    $('.files .list').html(str)
-                }else{
-                    $('.files .list').html('')
-                    $('.files .list').addClass('hide')
-                    $('.files .see_more').removeClass('hide')
+        search_value = search_value.trim()
+        if(search_value){
+            $(".search_input").removeClass('border_red')
+            $.ajax({
+                type: "GET",
+                url: "{:url('index/files/index')}",
+                data: {search_value: search_value},
+                dataType: "json",
+                success: function (data) {
+                    if(data !== 0){
+                        $('.files .list').html('')
+                        $('.files .list').removeClass('hide')
+                        $('.files .see_more').addClass('hide')
+                        let str = ''
+                        $.each(data, function (k, v) {
+                            // str += '<li>'+v.file_name+'<img class="download_icon bg_color cursor" src="__STATIC__/images/down.png"/><span class="time">'+v.date+'</span></li>'
+                            str += '\n' +
+                                '            <li>\n' +
+                                '                <h1 class="float_left" title="'+v.synopsis+'">'+v.file_name+'</h1>\n' +
+                                '                <a href="'+v.file_url+'" download="'+v.file_name+'">\n' +
+                                '                    <img class="download_icon bg_color cursor" src="__STATIC__/images/down.png"/>\n' +
+                                '                </a>\n' +
+                                '                <span class="time">'+v.date+'</span>\n' +
+                                '            </li>'
+                        })
+                        $('.files .list').html(str)
+                    }else{
+                        $('.files .list').html('')
+                        $('.files .list').addClass('hide')
+                        $('.files .see_more').removeClass('hide')
+                    }
                 }
-            }
-        })
+            })
+        }else{
+            $(".search_input").addClass('border_red')
+        }
     }
 </script>
