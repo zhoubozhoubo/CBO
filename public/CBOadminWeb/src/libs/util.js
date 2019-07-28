@@ -1,7 +1,7 @@
 let util = {};
 
 util.title = function (title) {
-    title = title || 'ApiAdmin';
+    title = title || 'CBOadmin';
     window.document.title = title;
 };
 

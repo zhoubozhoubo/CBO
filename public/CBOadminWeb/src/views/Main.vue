@@ -32,9 +32,9 @@
                     </div>
                 </div>
                 <div class="header-avator-con">
-                    <full-screen v-model="isFullScreen" @on-change="fullscreenChange"></full-screen>
-                    <lock-screen></lock-screen>
-                    <theme-switch></theme-switch>
+                    <!--<full-screen v-model="isFullScreen" @on-change="fullscreenChange"></full-screen>-->
+                    <!--<lock-screen></lock-screen>-->
+                    <!--<theme-switch></theme-switch>-->
 
                     <div class="user-dropdown-menu-con">
                         <Row type="flex" justify="end" align="middle" class="user-dropdown-innercon">

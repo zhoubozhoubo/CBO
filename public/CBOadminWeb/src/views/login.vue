@@ -8,7 +8,7 @@
             <Card :bordered="false">
                 <p slot="title">
                     <Icon type="md-log-in"></Icon>
-                    欢迎登录ApiAdmin后台管理系统
+                    欢迎登录CBO后台管理系统
                 </p>
                 <div class="form-con">
                     <Form ref="loginForm" :model="form" :rules="rules">
@@ -31,11 +31,11 @@
                         </FormItem>
                     </Form>
                 </div>
-                <div style="padding-top:10px;font-size: 11px;border-top: 1px solid #e9eaec;">
+                <!--<div style="padding-top:10px;font-size: 11px;border-top: 1px solid #e9eaec;">
                     <span style="vertical-align:middle;">其他登录：</span>
                     <img style="vertical-align:middle;" src="../../src/images/qq_login.png" alt="">
                     <img style="vertical-align:middle;" src="../../src/images/wx_login.png" alt="">
-                </div>
+                </div>-->
             </Card>
         </div>
     </div>
@@ -74,7 +74,7 @@
                                 vm.$store.commit('login', response.data.data);
                                 vm.$Message.success(response.data.msg);
                                 vm.$router.push({
-                                    name: 'home_index'
+                                    name: 'cbo_website_bottom_conf'
                                 });
                             } else {
                                 vm.$Message.error(response.data.msg);
