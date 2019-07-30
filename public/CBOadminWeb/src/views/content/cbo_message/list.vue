@@ -47,7 +47,7 @@
                 <FormItem label="消息标题" prop="title">
                     <Input v-model="formItem.title" placeholder="消息标题"/>
                 </FormItem>
-                <FormItem label="消息内容" prop="content">
+                <!--<FormItem label="消息内容" prop="content">
                     <Upload
                             id="iviewUp"
                             ref="upload"
@@ -73,6 +73,9 @@
                             @focus="onEditorFocus($event)"
                             @change="onEditorChange($event)">
                     </quill-editor>
+                </FormItem>-->
+                <FormItem label="消息内容" prop="content">
+                    <VueUEditor ueditorPath="/static/Ue/" :ueditorConfig="editorConfig" @ready="onEditorReady"></VueUEditor>
                 </FormItem>
                 <FormItem label="消息作者" prop="author">
                     <Input v-model="formItem.author" placeholder="新闻作者"/>
@@ -112,6 +115,7 @@
     import config from '../../../../build/config';
     import {getDataList, coruData} from '@/api/cbo_message_list'
     import {quillEditor} from 'vue-quill-editor';
+    import VueUEditor from 'vue-ueditor';
 
     const editButton = (vm, h, currentRow, index) => {
         return h('Button', {
@@ -126,6 +130,7 @@
                     vm.formItem.id = currentRow.id;
                     vm.formItem.title = currentRow.title;
                     vm.formItem.content = currentRow.content;
+                    vm.editor.setContent(vm.formItem.content);
                     vm.formItem.author = currentRow.author;
                     vm.formItem.date = currentRow.date;
                     vm.modalSetting.show = true
@@ -188,9 +193,25 @@
 
     export default {
         name: 'list',
-        components: {},
+        components: {
+            VueUEditor
+        },
         data() {
             return {
+                editor: '',
+                editorConfig: {
+                    // 编辑器不自动被内容撑高
+                    autoHeightEnabled: false,
+                    // 初始容器高度
+                    initialFrameHeight: 400,
+                    // 初始容器宽度
+                    initialFrameWidth: '100%',
+                    // 上传文件接口（这个地址是我为了方便各位体验文件上传功能搭建的临时接口，请勿在生产环境使用！！！）
+                    serverUrl: 'http://localhost:8003/controller.php',
+                    // UEditor 资源文件的存放路径，如果你使用的是 vue-cli 生成的项目，通常不需要设置该选项，vue-ueditor-wrap 会自动处理常见的情况，如果需要特殊配置，参考下方的常见问题2
+                    UEDITOR_HOME_URL: '/static/Ue/',
+                    zIndex: 9999
+                },
                 // 初始化表格列
                 columnsList: [{title: "序号", type: "index", align: "center", width: "60"}, {
                     title: "消息标题",
@@ -331,6 +352,7 @@
             },
             // 提交
             submit() {
+                this.formItem.content = this.editor.getContent()
                 this.$refs['myForm'].validate((valid) => {
                     if (valid) {
                         this.modalSetting.loading = true
@@ -382,6 +404,9 @@
                     this.tableShow.listCount = res.data.data.count
                     this.tableShow.loading = false;
                 })
+            },
+            onEditorReady: function(editor) {
+                this.editor = editor;
             }
         }
     }

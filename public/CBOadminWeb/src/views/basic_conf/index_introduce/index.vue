@@ -13,7 +13,7 @@
                     <FormItem label="配置备注" prop="remarks">
                         <Input style="width: 300px;" v-model="formItem.remarks" placeholder="配置备注"></Input>
                     </FormItem>
-                    <FormItem label="配置内容" prop="value">
+                    <!--<FormItem label="配置内容" prop="value">
                         <div style="width: 800px;">
                             <Upload
                                     id="iviewUp"
@@ -42,6 +42,9 @@
                             </quill-editor>
                         </div>
 
+                    </FormItem>-->
+                    <FormItem label="配置内容" prop="value">
+                        <VueUEditor ueditorPath="/static/Ue/" :ueditorConfig="editorConfig" @ready="onEditorReady"></VueUEditor>
                     </FormItem>
                     <div>
                         <Button type="primary" style="width: 100px; margin-left: 100px;" :loading="loading" @click="submit">保存</Button>
@@ -56,11 +59,29 @@
     import config from '../../../../build/config';
     import {getDataDetails, coruData} from '@/api/cbo_basic_conf'
     import {quillEditor} from 'vue-quill-editor';
+    import VueUEditor from 'vue-ueditor';
 
     export default {
         name: 'index_introduce',
+        components: {
+            VueUEditor
+        },
         data () {
             return {
+                editor: '',
+                editorConfig: {
+                    // 编辑器不自动被内容撑高
+                    autoHeightEnabled: false,
+                    // 初始容器高度
+                    initialFrameHeight: 400,
+                    // 初始容器宽度
+                    initialFrameWidth: '100%',
+                    // 上传文件接口（这个地址是我为了方便各位体验文件上传功能搭建的临时接口，请勿在生产环境使用！！！）
+                    serverUrl: 'http://localhost:8003/controller.php',
+                    // UEditor 资源文件的存放路径，如果你使用的是 vue-cli 生成的项目，通常不需要设置该选项，vue-ueditor-wrap 会自动处理常见的情况，如果需要特殊配置，参考下方的常见问题2
+                    UEDITOR_HOME_URL: '/static/Ue/',
+                    zIndex: 9999
+                },
                 loading: false,
                 formItem: {
                     id: '',
@@ -107,6 +128,7 @@
         methods: {
             // 提交
             submit() {
+                this.formItem.value = this.editor.getContent()
                 this.$refs['myForm'].validate((valid) => {
                     if (valid) {
                         this.loading = true
@@ -155,6 +177,10 @@
                     console.log(res)
                     this.formItem = res.data.data
                 })
+            },
+            onEditorReady: function(editor) {
+                this.editor = editor;
+                this.editor.setContent(this.formItem.value);
             }
         }
     };

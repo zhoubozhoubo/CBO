@@ -38,7 +38,7 @@
             </Col>
         </Row>
         <!--新增、编辑Modal-->
-        <Modal fullscreen v-model="modalSetting.show" width="700" @on-visible-change="doCancel">
+        <Modal fullscreen v-model="modalSetting.show" width="700" style="z-index: 999" @on-visible-change="doCancel">
             <p slot="header" style="color:#2d8cf0;">
                 <Icon type="md-information-circle"></Icon>
                 <span>{{formItem.id ? '编辑' : '新增'}}</span>
@@ -71,32 +71,35 @@
                         </div>
                     </Upload>
                 </FormItem>
+                <!--<FormItem label="新闻内容" prop="content">-->
+                    <!--<Upload-->
+                            <!--id="iviewUp"-->
+                            <!--ref="upload"-->
+                            <!--:show-upload-list="false"-->
+                            <!--:on-success="handleSingleSuccess"-->
+                            <!--:format="['jpg','jpeg','png']"-->
+                            <!--:max-size="5120"-->
+                            <!--:on-format-error="handleFormatError"-->
+                            <!--:before-upload="handleBeforeUpload()"-->
+                            <!--type="drag"-->
+                            <!--:action="uploadUrl"-->
+                            <!--:headers="uploadHeader"-->
+                            <!--style="display: none;width:0">-->
+                        <!--<div style="width: 0">-->
+                            <!--<Icon type="ios-camera" size="50"></Icon>-->
+                        <!--</div>-->
+                    <!--</Upload>-->
+                    <!--<quill-editor-->
+                            <!--v-model="formItem.content"-->
+                            <!--ref="myQuillEditor"-->
+                            <!--:options="editorOption"-->
+                            <!--@blur="onEditorBlur($event)"-->
+                            <!--@focus="onEditorFocus($event)"-->
+                            <!--@change="onEditorChange($event)">-->
+                    <!--</quill-editor>-->
+                <!--</FormItem>-->
                 <FormItem label="新闻内容" prop="content">
-                    <Upload
-                            id="iviewUp"
-                            ref="upload"
-                            :show-upload-list="false"
-                            :on-success="handleSingleSuccess"
-                            :format="['jpg','jpeg','png']"
-                            :max-size="5120"
-                            :on-format-error="handleFormatError"
-                            :before-upload="handleBeforeUpload()"
-                            type="drag"
-                            :action="uploadUrl"
-                            :headers="uploadHeader"
-                            style="display: none;width:0">
-                        <div style="width: 0">
-                            <Icon type="ios-camera" size="50"></Icon>
-                        </div>
-                    </Upload>
-                    <quill-editor
-                            v-model="formItem.content"
-                            ref="myQuillEditor"
-                            :options="editorOption"
-                            @blur="onEditorBlur($event)"
-                            @focus="onEditorFocus($event)"
-                            @change="onEditorChange($event)">
-                    </quill-editor>
+                    <VueUEditor ueditorPath="/static/Ue/" :ueditorConfig="editorConfig" @ready="onEditorReady"></VueUEditor>
                 </FormItem>
                 <FormItem label="新闻作者" prop="author">
                     <Input v-model="formItem.author" placeholder="新闻作者"/>
@@ -136,6 +139,7 @@
     import config from '../../../../build/config';
     import {getDataList, coruData} from '@/api/cbo_news_list'
     import {quillEditor} from 'vue-quill-editor';
+    import VueUEditor from 'vue-ueditor';
 
     const editButton = (vm, h, currentRow, index) => {
         return h('Button', {
@@ -151,6 +155,7 @@
                     vm.formItem.title = currentRow.title;
                     vm.formItem.img = currentRow.img;
                     vm.formItem.content = currentRow.content;
+                    vm.editor.setContent(vm.formItem.content);
                     vm.formItem.author = currentRow.author;
                     vm.formItem.date = currentRow.date;
                     vm.modalSetting.show = true
@@ -213,9 +218,25 @@
 
     export default {
         name: 'list',
-        components: {},
+        components: {
+            VueUEditor
+        },
         data() {
             return {
+                editor: '',
+                editorConfig: {
+                    // 编辑器不自动被内容撑高
+                    autoHeightEnabled: false,
+                    // 初始容器高度
+                    initialFrameHeight: 400,
+                    // 初始容器宽度
+                    initialFrameWidth: '100%',
+                    // 上传文件接口（这个地址是我为了方便各位体验文件上传功能搭建的临时接口，请勿在生产环境使用！！！）
+                    serverUrl: 'http://localhost:8003/controller.php',
+                    // UEditor 资源文件的存放路径，如果你使用的是 vue-cli 生成的项目，通常不需要设置该选项，vue-ueditor-wrap 会自动处理常见的情况，如果需要特殊配置，参考下方的常见问题2
+                    UEDITOR_HOME_URL: '/static/Ue/',
+                    zIndex: 9999
+                },
                 // 初始化表格列
                 columnsList: [{title: "序号", type: "index", align: "center", width: "60"}, {
                     title: "新闻标题",
@@ -295,7 +316,7 @@
                     img: [{ required: true, message: "请上传封面", trigger: "change" }],
                     author: [{ required: true, message: "请输入作者", trigger: "blur" }],
                     date: [{ required: true, message: "请输入日期", trigger: "blur" }],
-                }
+                },
             }
         },
         created() {
@@ -303,6 +324,8 @@
             this.getList()
             this.uploadUrl = config.baseUrl + 'Index/upload';
             this.uploadHeader = {'ApiAuth': sessionStorage.getItem('apiAuth')};
+        },
+        mounted() {
         },
         methods: {
             // 页面初始化
@@ -405,6 +428,7 @@
             },
             // 提交
             submit() {
+                this.formItem.content = this.editor.getContent()
                 this.$refs['myForm'].validate((valid) => {
                     if (valid) {
                         this.modalSetting.loading = true
@@ -456,7 +480,10 @@
                     this.tableShow.listCount = res.data.data.count
                     this.tableShow.loading = false;
                 })
-            }
+            },
+            onEditorReady: function(editor) {
+                this.editor = editor;
+            },
         }
     }
 </script>
