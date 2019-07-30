@@ -130,6 +130,14 @@ export const appRouter = [
                 title: '操作日志',
                 component: () => import('@/views/system/log.vue')
             },
+            {
+                path: "cbo_website_bottom_conf",
+                icon: "ios-folder-open",
+                name: "cbo_website_bottom_conf",
+                access: 'admin/WebsiteBottomConf/getList',
+                title: "站点信息",
+                component: () => import('@/views/cbo_website_conf/cbo_website_bottom_conf/list.vue')
+            }
             // {
             //     path: "db_table_list",
             //     icon: "ios-folder-open",
@@ -285,23 +293,6 @@ export const appRouter = [
                 access: 'admin/Eligibility/getList',
                 title: "参赛资格管理",
                 component: () => import('@/views/competition_rules/cbo_eligibility/index.vue')
-            }
-        ]
-    },
-    {
-        path: "/cbo_website_conf",
-        icon: "md-cube",
-        name: "cbo_website_conf",
-        title: "网站信息管理",
-        component: Main,
-        children: [
-            {
-                path: "cbo_website_bottom_conf",
-                icon: "ios-folder-open",
-                name: "cbo_website_bottom_conf",
-                access: 'admin/WebsiteBottomConf/getList',
-                title: "网站底部信息管理",
-                component: () => import('@/views/cbo_website_conf/cbo_website_bottom_conf/list.vue')
             }
         ]
     },

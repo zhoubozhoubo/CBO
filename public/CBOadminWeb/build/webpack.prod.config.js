@@ -60,6 +60,10 @@ module.exports = merge(webpackBaseConfig, {
                 to: 'fonts'
             },
             {
+                from: 'static',
+                to: 'static'
+            },
+            {
                 from: 'src/views/main_components/theme_switch/theme'
             }
         ]),
