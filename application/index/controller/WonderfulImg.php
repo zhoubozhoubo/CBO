@@ -36,20 +36,26 @@ class WonderfulImg extends Controller
         return $this->fetch();
     }
 
-    public function details()
+    public function date()
     {
         $websiteBottomConf = CboWebsiteBottomConf::where(['is_delete'=>0])->field('gmt_create,gmt_modified,is_delete', true)->select();
-        $getData = $this->request->get();
-        $id = $getData['id'];
-
+        $date = $this->request->get('date');
+        $page = $this->request->get('page', 1);
         $where = [
-            'is_delete' => 0
+            'date'=>$date
         ];
-        $news = CboWonderfulImg::where($where)->field('gmt_modified,is_delete', true)->find($id);
+        $wonderfulImg = CboWonderfulImg::where($where)->field('gmt_create,gmt_modified,is_delete', true)->page($page,1)->select();
+        $wonderfulImgCount = CboWonderfulImg::where($where)->count();
 
-        $this->assign('action_page', 3);
-        $this->assign('news', $news);
+        $this->assign('action_page', 7);
+        $this->assign('date', $date);
+        $this->assign('wonderful_img', $wonderfulImg);
+        $this->assign('wonderful_img_pages', $wonderfulImgCount);
         $this->assign('website_bottom_conf', $websiteBottomConf);
+
+        if ($page !== 1) {
+            return json($wonderfulImg);
+        }
         return $this->fetch();
     }
 }

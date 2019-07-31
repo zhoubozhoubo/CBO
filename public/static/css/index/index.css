@@ -144,10 +144,15 @@
     width: 100%;
     font-size: 12px;
     line-height: 25px;
-    background-color: #1b3155;
+    /*background-color: #1b3155;*/
+    background-color: rgba(27,49,85,0.6);
 }
 .content .wonderful_images .image_title .image_title_icon{
     margin: 0 8px 0 20px;
+}
+.content .wonderful_images .image a img{
+    width: 420px;
+    max-height: 195px;
 }
 .content .wonderful_images .image_one{
     width: 420px;

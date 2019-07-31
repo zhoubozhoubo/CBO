@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: Microsoft Yahei;
 }
 a{
     color: #FFFFFF;
@@ -53,10 +54,10 @@ ul,ol,li{
     display: inline-block;
 }
 .bg .header .banner{
-    width: 1200px;
-    display: block;
-    margin: 0 auto;
-    background-image: url("../images/banner.png");
+    /*width: 1200px;*/
+    /*display: block;*/
+    /*margin: 0 auto;*/
+    /*background-image: url("../images/banner.png");*/
     border-top: 2px solid #eaa232;
     border-bottom: 2px solid #eaa232;
 }

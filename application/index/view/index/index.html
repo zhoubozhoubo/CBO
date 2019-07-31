@@ -52,32 +52,32 @@
         <h1 class="left_line_title">精彩图集</h1>
         {if condition = 'count($wonderful_img_list) > 0' }
         <div class="image image_one float_left bg_color over_hide">
-            <img src="{$wonderful_img_list[0]['img']}" class="big_img"/>
-            <p class="image_title"><img class="image_title_icon" src="__STATIC__/images/listicongray.png"/>{$wonderful_img_list[0]['title']}</p>
+            <a href="{:url('index/wonderful_img/date')}?date={$wonderful_img_list[0]['date']}"><img src="{$wonderful_img_list[0]['img']}" class="big_img"/></a>
+            <p class="image_title"><img class="image_title_icon" src="__STATIC__/images/listicongray.png"/><a href="{:url('index/wonderful_img/date')}?date={$wonderful_img_list[0]['date']}">{$wonderful_img_list[0]['title']}</a></p>
         </div>
         {/if}
         {if condition = 'count($wonderful_img_list) > 1' }
         <div class="image image_two float_left bg_color over_hide">
-            <img src="{$wonderful_img_list[1]['img']}" class="big_img"/>
-            <p class="image_title"><img class="image_title_icon" src="__STATIC__/images/listicongray.png"/>{$wonderful_img_list[1]['title']}</p>
+            <a href="{:url('index/wonderful_img/date')}?date={$wonderful_img_list[1]['date']}"><img src="{$wonderful_img_list[1]['img']}" class="big_img"/></a>
+            <p class="image_title"><img class="image_title_icon" src="__STATIC__/images/listicongray.png"/><a href="{:url('index/wonderful_img/date')}?date={$wonderful_img_list[1]['date']}">{$wonderful_img_list[1]['title']}</a></p>
         </div>
         {/if}
         {if condition = 'count($wonderful_img_list) > 2' }
         <div class="image image_three float_left bg_color over_hide">
-            <img src="{$wonderful_img_list[2]['img']}" class="big_img"/>
-            <p class="image_title"><img class="image_title_icon" src="__STATIC__/images/listicongray.png"/>{$wonderful_img_list[2]['title']}</p>
+            <a href="{:url('index/wonderful_img/date')}?date={$wonderful_img_list[2]['date']}"><img src="{$wonderful_img_list[2]['img']}" class="big_img"/></a>
+            <p class="image_title"><img class="image_title_icon" src="__STATIC__/images/listicongray.png"/><a href="{:url('index/wonderful_img/date')}?date={$wonderful_img_list[2]['date']}">{$wonderful_img_list[2]['title']}</a></p>
         </div>
         {/if}
         {if condition = 'count($wonderful_img_list) > 3' }
         <div class="image image_four float_left bg_color over_hide">
-            <img src="{$wonderful_img_list[3]['img']}" class="big_img"/>
-            <p class="image_title"><img class="image_title_icon" src="__STATIC__/images/listicongray.png"/>{$wonderful_img_list[3]['title']}</p>
+            <a href="{:url('index/wonderful_img/date')}?date={$wonderful_img_list[3]['date']}"><img src="{$wonderful_img_list[3]['img']}" class="big_img"/></a>
+            <p class="image_title"><img class="image_title_icon" src="__STATIC__/images/listicongray.png"/><a href="{:url('index/wonderful_img/date')}?date={$wonderful_img_list[3]['date']}">{$wonderful_img_list[3]['title']}</a></p>
         </div>
         {/if}
         {if condition = 'count($wonderful_img_list) > 4' }
         <div class="image image_five float_left bg_color over_hide">
-            <img src="{$wonderful_img_list[4]['img']}" class="big_img"/>
-            <p class="image_title"><img class="image_title_icon" src="__STATIC__/images/listicongray.png"/>{$wonderful_img_list[4]['title']}</p>
+            <a href="{:url('index/wonderful_img/date')}?date={$wonderful_img_list[4]['date']}"><img src="{$wonderful_img_list[4]['img']}" class="big_img"/></a>
+            <p class="image_title"><img class="image_title_icon" src="__STATIC__/images/listicongray.png"/><a href="{:url('index/wonderful_img/date')}?date={$wonderful_img_list[4]['date']}">{$wonderful_img_list[4]['title']}</a></p>
         </div>
         {/if}
         <p class="more cursor"><a href="{:url('index/wonderful_img/index')}">更多<img class="more_icon" src="__STATIC__/images/pageright.png"></a></p>
@@ -316,7 +316,7 @@
                     <img src="{$vo.teamLogo}" class="big_img"/>
                     <h1 class="team text_center">{$vo.teamName}</h1>
                 </div>
-                <h1 class="name text_center">{$vo.playerName}</h1>
+                <h1 class="name text_center"><a href="{:url('/index/player_score/details')}?userId={$vo.userId}">{$vo.playerName}</a></h1>
                 <h1 class="score text_center">{$vo.point}</h1>
             </li>
             {/volist}
@@ -700,7 +700,7 @@
                             '                <img class="float_left big_img" src="'+v.playerImage+'"/>\n' +
                             '                <h2 class="float_left">'+v.score+'</h2>\n' +
                             '                <div class="info float_left">\n' +
-                            '                    <h1>姓名：'+v.playerName+'</h1>\n' +
+                            '                    <h1>姓名：<a href="{:url(\'/index/player_score/details\')}?userId='+v.userId+'">'+v.playerName+'</a></h1>\n' +
                             '                    <h1>球队：'+v.teamName+'</h1>\n' +
                             '                    <h1>'+v.jerseyNum+' '+v.location+'</h1>\n' +
                             '                </div>\n' +
@@ -716,7 +716,7 @@
                         str += '\n' +
                             '                <img class="float_left big_img" src="'+v.playerImage+'"/>\n' +
                             '                <div class="info float_left">\n' +
-                            '                    <h1>姓名：'+v.playerName+'</h1>\n' +
+                            '                    <h1>姓名：<a href="{:url(\'/index/player_score/details\')}?userId='+v.userId+'">'+v.playerName+'</a></h1>\n' +
                             '                    <h1>球队：'+v.teamName+'</h1>\n' +
                             '                    <h1>'+v.jerseyNum+' '+v.location+'</h1>\n' +
                             '                </div>\n' +

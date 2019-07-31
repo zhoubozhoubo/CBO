@@ -9,10 +9,10 @@
             {volist name="wonderful_img_list" id="vo"}
             <li>
                 <div class="image bg_color">
-                    <img src="{$vo.img}" class="big_img"/>
+                    <a href="{:url('index/wonderful_img/date')}?date={$vo.date}"><img src="{$vo.img}"/></a>
                 </div>
                 <div class="text">
-                    <h2 class="title">{$vo.title}</h2>
+                    <h2 class="title"><a href="{:url('index/wonderful_img/date')}?date={$vo.date}"><img src="__STATIC__/images/listicon.png" />{$vo.title}</a></h2>
                 </div>
             </li>
             {/volist}
@@ -45,10 +45,10 @@
                         str += '\n' +
                             '            <li>\n' +
                             '                <div class="image bg_color">\n' +
-                            '                    <img src="'+v.img+'" class="big_img"/>\n' +
+                            '                    <a href="{:url(\'index/wonderful_img/date\')}?date='+v.date+'"><img src="'+v.img+'" class="big_img"/></a>\n' +
                             '                </div>\n' +
                             '                <div class="text">\n' +
-                            '                    <h2 class="title">'+v.title+'</h2>\n' +
+                            '                    <h2 class="title"><a href="{:url(\'index/wonderful_img/date\')}?date='+v.date+'">'+v.title+'</a></h2>\n' +
                             '                </div>\n' +
                             '            </li>'
                     })

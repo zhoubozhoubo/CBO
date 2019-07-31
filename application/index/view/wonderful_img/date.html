@@ -1,0 +1,58 @@
+{include file="public/header"}
+<link rel="stylesheet" href="__STATIC__/css/wonderful_img/date.css">
+<div class="content">
+    <img class="line" src="__STATIC__/images/line.png">
+    <!--当日精彩图集-->
+    <div class="date_img_list" id="date_img_list">
+        <h1 class="left_line_title"><span class="title">{$wonderful_img[0]['title']}</span>（<span class="date">{$date}</span>）</h1>
+        <div class="img bg_color text_center">
+                <img src="{$wonderful_img[0]['img']}" />
+        </div>
+        <div class="page">
+            <ul>
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+{include file="public/footer"}
+
+<script src="__STATIC__/js/main.js"></script>
+<script>
+    let page = 1
+    let pages = {$wonderful_img_pages}
+
+    let date = $(".date").text()
+
+    $(function () {
+        changePage()
+        gotoPlayerScoreList()
+    })
+
+    function getList() {
+        $.ajax({
+            type: "GET",
+            url: "{:url('index/wonderful_img/date')}",
+            data: {page: page, date: date},
+            dataType: "json",
+            success: function (data) {
+                $('.date_img_list .img').html('')
+                let str = ''
+                str += '<img src="'+data[0].img+'" />'
+                $('.date_img_list .img').html(str)
+                console.log(data[0].title)
+                $('.date_img_list .title').text(data[0].title)
+            }
+        })
+        changePage()
+        gotoPlayerScoreList()
+    }
+</script>
+<script>
+    function gotoPlayerScoreList(){
+        setTimeout(function () {
+            $("html,body").animate({scrollTop: $("#date_img_list").offset().top}, 500)
+        }, 500 )
+    }
+</script>

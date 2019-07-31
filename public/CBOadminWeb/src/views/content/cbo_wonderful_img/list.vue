@@ -67,6 +67,10 @@
                         </div>
                     </Upload>
                 </FormItem>
+                <FormItem label="日期" prop="date">
+                    <DatePicker type="date" @on-change="formItem.date=$event" :value="formItem.date" placeholder="选择日期"
+                                style="width: 200px"></DatePicker>
+                </FormItem>
             </Form>
             <div slot="footer">
                 <Button type="text" @click="cancel" style="margin-right: 8px">取消</Button>
@@ -149,7 +153,7 @@
                     title: "图集标题",
                     key: "title",
                     align: "center"
-                }, {title: "图集图片", key: "img", align: "center", width: "100"}, {
+                }, {title: "图集图片", key: "img", align: "center", width: "100"}, {title: "日期", key: "date", align: "center", width: "150"}, {
                     title: "操作",
                     key: "handle",
                     align: "center", width: "200",
@@ -167,7 +171,7 @@
                 // 搜索配置
                 searchConf: {title: ""},
                 // 表单属性
-                formItem: {id: "", title: "", img: ""},
+                formItem: {id: "", title: "", img: "", date: ""},
                 // modal属性
                 modalSetting: {
                     show: false,
@@ -185,6 +189,7 @@
                 ruleValidate: {
                     title: [{ required: true, message: "请输入标题", trigger: "blur" }],
                     img: [{ required: true, message: "请上传封面", trigger: "change" }],
+                    date: [{ required: true, message: "请输入日期", trigger: "blur" }],
                 }
             }
         },

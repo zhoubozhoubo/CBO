@@ -8,6 +8,7 @@
     margin: 25px auto!important;
 }
 .content .wonderful_img .list li{
+    position: relative;
     width: 273px;
     float: left;
     margin: 0 18px 30px;
@@ -24,15 +25,24 @@
     max-height: 100%;
 }
 .content .wonderful_img .list li .text{
+    position: absolute;
+    left: 0;
+    bottom: 0;
     /*height: 68px;*/
-    margin-top: 15px;
-    border-top: 1px solid #15417e;
-    border-bottom: 1px solid #15417e;
+    /*margin-top: 15px;*/
+    /*border-top: 1px solid #15417e;*/
+    /*border-bottom: 1px solid #15417e;*/
     padding: 10px 20px;
-    background: url("../../images/listicon.png") no-repeat 0 15px;
+    /*background: url("../../images/listicon.png") no-repeat 0 15px;*/
+    background-color: rgba(27,49,85,0.6);
 }
 .content .wonderful_img .list li .text .title{
     font-size: 14px;
+}
+.content .wonderful_img .list li .text .title img{
+    float: left;
+    margin-top: 2px;
+    margin-right: 10px;
 }
 .content .wonderful_img .see_more {
     width: 1200px;
