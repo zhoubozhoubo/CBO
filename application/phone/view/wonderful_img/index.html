@@ -1,7 +1,7 @@
 {include file="public/header"}
-<link rel="stylesheet" href="public/__STATIC__/css/wonderful_img/index.css">
+<link rel="stylesheet" href="/public__STATIC__/css/wonderful_img/index.css">
 <div class="content">
-    <img class="line" src="public/__STATIC__/images/line.png">
+    <img class="line" src="/public__STATIC__/images/line.png">
     <!--精彩图集-->
     <div class="wonderful_img">
         <h1 class="left_line_title">精彩图集</h1>
@@ -12,7 +12,7 @@
                     <a href="{:url('phone/wonderful_img/date')}?date={$vo.date}"><img src="{$vo.img}"/></a>
                 </div>
                 <div class="text">
-                    <h2 class="title"><a href="{:url('phone/wonderful_img/date')}?date={$vo.date}"><img src="public/__STATIC__/images/listicon.png" />{$vo.title}</a></h2>
+                    <h2 class="title"><a href="{:url('phone/wonderful_img/date')}?date={$vo.date}"><img src="/public__STATIC__/images/listicon.png" />{$vo.title}</a></h2>
                 </div>
             </li>
             {/volist}

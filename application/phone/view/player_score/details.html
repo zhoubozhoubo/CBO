@@ -1,7 +1,7 @@
 {include file="public/header"}
-<link rel="stylesheet" href="public/__STATIC__/css/player_score/details.css">
+<link rel="stylesheet" href="/public__STATIC__/css/player_score/details.css">
 <div class="content">
-    <img class="line" src="public/__STATIC__/images/line.png">
+    <img class="line" src="/public__STATIC__/images/line.png">
     <!--球员积分-->
     <div class="player_score" id="player_score">
         {if condition='$player_team_statistics_list == [] '}
@@ -71,7 +71,7 @@
 </div>
 {include file="public/footer"}
 
-<script src="public/__STATIC__/js/main.js"></script>
+<script src="/public__STATIC__/js/main.js"></script>
 <script>
     $(function () {
         let list = {$player_team_statistics_count}

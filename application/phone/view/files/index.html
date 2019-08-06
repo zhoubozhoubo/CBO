@@ -1,7 +1,7 @@
 {include file="public/header"}
-<link rel="stylesheet" href="public/__STATIC__/css/files/index.css">
+<link rel="stylesheet" href="/public__STATIC__/css/files/index.css">
 <div class="content">
-    <img class="line" src="public/__STATIC__/images/line.png">
+    <img class="line" src="/public__STATIC__/images/line.png">
     <!--下载专区-->
     <div class="files">
         <div class="search">
@@ -19,7 +19,7 @@
             <li>
                 <h1 class="float_left" title="{$vo.synopsis}">{$vo.file_name}</h1>
                 <a href="{$vo.file_url}" download="{$vo.file_name}">
-                    <img class="download_icon bg_color cursor" src="public/__STATIC__/images/down.png"/>
+                    <img class="download_icon bg_color cursor" src="/public__STATIC__/images/down.png"/>
                 </a>
                 <span class="time">{$vo.date}</span>
             </li>
@@ -54,12 +54,12 @@
                         $('.files .see_more').addClass('hide')
                         let str = ''
                         $.each(data, function (k, v) {
-                            // str += '<li>'+v.file_name+'<img class="download_icon bg_color cursor" src="public/__STATIC__/images/down.png"/><span class="time">'+v.date+'</span></li>'
+                            // str += '<li>'+v.file_name+'<img class="download_icon bg_color cursor" src="/public__STATIC__/images/down.png"/><span class="time">'+v.date+'</span></li>'
                             str += '\n' +
                                 '            <li>\n' +
                                 '                <h1 class="float_left" title="'+v.synopsis+'">'+v.file_name+'</h1>\n' +
                                 '                <a href="'+v.file_url+'" download="'+v.file_name+'">\n' +
-                                '                    <img class="download_icon bg_color cursor" src="public/__STATIC__/images/down.png"/>\n' +
+                                '                    <img class="download_icon bg_color cursor" src="/public__STATIC__/images/down.png"/>\n' +
                                 '                </a>\n' +
                                 '                <span class="time">'+v.date+'</span>\n' +
                                 '            </li>'

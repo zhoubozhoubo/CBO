@@ -1,5 +1,5 @@
 {include file="public/header"}
-<link rel="stylesheet" href="public/__STATIC__/css/index/index.css">
+<link rel="stylesheet" href="/public__STATIC__/css/index/index.css">
 <div class="content">
     <!--关于-->
     <div class="about bg_size">
@@ -14,11 +14,11 @@
             </div>
         </div>
         <div class="about_right">
-            <img class="logo" src="public/__STATIC__/images/logo.png">
+            <img class="logo" src="/public__STATIC__/images/logo.png">
             <div class="details bg_size cursor"><a href="/phone/match_synopsis">详&nbsp;&nbsp;&nbsp;&nbsp;情</a></div>
         </div>
     </div>
-    <img class="line" src="public/__STATIC__/images/line.png">
+    <img class="line" src="/public__STATIC__/images/line.png">
     <!--消息-->
     <div class="message">
         <div class="image bg_color">
@@ -33,7 +33,7 @@
                 <li><a href="{:url('/phone/news/details')}?id={$vo.id}">{$vo.title}</a></li>
                 {/volist}
             </ul>
-            <p class="more cursor"><a href="{:url('phone/news/index')}">更多<img class="more_icon" src="public/__STATIC__/images/pageright.png"></a></p>
+            <p class="more cursor"><a href="{:url('phone/news/index')}">更多<img class="more_icon" src="/public__STATIC__/images/pageright.png"></a></p>
         </div>
         <div class="vertical_line"></div>
         <div class="info">
@@ -43,7 +43,7 @@
                 <li><a href="{:url('/phone/message/details')}?id={$vo.id}">{$vo.title}</a></li>
                 {/volist}
             </ul>
-            <p class="more cursor"><a href="{:url('phone/message/index')}">更多<img class="more_icon" src="public/__STATIC__/images/pageright.png"></a></p>
+            <p class="more cursor"><a href="{:url('phone/message/index')}">更多<img class="more_icon" src="/public__STATIC__/images/pageright.png"></a></p>
         </div>
     </div>
     <div class="clear"></div>
@@ -53,34 +53,34 @@
         {if condition = 'count($wonderful_img_list) > 0' }
         <div class="image image_one float_left bg_color over_hide">
             <a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[0]['date']}"><img src="{$wonderful_img_list[0]['img']}" class="big_img"/></a>
-            <p class="image_title"><img class="image_title_icon" src="public/__STATIC__/images/listicongray.png"/><a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[0]['date']}">{$wonderful_img_list[0]['title']}</a></p>
+            <p class="image_title"><img class="image_title_icon" src="/public__STATIC__/images/listicongray.png"/><a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[0]['date']}">{$wonderful_img_list[0]['title']}</a></p>
         </div>
         {/if}
         {if condition = 'count($wonderful_img_list) > 1' }
         <div class="image image_two float_left bg_color over_hide">
             <a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[1]['date']}"><img src="{$wonderful_img_list[1]['img']}" class="big_img"/></a>
-            <p class="image_title"><img class="image_title_icon" src="public/__STATIC__/images/listicongray.png"/><a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[1]['date']}">{$wonderful_img_list[1]['title']}</a></p>
+            <p class="image_title"><img class="image_title_icon" src="/public__STATIC__/images/listicongray.png"/><a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[1]['date']}">{$wonderful_img_list[1]['title']}</a></p>
         </div>
         {/if}
         {if condition = 'count($wonderful_img_list) > 2' }
         <div class="image image_three float_left bg_color over_hide">
             <a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[2]['date']}"><img src="{$wonderful_img_list[2]['img']}" class="big_img"/></a>
-            <p class="image_title"><img class="image_title_icon" src="public/__STATIC__/images/listicongray.png"/><a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[2]['date']}">{$wonderful_img_list[2]['title']}</a></p>
+            <p class="image_title"><img class="image_title_icon" src="/public__STATIC__/images/listicongray.png"/><a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[2]['date']}">{$wonderful_img_list[2]['title']}</a></p>
         </div>
         {/if}
         {if condition = 'count($wonderful_img_list) > 3' }
         <div class="image image_four float_left bg_color over_hide">
             <a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[3]['date']}"><img src="{$wonderful_img_list[3]['img']}" class="big_img"/></a>
-            <p class="image_title"><img class="image_title_icon" src="public/__STATIC__/images/listicongray.png"/><a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[3]['date']}">{$wonderful_img_list[3]['title']}</a></p>
+            <p class="image_title"><img class="image_title_icon" src="/public__STATIC__/images/listicongray.png"/><a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[3]['date']}">{$wonderful_img_list[3]['title']}</a></p>
         </div>
         {/if}
         {if condition = 'count($wonderful_img_list) > 4' }
         <div class="image image_five float_left bg_color over_hide">
             <a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[4]['date']}"><img src="{$wonderful_img_list[4]['img']}" class="big_img"/></a>
-            <p class="image_title"><img class="image_title_icon" src="public/__STATIC__/images/listicongray.png"/><a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[4]['date']}">{$wonderful_img_list[4]['title']}</a></p>
+            <p class="image_title"><img class="image_title_icon" src="/public__STATIC__/images/listicongray.png"/><a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[4]['date']}">{$wonderful_img_list[4]['title']}</a></p>
         </div>
         {/if}
-        <p class="more cursor"><a href="{:url('phone/wonderful_img/index')}">更多<img class="more_icon" src="public/__STATIC__/images/pageright.png"></a></p>
+        <p class="more cursor"><a href="{:url('phone/wonderful_img/index')}">更多<img class="more_icon" src="/public__STATIC__/images/pageright.png"></a></p>
     </div>
     <div class="clear"></div>
     <!--球队战况-->
@@ -116,11 +116,11 @@
         <p class="choose">选择赛季</p>
         <div class="clear"></div>
         <div class="situation_data text_center">
-            <img class="big_img" src="public/__STATIC__/images/banner.png" />
+            <img class="big_img" src="/public__STATIC__/images/banner.png" />
         </div>
         <div class="team_situation_img_page">
-            <img class="more_icon cursor" src="public/__STATIC__/images/pageleft.png" onclick="prevTeamSituationImg()">
-            <img class="more_icon cursor" src="public/__STATIC__/images/pageright.png" onclick="nextTeamSituationImg()">
+            <img class="more_icon cursor" src="/public__STATIC__/images/pageleft.png" onclick="prevTeamSituationImg()">
+            <img class="more_icon cursor" src="/public__STATIC__/images/pageright.png" onclick="nextTeamSituationImg()">
         </div>
         <div class="clear"></div>
     </div>
@@ -209,7 +209,7 @@
             {/volist}-->
             <!--<li class="float_left left_li big">
                 <h3 class="number text_center">1</h3>
-                <img class="float_left" src="public/__STATIC__/images/man.png"/>
+                <img class="float_left" src="/public__STATIC__/images/man.png"/>
                 <h2 class="float_left">26</h2>
                 <div class="info float_left">
                     <h1>姓名：朱利叶斯-兰德尔</h1>
@@ -219,7 +219,7 @@
             </li>
             <li class="float_left big">
                 <h3 class="number text_center">2</h3>
-                <img class="float_left" src="public/__STATIC__/images/man.png"/>
+                <img class="float_left" src="/public__STATIC__/images/man.png"/>
                 <h2 class="float_left">26</h2>
                 <div class="info float_left">
                     <h1>姓名：朱利叶斯-兰德尔</h1>
@@ -229,7 +229,7 @@
             </li>
             <li class="float_left big">
                 <h3 class="number text_center">3</h3>
-                <img class="float_left" src="public/__STATIC__/images/man.png"/>
+                <img class="float_left" src="/public__STATIC__/images/man.png"/>
                 <h2 class="float_left">26</h2>
                 <div class="info float_left">
                     <h1>姓名：朱利叶斯-兰德尔</h1>
@@ -238,7 +238,7 @@
                 </div>
             </li>
             <li class="float_left left_li">
-                <img class="float_left" src="public/__STATIC__/images/man1.png"/>
+                <img class="float_left" src="/public__STATIC__/images/man1.png"/>
                 <div class="info float_left">
                     <h1>姓名：朱利叶斯-兰德尔</h1>
                     <h1>球队：新奥尔良 鹈鹕</h1>
@@ -247,7 +247,7 @@
                 <h2 class="float_right">26</h2>
             </li>
             <li class="float_left">
-                <img class="float_left" src="public/__STATIC__/images/man1.png"/>
+                <img class="float_left" src="/public__STATIC__/images/man1.png"/>
                 <div class="info float_left">
                     <h1>姓名：朱利叶斯-兰德尔</h1>
                     <h1>球队：新奥尔良 鹈鹕</h1>
@@ -256,7 +256,7 @@
                 <h2 class="float_right">26</h2>
             </li>
             <li class="float_left">
-                <img class="float_left" src="public/__STATIC__/images/man1.png"/>
+                <img class="float_left" src="/public__STATIC__/images/man1.png"/>
                 <div class="info float_left">
                     <h1>姓名：朱利叶斯-兰德尔</h1>
                     <h1>球队：新奥尔良 鹈鹕</h1>
@@ -265,7 +265,7 @@
                 <h2 class="float_right">26</h2>
             </li>
             <li class="float_left left_li">
-                <img class="float_left" src="public/__STATIC__/images/man1.png"/>
+                <img class="float_left" src="/public__STATIC__/images/man1.png"/>
                 <div class="info float_left">
                     <h1>姓名：朱利叶斯-兰德尔</h1>
                     <h1>球队：新奥尔良 鹈鹕</h1>
@@ -274,7 +274,7 @@
                 <h2 class="float_right">26</h2>
             </li>
             <li class="float_left">
-                <img class="float_left" src="public/__STATIC__/images/man1.png"/>
+                <img class="float_left" src="/public__STATIC__/images/man1.png"/>
                 <div class="info float_left">
                     <h1>姓名：朱利叶斯-兰德尔</h1>
                     <h1>球队：新奥尔良 鹈鹕</h1>
@@ -283,7 +283,7 @@
                 <h2 class="float_right">26</h2>
             </li>
             <li class="float_left">
-                <img class="float_left" src="public/__STATIC__/images/man1.png"/>
+                <img class="float_left" src="/public__STATIC__/images/man1.png"/>
                 <div class="info float_left">
                     <h1>姓名：朱利叶斯-兰德尔</h1>
                     <h1>球队：新奥尔良 鹈鹕</h1>
