@@ -18,6 +18,8 @@ ul,ol,li{
     list-style: none;
 }
 .bg{
+    min-width: 1280px;
+    overflow: hidden;
     background-image: url("../images/bg.png");
     background-size: auto 3769px;
 }
@@ -125,7 +127,7 @@ ul,ol,li{
 
 .bg .footer{
     /*width: 1200px;*/
-    height: 30px;
+    /*height: 30px;*/
 }
 .bg .footer .line{
     display: block;

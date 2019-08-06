@@ -24,7 +24,9 @@ class PlayerScore extends Controller
             "stageId"=>"17"
         ];
         $playerScoreRanking = getPlayerScoreRanking($playerScoreRankingArray);
-        $playerScoreRanking = json_decode($playerScoreRanking, true);
+        if($playerScoreRanking){
+            $playerScoreRanking = json_decode($playerScoreRanking, true);
+        }
         if($playerScoreRanking && $playerScoreRanking['code'] === 200){
             $playerScoreRankingList = $playerScoreRanking['data']['list'];
             $playerScoreRankingCount = $playerScoreRanking['data']['total'];

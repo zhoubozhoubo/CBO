@@ -1,0 +1,425 @@
+{include file="public/header"}
+<link rel="stylesheet" href="public/__STATIC__/css/data_statistics/index.css">
+<div class="content">
+    <img class="line" src="public/__STATIC__/images/line.png">
+    <!--数据统计-->
+    <div class="data_statistics" id="data_statistics">
+        <h1 class="left_line_title">数据统计</h1>
+        <div class="click bg_size cursor" onclick="queryDataStatistics()">点击查询</div>
+        <select class="select bg_color" id="city" onclick="selectCity()">
+            <option value="">不限</option>
+            <!--<option>北京1</option>
+            <option>北京2</option>
+            <option>北京3</option>-->
+        </select>
+        <p class="choose">城市</p>
+        <select class="select bg_color" id="province" onclick="selectProvince()">
+            <option value="">不限</option>
+            <!--<option>北京1</option>
+            <option>北京2</option>
+            <option>北京3</option>-->
+        </select>
+        <p class="choose">省份</p>
+        <select class="select bg_color" id="season_stage" onclick="selectSeasonStage()">
+            <option value="0">请选择</option>
+            <!--<option>北京1</option>
+            <option>北京2</option>
+            <option>北京3</option>-->
+        </select>
+        <p class="choose">赛季阶段</p>
+        <select class="select bg_color" id="competition_season" onclick="selectCompetitionSeason()">
+            <!--<option>北京1</option>
+            <option>北京2</option>
+            <option>北京3</option>-->
+        </select>
+        <p class="choose">赛季</p>
+        <div class="clear"></div>
+        <ul class="type_action float_right">
+            <li class="action"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="clear"></div>
+        <ul class="type float_right">
+            <li class="text_center float_left action"><span class="cursor" onclick="actionType(0)">得&nbsp;&nbsp;&nbsp;&nbsp;分</span></li>
+            <li class="text_center float_left"><span class="cursor" onclick="actionType(1)">篮&nbsp;&nbsp;&nbsp;&nbsp;板</span></li>
+            <li class="text_center float_left"><span class="cursor" onclick="actionType(2)">助&nbsp;&nbsp;&nbsp;&nbsp;攻</span></li>
+            <li class="text_center float_left"><span class="cursor" onclick="actionType(3)">抢&nbsp;&nbsp;&nbsp;&nbsp;断</span></li>
+            <li class="text_center float_left"><span class="cursor" onclick="actionType(4)">盖&nbsp;&nbsp;&nbsp;&nbsp;帽</span></li>
+        </ul>
+        <div class="clear"></div>
+        <ul class="list">
+            <!--<li class="float_left big">
+                <h3 class="number text_center">1</h3>
+                <img class="float_left" src="public/__STATIC__/images/man.png"/>
+                <h2 class="float_left">26</h2>
+                <div class="info float_left">
+                    <h1>姓名：朱利叶斯-兰德尔</h1>
+                    <h1>球队：新奥尔良 鹈鹕</h1>
+                    <h1>11 后卫/中锋</h1>
+                </div>
+            </li>
+            <li class="float_left big">
+                <h3 class="number text_center">2</h3>
+                <img class="float_left" src="public/__STATIC__/images/man.png"/>
+                <h2 class="float_left">26</h2>
+                <div class="info float_left">
+                    <h1>姓名：朱利叶斯-兰德尔</h1>
+                    <h1>球队：新奥尔良 鹈鹕</h1>
+                    <h1>11 后卫/中锋</h1>
+                </div>
+            </li>
+            <li class="float_left big">
+                <h3 class="number text_center">3</h3>
+                <img class="float_left" src="public/__STATIC__/images/man.png"/>
+                <h2 class="float_left">26</h2>
+                <div class="info float_left">
+                    <h1>姓名：朱利叶斯-兰德尔</h1>
+                    <h1>球队：新奥尔良 鹈鹕</h1>
+                    <h1>11 后卫/中锋</h1>
+                </div>
+            </li>
+            <li class="float_left big">
+                <h3 class="number text_center">3</h3>
+                <img class="float_left" src="public/__STATIC__/images/man.png"/>
+                <h2 class="float_left">26</h2>
+                <div class="info float_left">
+                    <h1>姓名：朱利叶斯-兰德尔</h1>
+                    <h1>球队：新奥尔良 鹈鹕</h1>
+                    <h1>11 后卫/中锋</h1>
+                </div>
+            </li>
+            <li class="float_left big">
+                <h3 class="number text_center">1</h3>
+                <img class="float_left" src="public/__STATIC__/images/man.png"/>
+                <h2 class="float_left">26</h2>
+                <div class="info float_left">
+                    <h1>姓名：朱利叶斯-兰德尔</h1>
+                    <h1>球队：新奥尔良 鹈鹕</h1>
+                    <h1>11 后卫/中锋</h1>
+                </div>
+            </li>
+            <li class="float_left big">
+                <h3 class="number text_center">2</h3>
+                <img class="float_left" src="public/__STATIC__/images/man.png"/>
+                <h2 class="float_left">26</h2>
+                <div class="info float_left">
+                    <h1>姓名：朱利叶斯-兰德尔</h1>
+                    <h1>球队：新奥尔良 鹈鹕</h1>
+                    <h1>11 后卫/中锋</h1>
+                </div>
+            </li>
+            <li class="float_left big">
+                <h3 class="number text_center">3</h3>
+                <img class="float_left" src="public/__STATIC__/images/man.png"/>
+                <h2 class="float_left">26</h2>
+                <div class="info float_left">
+                    <h1>姓名：朱利叶斯-兰德尔</h1>
+                    <h1>球队：新奥尔良 鹈鹕</h1>
+                    <h1>11 后卫/中锋</h1>
+                </div>
+            </li>
+            <li class="float_left big">
+                <h3 class="number text_center">3</h3>
+                <img class="float_left" src="public/__STATIC__/images/man.png"/>
+                <h2 class="float_left">26</h2>
+                <div class="info float_left">
+                    <h1>姓名：朱利叶斯-兰德尔</h1>
+                    <h1>球队：新奥尔良 鹈鹕</h1>
+                    <h1>11 后卫/中锋</h1>
+                </div>
+            </li>
+            <li class="float_left big">
+                <h3 class="number text_center">1</h3>
+                <img class="float_left" src="public/__STATIC__/images/man.png"/>
+                <h2 class="float_left">26</h2>
+                <div class="info float_left">
+                    <h1>姓名：朱利叶斯-兰德尔</h1>
+                    <h1>球队：新奥尔良 鹈鹕</h1>
+                    <h1>11 后卫/中锋</h1>
+                </div>
+            </li>
+            <li class="float_left big">
+                <h3 class="number text_center">2</h3>
+                <img class="float_left" src="public/__STATIC__/images/man.png"/>
+                <h2 class="float_left">26</h2>
+                <div class="info float_left">
+                    <h1>姓名：朱利叶斯-兰德尔</h1>
+                    <h1>球队：新奥尔良 鹈鹕</h1>
+                    <h1>11 后卫/中锋</h1>
+                </div>
+            </li>
+            <li class="float_left big">
+                <h3 class="number text_center">3</h3>
+                <img class="float_left" src="public/__STATIC__/images/man.png"/>
+                <h2 class="float_left">26</h2>
+                <div class="info float_left">
+                    <h1>姓名：朱利叶斯-兰德尔</h1>
+                    <h1>球队：新奥尔良 鹈鹕</h1>
+                    <h1>11 后卫/中锋</h1>
+                </div>
+            </li>
+            <li class="float_left big">
+                <h3 class="number text_center">3</h3>
+                <img class="float_left" src="public/__STATIC__/images/man.png"/>
+                <h2 class="float_left">26</h2>
+                <div class="info float_left">
+                    <h1>姓名：朱利叶斯-兰德尔</h1>
+                    <h1>球队：新奥尔良 鹈鹕</h1>
+                    <h1>11 后卫/中锋</h1>
+                </div>
+            </li>-->
+            <div class="line one"></div>
+            <div class="line two"></div>
+            <div class="line three"></div>
+            <div class="line four"></div>
+            <div class="line five"></div>
+            <div class="clear"></div>
+        </ul>
+        <div class="see_more text_center bg_color"></div>
+        <div class="page">
+            <ul>
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+{include file="public/footer"}
+
+<script src="public/__STATIC__/js/main.js"></script>
+<script>
+    let competitionSeasonList = ''
+    let seasonStageList = ''
+    let areaList = ''
+    let cityList = ''
+
+    let seasonId = ''
+    let stageId = ''
+    let provinceId = ''
+    let cityId = ''
+
+    $(function () {
+        getCompetitionSeason()
+    })
+
+    // 获取赛季
+    function getCompetitionSeason() {
+        $.ajax({
+            type: "GET",
+            url: "{:url('phone/index/getCompetitionSeason')}",
+            data: {},
+            dataType: "json",
+            success: function (data) {
+                competitionSeasonList = data
+                $('#competition_season').html('')
+                let str = '<option value="0">请选择</option>'
+                $.each(data, function (k, v) {
+                    str += '\n' +
+                        '            <option value="'+v.seasonId+'">'+v.seasonName+'</option>'
+                })
+                $('#competition_season').html(str)
+            }
+        })
+    }
+
+    // 选择赛季
+    function selectCompetitionSeason() {
+        seasonId = $('#competition_season option:selected') .val();
+        if(seasonId != 0){
+            getSeasonStage()
+        }else{
+            $('#season_stage').html('')
+            let str = '<option value="0">请选择</option>'
+            $('#season_stage').html(str)
+        }
+    }
+
+    // 获取赛季阶段
+    function getSeasonStage() {
+        $.ajax({
+            type: "GET",
+            url: "{:url('phone/index/getSeasonStage')}",
+            data: {seasonId: seasonId},
+            dataType: "json",
+            success: function (data) {
+                seasonStageList = data
+                $('#season_stage').html('')
+                let str = '<option value="0">请选择</option>'
+                $.each(data, function (k, v) {
+                    str += '\n' +
+                        '            <option value="'+v.stageId+'">'+v.stageName+'</option>'
+                })
+                $('#season_stage').html(str)
+            }
+        })
+    }
+
+    // 选择赛季阶段
+    function selectSeasonStage() {
+        stageId = $('#season_stage option:selected') .val();
+        if(seasonId != 0 && stageId != 0){
+            getArea()
+        }else{
+            $('#province').html('')
+            let str = '<option value="">不限</option>'
+            $('#province').html(str)
+        }
+    }
+
+    // 获取赛区
+    function getArea() {
+        $.ajax({
+            type: "GET",
+            url: "{:url('phone/index/getArea')}",
+            data: {seasonId: seasonId, stageId: stageId},
+            dataType: "json",
+            success: function (data) {
+                areaList = data
+                $('#province').html('')
+                let str = '<option value="">不限</option>'
+                $.each(data, function (k, v) {
+                    str += '\n' +
+                        '            <option value="'+v.areaId+'">'+v.areaName+'</option>'
+                })
+                $('#province').html(str)
+            }
+        })
+    }
+
+    // 选择省份
+    function selectProvince() {
+        provinceId = $('#province option:selected') .val();
+        if(provinceId != 0){
+            areaList.map((item)=>{
+                if(provinceId === item.areaId){
+                    cityList = item.childList
+                    $('#city').html('')
+                    let str = '<option value="">不限</option>'
+                    $.each(cityList, function (k, v) {
+                        str += '\n' +
+                            '            <option value="'+v.areaId+'">'+v.areaName+'</option>'
+                    })
+                    $('#city').html(str)
+                }
+            })
+        }else{
+            $('#city').html('')
+            let str = '<option value="">不限</option>'
+            $('#city').html(str)
+        }
+    }
+
+    // 选择市
+    function selectCity() {
+        cityId = $('#city option:selected') .val();
+    }
+
+    // 查询数据统计
+    function queryDataStatistics(){
+        if(seasonId == 0 && stageId == 0){
+            $("#competition_season").addClass('border_red')
+            $("#season_stage").addClass('border_red')
+        }else if(seasonId == 0 && stageId != 0){
+            $("#competition_season").addClass('border_red')
+            $("#season_stage").removeClass('border_red')
+        }else if(seasonId != 0 && stageId == 0){
+            $("#competition_season").removeClass('border_red')
+            $("#season_stage").addClass('border_red')
+        }else{
+            $("#competition_season").removeClass('border_red')
+            $("#season_stage").removeClass('border_red')
+            page = 1
+            getList()
+        }
+    }
+
+    let page = 1
+    let type = 'score'
+    let pages = {$player_type_statistics_pages}
+
+    $(function () {
+        getList()
+    })
+
+    //数据统计列表
+    function getList() {
+        $.ajax({
+            type: "GET",
+            url: "{:url('phone/data_statistics/index')}",
+            data: {
+                page:page,
+                type: type,
+                seasonId: seasonId,
+                stageId: stageId,
+                provinceId: provinceId,
+                cityId: cityId
+            },
+            dataType: "json",
+            success: function (data) {
+                $('.data_statistics .list').html('')
+                let str = ''
+                $.each(data.list, function (k, v) {
+                    str += '\n' +
+                        '            <li class="float_left big">\n' +
+                        '                <h3 class="number text_center">1</h3>\n' +
+                        '                <img class="float_left big_img" src="'+v.playerImage+'"/>\n' +
+                        '                <h2 class="float_left">'+v.score+'</h2>\n' +
+                        '                <div class="info float_left">\n' +
+                        '                    <h1>姓名：'+v.playerName+'</h1>\n' +
+                        '                    <h1>球队：'+v.teamName+'</h1>\n' +
+                        '                    <h1>'+v.jerseyNum+' '+v.location+'</h1>\n' +
+                        '                </div>\n' +
+                        '            </li>'
+                })
+                str += '\n' +
+                    '            <div class="line one"></div>\n' +
+                    '            <div class="line two"></div>\n' +
+                    '            <div class="line three"></div>\n' +
+                    '            <div class="line four"></div>\n' +
+                    '            <div class="line five"></div>\n' +
+                    '            <div class="clear"></div>'
+                $('.data_statistics .list').html(str)
+                seeBigImg()
+            }
+        })
+        changePage()
+        gotoDataStatisticsList()
+    }
+</script>
+<script>
+    function actionType(index){
+        $('.data_statistics .type li').removeClass('action')
+        $('.data_statistics .type_action li').removeClass('action')
+        $('.data_statistics .type li').eq(index).addClass('action')
+        $('.data_statistics .type_action li').eq(index).addClass('action')
+        switch (index) {
+            case 0:
+                type = 'score'
+                break
+            case 1:
+                type = 'r'
+                break
+            case 2:
+                type = 'a'
+                break
+            case 3:
+                type = 's'
+                break
+            case 4:
+                type = 'b'
+                break
+        }
+        page = 1
+        getList()
+    }
+</script>
+<script>
+    function gotoDataStatisticsList(){
+        setTimeout(function () {
+            $("html,body").animate({scrollTop: $("#data_statistics").offset().top}, 500)
+        }, 500 )
+    }
+</script>

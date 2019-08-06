@@ -1,0 +1,120 @@
+{include file="public/header"}
+<link rel="stylesheet" href="public/__STATIC__/css/player_score/index.css">
+<div class="content">
+    <img class="line" src="public/__STATIC__/images/line.png">
+    <!--球员积分榜-->
+    <div class="player_score_list" id="player_score_list">
+        <div class="table_head">
+            <div class="left">
+                <h1 class="rank">排名</h1>
+                <h1 class="team">球队</h1>
+                <h1 class="name">姓名</h1>
+                <h1 class="score">积分</h1>
+            </div>
+            <div class="right">
+                <h1 class="rank">排名</h1>
+                <h1 class="team">球队</h1>
+                <h1 class="name">姓名</h1>
+                <h1 class="score">积分</h1>
+            </div>
+        </div>
+        <ul class="player_list">
+            <!--<li class="left">
+            <h1 class="rank">1</h1>
+            <div class="team">
+            <img src="public/__STATIC__/images/teamlogo.png"/>
+            <h1>球队</h1>
+            </div>
+            <h1 class="name"><span class="cursor">BOLULU</span></h1>
+            <h1 class="score">70</h1>
+            <div class="none"></div>
+            </li>
+            <li class="right">
+            <div class="none"></div>
+            <h1 class="rank">1</h1>
+            <div class="team">
+            <img src="public/__STATIC__/images/teamlogo.png"/>
+            <h1>球队</h1>
+            </div>
+            <h1 class="name"><span class="cursor">BOLULU</span></h1>
+            <h1 class="score">70</h1>
+            </li>-->
+            <div class="line"></div>
+            <div class="level_line see_more"></div>
+            <div class="clear"></div>
+        </ul>
+        <div class="see_more bg_color"></div>
+        <div class="page">
+            <ul>
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+{include file="public/footer"}
+
+<script src="public/__STATIC__/js/main.js"></script>
+<script>
+    let page = 1
+    let pages = {$player_score_ranking_pages}
+
+    $(function () {
+        getList()
+    })
+
+    //球员积分排行
+    function getList() {
+        $.ajax({
+            type: "GET",
+            url: "{:url('phone/player_score/index')}",
+            data: {page: page},
+            dataType: "json",
+            success: function (data) {
+                $('.player_score_list .player_list').html('')
+                let str = ''
+                $.each(data, function (k, v) {
+                    if (k % 2 === 0) {
+                        str += '\n' +
+                            '            <li class="left">\n' +
+                            '                <h1 class="rank">' + v.ranking + '</h1>\n' +
+                            '                <div class="team">\n' +
+                            '                        <img src="' + v.teamLogo + '" class="big_img"/>\n' +
+                            '                        <h1>' + v.teamName + '</h1>\n' +
+                            '                </div>\n' +
+                            '                <h1 class="name"><a href="{:url(\'/phone/player_score/details\')}?userId='+v.userId+'">' + v.playerName + '</a></h1>\n' +
+                            '                <h1 class="score">' + v.point + '</h1>\n' +
+                            '                <div class="none"></div>\n' +
+                            '            </li>'
+                    } else {
+                        str += '\n' +
+                            '            <li class="right">\n' +
+                            '                <div class="none"></div>\n' +
+                            '                <h1 class="rank">' + v.ranking + '</h1>\n' +
+                            '                <div class="team">\n' +
+                            '                    <img src="' + v.teamLogo + '" class="big_img"/>\n' +
+                            '                    <h1>' + v.teamName + '</h1>\n' +
+                            '                </div>\n' +
+                            '                <h1 class="name"><a href="{:url(\'/phone/player_score/details\')}?userId='+v.userId+'">' + v.playerName + '</a></h1>\n' +
+                            '                <h1 class="score">' + v.point + '</h1>\n' +
+                            '            </li>'
+                    }
+                })
+                str += '<div class="line"></div>\n' +
+                    '            <div class="level_line see_more"></div>\n' +
+                    '            <div class="clear"></div>'
+                $('.player_score_list .player_list').html(str)
+                seeBigImg()
+            }
+        })
+        changePage()
+        gotoPlayerScoreList()
+    }
+</script>
+<script>
+    function gotoPlayerScoreList(){
+        setTimeout(function () {
+            $("html,body").animate({scrollTop: $("#player_score_list").offset().top}, 500)
+        }, 500 )
+    }
+</script>

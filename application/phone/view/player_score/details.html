@@ -1,0 +1,190 @@
+{include file="public/header"}
+<link rel="stylesheet" href="public/__STATIC__/css/player_score/details.css">
+<div class="content">
+    <img class="line" src="public/__STATIC__/images/line.png">
+    <!--球员积分-->
+    <div class="player_score" id="player_score">
+        {if condition='$player_team_statistics_list == [] '}
+        <div class="see_more text_center bg_color">暂无数据</div>
+        {else}
+        <h1 class="left_line_title">姓名：{$player_team_statistics_list[0]['playerName']}&nbsp;&nbsp;&nbsp;&nbsp;球队：{$player_team_statistics_list[0]['teamName']}</h1>
+        <ul class="list">
+            <li class="bg_color">
+                <h1>对阵</h1>
+                <h1>号码</h1>
+                <h1>场数</h1>
+                <h1>得分</h1>
+                <h1>两分(率)</h1>
+                <h1>三分(率)</h1>
+                <h1>罚球(率)</h1>
+                <h1>篮板(前/后)</h1>
+                <h1>扣篮</h1>
+                <h1>盖帽</h1>
+                <h1>抢断</h1>
+                <h1>助攻</h1>
+                <h1>犯规</h1>
+                <h1>被侵</h1>
+                <h1>失误</h1>
+            </li>
+            {volist name="player_team_statistics_list" id="vo"}
+            <li>
+                <h1>{$vo.vsTeamName}</h1>
+                <h1>{$vo.jerseyNum}</h1>
+                <h1>15</h1>
+                <h1>{$vo.score}</h1>
+                <h1>{$vo.yratio}</h1>
+                <h1>{$vo.y3Ratio}</h1>
+                <h1>{$vo.y1Ratio}</h1>
+                <h1>{$vo.r0}/{$vo.r}</h1>
+                <h1>{$vo.d}</h1>
+                <h1>{$vo.b}</h1>
+                <h1>{$vo.s}</h1>
+                <h1>{$vo.a}</h1>
+                <h1>{$vo.bi}</h1>
+                <h1>{$vo.p}</h1>
+                <h1>{$vo.t}</h1>
+            </li>
+            {/volist}
+            <!--<li>
+                <h1>芝加哥公牛vs快船</h1>
+                <h1>7</h1>
+                <h1>1</h1>
+                <h1>15</h1>
+                <h1>0</h1>
+                <h1>50</h1>
+                <h1>100</h1>
+                <h1>10</h1>
+                <h1>6</h1>
+                <h1>0</h1>
+                <h1>1</h1>
+                <h1>3</h1>
+                <h1>0</h1>
+                <h1>3</h1>
+                <h1>1</h1>
+            </li>-->
+        </ul>
+        <div class="clear"></div>
+        <div class="see_more text_center bg_color cursor" onclick="seeMore()">查看更多</div>
+        {/if}
+    </div>
+    <div class="clear"></div>
+</div>
+{include file="public/footer"}
+
+<script src="public/__STATIC__/js/main.js"></script>
+<script>
+    $(function () {
+        let list = {$player_team_statistics_count}
+
+        if (list > 0) {
+            gotoPlayerScoreList()
+        } else {
+            gotoTableBar()
+        }
+
+    })
+</script>
+<script>
+    let page = 1
+    let pages = {$player_team_statistics_pages}
+
+    let userId = {$user_id}
+
+    if (pages === 1) {
+        $('.see_more').addClass('hide')
+    }
+
+    function seeMore() {
+        if (page < pages) {
+            $.ajax({
+                type: "GET",
+                url: "{:url('phone/player_score/details')}",
+                data: {page: ++page, userId: userId},
+                dataType: "json",
+                success: function (data) {
+                    let str = ''
+                    $.each(data, function(k, v){
+                        str += '\n' +
+                            '            <li>\n' +
+                            '                <h1>'+v.vsTeamName+'</h1>\n' +
+                            '                <h1>'+v.jerseyNum+'</h1>\n' +
+                            '                <h1>15</h1>\n' +
+                            '                <h1>'+v.score+'</h1>\n' +
+                            '                <h1>'+v.yratio+'</h1>\n' +
+                            '                <h1>'+v.y3Ratio+'</h1>\n' +
+                            '                <h1>'+v.y1Ratio+'</h1>\n' +
+                            '                <h1>'+v.r0+'/'+v.r+'</h1>\n' +
+                            '                <h1>'+v.d+'</h1>\n' +
+                            '                <h1>'+v.b+'</h1>\n' +
+                            '                <h1>'+v.s+'</h1>\n' +
+                            '                <h1>'+v.a+'</h1>\n' +
+                            '                <h1>'+v.bi+'</h1>\n' +
+                            '                <h1>'+v.p+'</h1>\n' +
+                            '                <h1>'+v.t+'</h1>\n' +
+                            '            </li>'
+                    })
+                    $('.player_score .list').append(str)
+                    if(page === pages){
+                        $('.see_more').addClass('hide')
+                    }
+                }
+            })
+            gotoPlayerScoreList()
+        }
+
+    }
+
+    //球员积分排行
+    /*function getList() {
+        $.ajax({
+            type: "GET",
+            url: "{:url('phone/player_score/details')}",
+            data: {page: page,userId: userId},
+            dataType: "json",
+            success: function (data) {
+                /!*$('.player_score_list .player_list').html('')
+                let str = ''
+                $.each(data, function (k, v) {
+                    if (k % 2 === 0) {
+                        str += '\n' +
+                            '            <li class="left">\n' +
+                            '                <h1 class="rank">' + v.ranking + '</h1>\n' +
+                            '                <div class="team">\n' +
+                            '                        <img src="' + v.teamLogo + '" class="big_img"/>\n' +
+                            '                        <h1>' + v.teamName + '</h1>\n' +
+                            '                </div>\n' +
+                            '                <h1 class="name"><a href="{:url(\'/phone/player_score/details\')}?userId='+v.userId+'">' + v.playerName + '</a></h1>\n' +
+                            '                <h1 class="score">' + v.point + '</h1>\n' +
+                            '                <div class="none"></div>\n' +
+                            '            </li>'
+                    } else {
+                        str += '\n' +
+                            '            <li class="right">\n' +
+                            '                <div class="none"></div>\n' +
+                            '                <h1 class="rank">' + v.ranking + '</h1>\n' +
+                            '                <div class="team">\n' +
+                            '                    <img src="' + v.teamLogo + '" class="big_img"/>\n' +
+                            '                    <h1>' + v.teamName + '</h1>\n' +
+                            '                </div>\n' +
+                            '                <h1 class="name"><a href="{:url(\'/phone/player_score/details\')}?userId='+v.userId+'">' + v.playerName + '</a></h1>\n' +
+                            '                <h1 class="score">' + v.point + '</h1>\n' +
+                            '            </li>'
+                    }
+                })
+                str += '<div class="line"></div>\n' +
+                    '            <div class="level_line see_more"></div>\n' +
+                    '            <div class="clear"></div>'
+                $('.player_score_list .player_list').html(str)*!/
+            }
+        })
+        changePage()
+        gotoPlayerScoreList()
+    }*/
+</script>
+<script>
+    function gotoPlayerScoreList(){
+        setTimeout(function () {
+            $("html,body").animate({scrollTop: $("#player_score").offset().top}, 500)
+        }, 500 )
+    }
+</script>

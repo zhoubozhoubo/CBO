@@ -1,0 +1,66 @@
+{include file="public/header"}
+<link rel="stylesheet" href="public/__STATIC__/css/wonderful_img/index.css">
+<div class="content">
+    <img class="line" src="public/__STATIC__/images/line.png">
+    <!--精彩图集-->
+    <div class="wonderful_img">
+        <h1 class="left_line_title">精彩图集</h1>
+        <ul class="list">
+            {volist name="wonderful_img_list" id="vo"}
+            <li>
+                <div class="image bg_color">
+                    <a href="{:url('phone/wonderful_img/date')}?date={$vo.date}"><img src="{$vo.img}"/></a>
+                </div>
+                <div class="text">
+                    <h2 class="title"><a href="{:url('phone/wonderful_img/date')}?date={$vo.date}"><img src="public/__STATIC__/images/listicon.png" />{$vo.title}</a></h2>
+                </div>
+            </li>
+            {/volist}
+        </ul>
+        <div class="clear"></div>
+        <div class="see_more text_center bg_color cursor" onclick="seeMore()">查看更多</div>
+    </div>
+    <div class="clear"></div>
+</div>
+{include file="public/footer"}
+
+<script>
+    let page = 1
+    let pages = {$wonderful_img_pages}
+
+    if(pages === 1){
+        $('.see_more').addClass('hide')
+    }
+
+    function seeMore() {
+        if(page < pages){
+            $.ajax({
+                type: "GET",
+                url: "{:url('phone/wonderful_img/index')}",
+                data: {page: ++page},
+                dataType: "json",
+                success: function (data) {
+                    let str = ''
+                    $.each(data, function(k, v){
+                        str += '\n' +
+                            '            <li>\n' +
+                            '                <div class="image bg_color">\n' +
+                            '                    <a href="{:url(\'phone/wonderful_img/date\')}?date='+v.date+'"><img src="'+v.img+'" class="big_img"/></a>\n' +
+                            '                </div>\n' +
+                            '                <div class="text">\n' +
+                            '                    <h2 class="title"><a href="{:url(\'phone/wonderful_img/date\')}?date='+v.date+'">'+v.title+'</a></h2>\n' +
+                            '                </div>\n' +
+                            '            </li>'
+                    })
+                    console.log(str)
+                    $('.wonderful_img .list').append(str)
+                    if(page === pages){
+                       $('.see_more').addClass('hide')
+                    }
+                    seeBigImg()
+                }
+            })
+        }
+
+    }
+</script>

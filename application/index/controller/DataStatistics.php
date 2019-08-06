@@ -37,7 +37,10 @@ class DataStatistics extends Controller
             "type" => $type
         ];
         $playerTypeStatistics = getPlayerTypeStatistics($playerScoreRankingArray);
-        $playerTypeStatistics = json_decode($playerTypeStatistics, true);
+        if($playerTypeStatistics){
+            $playerTypeStatistics = json_decode($playerTypeStatistics, true);
+        }
+
         if ($playerTypeStatistics && $playerTypeStatistics['code'] === 200) {
             $playerTypeStatisticsList = $playerTypeStatistics['data']['list'];
             $playerTypeStatisticsCount = $playerTypeStatistics['data']['total'];

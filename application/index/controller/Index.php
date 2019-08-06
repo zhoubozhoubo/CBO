@@ -49,7 +49,10 @@ class Index extends Controller {
             "type" => $type
         ];
         $playerTypeStatistics = getPlayerTypeStatistics($playerScoreRankingArray);
-        $playerTypeStatistics = json_decode($playerTypeStatistics, true);
+        if($playerTypeStatistics){
+            $playerTypeStatistics = json_decode($playerTypeStatistics, true);
+        }
+
         if ($playerTypeStatistics && $playerTypeStatistics['code'] === 200) {
             $playerTypeStatisticsList = $playerTypeStatistics['data']['list'];
         } else {
@@ -65,7 +68,9 @@ class Index extends Controller {
             "stageId"=>"17"
         ];
         $playerScoreRanking = getPlayerScoreRanking($playerScoreRankingArray);
-        $playerScoreRanking = json_decode($playerScoreRanking, true);
+        if($playerScoreRanking){
+            $playerScoreRanking = json_decode($playerScoreRanking, true);
+        }
         if($playerScoreRanking && $playerScoreRanking['code'] === 200){
             $playerScoreRankingList = $playerScoreRanking['data']['list'];
         }else{
@@ -89,7 +94,9 @@ class Index extends Controller {
      */
     public function getCompetitionSeason(){
         $competitionSeason = getCompetitionSeason();
-        $competitionSeason = json_decode($competitionSeason, true);
+        if($competitionSeason){
+            $competitionSeason = json_decode($competitionSeason, true);
+        }
         if ($competitionSeason && $competitionSeason['code'] === 200) {
             $competitionSeasonList = $competitionSeason['data'];
         }else{
@@ -108,7 +115,9 @@ class Index extends Controller {
             "seasonId"=> $seasonId
         ];
         $seasonStage = getSeasonStage($seasonStageArray);
-        $seasonStage = json_decode($seasonStage, true);
+        if($seasonStage){
+            $seasonStage = json_decode($seasonStage, true);
+        }
         if ($seasonStage && $seasonStage['code'] === 200) {
             $seasonStageList = $seasonStage['data'];
         }else{
@@ -129,7 +138,9 @@ class Index extends Controller {
             "stageId"=>$stageId
         ];
         $area = getArea($areaArray);
-        $area = json_decode($area, true);
+        if($area){
+            $area = json_decode($area, true);
+        }
         if ($area && $area['code'] === 200) {
             $areaList = $area['data'];
         }else{

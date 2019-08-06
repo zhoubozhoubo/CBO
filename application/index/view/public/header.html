@@ -55,7 +55,12 @@
 <script>
     // 400 * 170 => 400 / 170 = width / height => height = 400 / 170 * width
     var width = window.screen.width;
-    var height = width * 170 / 400;
+    if(width < 1280){
+        var height = 1280 * 853 / 2000;
+    }else{
+        var height = width * 853 / 2000;
+    }
+
 
     document.querySelector('#swiper-container').style.height = height + 'px';
 

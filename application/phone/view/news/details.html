@@ -1,0 +1,16 @@
+{include file="public/header"}
+<link rel="stylesheet" href="public/__STATIC__/css/news/details.css">
+<div class="content">
+    <img class="line" src="public/__STATIC__/images/line.png">
+    <!--新闻详情-->
+    <div class="details">
+        <h1 class="left_line_title">{$news.title}</h1>
+        <div class="ql-editor">
+            {$news.content}
+        </div>
+        <p class="author text_right">{$news.author}</p>
+        <p class="date text_right">{$news.date}</p>
+    </div>
+    <div class="clear"></div>
+</div>
+{include file="public/footer"}
