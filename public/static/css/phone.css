@@ -1,0 +1,166 @@
+/*all*/
+.phone_font_size_1-1{
+    font-size: 1.1rem!important;
+}
+.phone_font_size_1-2{
+    font-size: 1.2rem!important;
+}
+.phone_font_size_1-4{
+    font-size: 1.4rem!important;
+}
+.phone_font_size_1-6{
+    font-size: 1.6rem!important;
+}
+.phone_font_size_2{
+    font-size: 2rem!important;
+}
+
+/*index*/
+.content .about .about_left h1,
+.content .about .about_left h2,
+.content .about .about_left h3,
+.content .about .about_left h4,
+.content .about .about_left h5,
+.content .about .about_left h6
+{
+    font-size: 1.6rem!important;
+}
+.content .about {
+    height: 251px!important;
+}
+.content .about .about_left p{
+    font-size: 1.4rem!important;
+}
+.content .message .info li {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.content .message .info .more_icon{
+    width: 20px!important;
+    height: 20px!important;
+}
+.content .wonderful_images .image_title{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.content .wonderful_images .image_title .image_title_icon{
+    width: 15px!important;
+    height: 15px!important;
+}
+.content .wonderful_images .more_icon{
+    width: 20px!important;
+    height: 20px!important;
+}
+.content .team_situation .select{
+    font-size: 1.2rem!important;
+}
+.content .player_score .list .phone_list *{
+    font-size: 1.2rem!important;
+}
+.content .player_score .list li a{
+    float: none;
+}
+.content .data_statistics .list .big .info h1{
+    font-size: 1.1rem!important;
+}
+.content .data_statistics .float_left .info{
+    width: 108px!important;
+}
+.content .data_statistics .list li .info h1{
+    font-size: 1.1rem!important;
+}
+
+/*match_synopsis*/
+.content .synopsis .ql-editor h1,
+.content .synopsis .ql-editor h2,
+.content .synopsis .ql-editor h3,
+.content .synopsis .ql-editor h4,
+.content .synopsis .ql-editor h5,
+.content .synopsis .ql-editor h6
+{
+    font-size: 2rem!important;
+}
+.content .synopsis .ql-editor p{
+    font-size: 1.6rem!important;
+}
+
+/*message*/
+.content .details .ql-editor p{
+    font-size: 1.6rem!important;
+}
+.content .details .author{
+    font-size: 1.6rem!important;
+}
+.content .details .date{
+    font-size: 1.6rem!important;
+}
+
+/*news*/
+.content .news .list li .text .title{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.content .news .big .one .title img{
+    margin-top: 15px!important;
+}
+.content .news .big .two .title img{
+    margin-top: 12px!important;
+}
+.content .news .big .three .title img{
+    margin-top: 12px!important;
+}
+.content .news .big .title{
+    line-height: 40px!important;
+}
+
+/*competition_rules*/
+.content .competition_rules .second_bar{
+    width: 1200px!important;
+}
+.content .competition_rules .second_bar li{
+    width: 220px!important;
+}
+.content .competition_rules .match_time_address .match_time li .content{
+    margin-top: 10px;
+}
+.content .competition_rules .eligibility .eligibility_list li{
+    margin-top: 15px;
+}
+
+/*player_score_list*/
+.content .player_score_list .player_list .left .team h1{
+    max-width: 80px!important;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.content .player_score_list .player_list .right .team h1{
+    max-width: 80px!important;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.content .player_score_list .page ul li{
+    font-size: 1.6rem!important;
+}
+.content .player_score .list li h1{
+    font-size: 1.6rem!important;
+}
+
+/*files*/
+.content .files .search .search_input{
+    font-size: 1.6rem!important;
+}
+.content .files .list li .time{
+    margin-right: 240px!important;
+}
+
+
+
+
+
+
+

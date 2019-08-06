@@ -7,10 +7,10 @@
         <h1 class="left_line_title">公告</h1>
         <ul class="list">
             {volist name="message_list" id="vo"}
-            <li><a href="{:url('/phone/message/details')}?id={$vo.id}">{$vo.title}</a><span class="time">{$vo.date}</span></li>
+            <li><a href="{:url('/phone/message/details')}?id={$vo.id}" class="phone_font_size_1-6">{$vo.title}</a><span class="time phone_font_size_1-6">{$vo.date}</span></li>
             {/volist}
         </ul>
-        <div class="see_more text_center bg_color cursor" onclick="seeMore()">查看更多</div>
+        <div class="see_more text_center bg_color cursor phone_font_size_1-6" onclick="seeMore()">查看更多</div>
     </div>
     <div class="clear"></div>
 </div>
@@ -34,7 +34,7 @@
                 success: function (data) {
                     let str = ''
                     $.each(data, function(k, v){
-                        str += '<li><a href="{:url(\'/phone/message/details\')}?id='+v.id+'">'+v.title+'</a><span class="time">'+v.date+'</span></li>'
+                        str += '<li><a href="{:url(\'/phone/message/details\')}?id='+v.id+'" class="phone_font_size_1-6">'+v.title+'</a><span class="time phone_font_size_1-6">'+v.date+'</span></li>'
                     })
                     console.log(str)
                     $('.message .list').append(str)

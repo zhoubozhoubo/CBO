@@ -15,7 +15,7 @@
         </div>
         <div class="about_right">
             <img class="logo" src="/public__STATIC__/images/logo.png">
-            <div class="details bg_size cursor"><a href="/phone/match_synopsis">详&nbsp;&nbsp;&nbsp;&nbsp;情</a></div>
+            <div class="details bg_size cursor"><a href="/phone/match_synopsis" class="phone_font_size_1-4">详&nbsp;&nbsp;&nbsp;&nbsp;情</a></div>
         </div>
     </div>
     <img class="line" src="/public__STATIC__/images/line.png">
@@ -27,23 +27,23 @@
             </div>
         </div>
         <div class="info">
-            <h1 class="title bg_color">新闻动态</h1>
+            <h1 class="title bg_color phone_font_size_1-6">新闻动态</h1>
             <ul>
                 {volist name="news_list" id="vo"}
-                <li><a href="{:url('/phone/news/details')}?id={$vo.id}">{$vo.title}</a></li>
+                <li><a href="{:url('/phone/news/details')}?id={$vo.id}" class="phone_font_size_1-4">{$vo.title}</a></li>
                 {/volist}
             </ul>
-            <p class="more cursor"><a href="{:url('phone/news/index')}">更多<img class="more_icon" src="/public__STATIC__/images/pageright.png"></a></p>
+            <p class="more cursor"><a href="{:url('phone/news/index')}" class="phone_font_size_1-4">更多<img class="more_icon" src="/public__STATIC__/images/pageright.png"></a></p>
         </div>
         <div class="vertical_line"></div>
         <div class="info">
-            <h1 class="title bg_color">官方消息</h1>
+            <h1 class="title bg_color phone_font_size_1-6">官方消息</h1>
             <ul>
                 {volist name="message_list" id="vo"}
-                <li><a href="{:url('/phone/message/details')}?id={$vo.id}">{$vo.title}</a></li>
+                <li><a href="{:url('/phone/message/details')}?id={$vo.id}" class="phone_font_size_1-4">{$vo.title}</a></li>
                 {/volist}
             </ul>
-            <p class="more cursor"><a href="{:url('phone/message/index')}">更多<img class="more_icon" src="/public__STATIC__/images/pageright.png"></a></p>
+            <p class="more cursor"><a href="{:url('phone/message/index')}" class="phone_font_size_1-4">更多<img class="more_icon" src="/public__STATIC__/images/pageright.png"></a></p>
         </div>
     </div>
     <div class="clear"></div>
@@ -53,67 +53,68 @@
         {if condition = 'count($wonderful_img_list) > 0' }
         <div class="image image_one float_left bg_color over_hide">
             <a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[0]['date']}"><img src="{$wonderful_img_list[0]['img']}" class="big_img"/></a>
-            <p class="image_title"><img class="image_title_icon" src="/public__STATIC__/images/listicongray.png"/><a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[0]['date']}">{$wonderful_img_list[0]['title']}</a></p>
+            <p class="image_title"><img class="image_title_icon" src="/public__STATIC__/images/listicongray.png"/><a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[0]['date']}" class="phone_font_size_1-4">{$wonderful_img_list[0]['title']}</a></p>
         </div>
         {/if}
         {if condition = 'count($wonderful_img_list) > 1' }
         <div class="image image_two float_left bg_color over_hide">
             <a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[1]['date']}"><img src="{$wonderful_img_list[1]['img']}" class="big_img"/></a>
-            <p class="image_title"><img class="image_title_icon" src="/public__STATIC__/images/listicongray.png"/><a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[1]['date']}">{$wonderful_img_list[1]['title']}</a></p>
+            <p class="image_title"><img class="image_title_icon" src="/public__STATIC__/images/listicongray.png"/><a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[1]['date']}" class="phone_font_size_1-4">{$wonderful_img_list[1]['title']}</a></p>
         </div>
         {/if}
         {if condition = 'count($wonderful_img_list) > 2' }
         <div class="image image_three float_left bg_color over_hide">
             <a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[2]['date']}"><img src="{$wonderful_img_list[2]['img']}" class="big_img"/></a>
-            <p class="image_title"><img class="image_title_icon" src="/public__STATIC__/images/listicongray.png"/><a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[2]['date']}">{$wonderful_img_list[2]['title']}</a></p>
+            <p class="image_title"><img class="image_title_icon" src="/public__STATIC__/images/listicongray.png"/><a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[2]['date']}" class="phone_font_size_1-4">{$wonderful_img_list[2]['title']}</a></p>
         </div>
         {/if}
         {if condition = 'count($wonderful_img_list) > 3' }
         <div class="image image_four float_left bg_color over_hide">
             <a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[3]['date']}"><img src="{$wonderful_img_list[3]['img']}" class="big_img"/></a>
-            <p class="image_title"><img class="image_title_icon" src="/public__STATIC__/images/listicongray.png"/><a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[3]['date']}">{$wonderful_img_list[3]['title']}</a></p>
+            <p class="image_title"><img class="image_title_icon" src="/public__STATIC__/images/listicongray.png"/><a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[3]['date']}" class="phone_font_size_1-4">{$wonderful_img_list[3]['title']}</a></p>
         </div>
         {/if}
         {if condition = 'count($wonderful_img_list) > 4' }
         <div class="image image_five float_left bg_color over_hide">
             <a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[4]['date']}"><img src="{$wonderful_img_list[4]['img']}" class="big_img"/></a>
-            <p class="image_title"><img class="image_title_icon" src="/public__STATIC__/images/listicongray.png"/><a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[4]['date']}">{$wonderful_img_list[4]['title']}</a></p>
+            <p class="image_title"><img class="image_title_icon" src="/public__STATIC__/images/listicongray.png"/><a href="{:url('phone/wonderful_img/date')}?date={$wonderful_img_list[4]['date']}" class="phone_font_size_1-4">{$wonderful_img_list[4]['title']}</a></p>
         </div>
         {/if}
-        <p class="more cursor"><a href="{:url('phone/wonderful_img/index')}">更多<img class="more_icon" src="/public__STATIC__/images/pageright.png"></a></p>
+        <p class="more cursor"><a href="{:url('phone/wonderful_img/index')}" class="phone_font_size_1-4">更多<img class="more_icon" src="/public__STATIC__/images/pageright.png"></a></p>
     </div>
     <div class="clear"></div>
     <!--球队战况-->
     <div class="team_situation">
         <h1 class="left_line_title">球队战况</h1>
-        <div class="click bg_size cursor" onclick="queryTeamStatistics()">点击查询</div>
+        <div class="clear"></div>
+        <div class="click bg_size cursor phone_font_size_1-4" onclick="queryTeamStatistics()">点击查询</div>
         <select class="select bg_color" id="team_city" onclick="selectTeamCity()">
             <option value="0">请选择</option>
             <!--<option>北京1</option>
             <option>北京2</option>
             <option>北京3</option>-->
         </select>
-        <p class="choose">选择城市</p>
+        <p class="choose phone_font_size_1-4">选择城市</p>
         <select class="select bg_color" id="team_province" onclick="selectTeamProvince()">
             <option value="0">请选择</option>
             <!--<option>北京1</option>
             <option>北京2</option>
             <option>北京3</option>-->
         </select>
-        <p class="choose">选择省份</p>
+        <p class="choose phone_font_size_1-4">选择省份</p>
         <select class="select bg_color" id="team_season_stage" onclick="selectTeamSeasonStage()">
             <option value="0">请选择</option>
             <!--<option>北京1</option>
             <option>北京2</option>
             <option>北京3</option>-->
         </select>
-        <p class="choose">选择赛季阶段</p>
+        <p class="choose phone_font_size_1-4">选择赛季阶段</p>
         <select class="select bg_color" id="team_competition_season" onclick="selectTeamCompetitionSeason()">
             <!--<option>北京1</option>
             <option>北京2</option>
             <option>北京3</option>-->
         </select>
-        <p class="choose">选择赛季</p>
+        <p class="choose phone_font_size_1-4">选择赛季</p>
         <div class="clear"></div>
         <div class="situation_data text_center">
             <img class="big_img" src="/public__STATIC__/images/banner.png" />
@@ -166,11 +167,11 @@
         </ul>
         <div class="clear"></div>
         <ul class="type">
-            <li class="text_center float_left action"><span class="cursor" onclick="actionType(0)">得&nbsp;&nbsp;&nbsp;&nbsp;分</span></li>
-            <li class="text_center float_left"><span class="cursor" onclick="actionType(1)">篮&nbsp;&nbsp;&nbsp;&nbsp;板</span></li>
-            <li class="text_center float_left"><span class="cursor" onclick="actionType(2)">助&nbsp;&nbsp;&nbsp;&nbsp;攻</span></li>
-            <li class="text_center float_left"><span class="cursor" onclick="actionType(3)">抢&nbsp;&nbsp;&nbsp;&nbsp;断</span></li>
-            <li class="text_center float_left"><span class="cursor" onclick="actionType(4)">盖&nbsp;&nbsp;&nbsp;&nbsp;帽</span></li>
+            <li class="text_center float_left action"><span class="cursor phone_font_size_1-4" onclick="actionType(0)">得&nbsp;&nbsp;&nbsp;&nbsp;分</span></li>
+            <li class="text_center float_left"><span class="cursor phone_font_size_1-4" onclick="actionType(1)">篮&nbsp;&nbsp;&nbsp;&nbsp;板</span></li>
+            <li class="text_center float_left"><span class="cursor phone_font_size_1-4" onclick="actionType(2)">助&nbsp;&nbsp;&nbsp;&nbsp;攻</span></li>
+            <li class="text_center float_left"><span class="cursor phone_font_size_1-4" onclick="actionType(3)">抢&nbsp;&nbsp;&nbsp;&nbsp;断</span></li>
+            <li class="text_center float_left"><span class="cursor phone_font_size_1-4" onclick="actionType(4)">盖&nbsp;&nbsp;&nbsp;&nbsp;帽</span></li>
         </ul>
         <div class="clear"></div>
         <ul class="list">
@@ -296,32 +297,32 @@
             <div class="line three"></div>
             <div class="clear"></div>
         </ul>
-        <div class="see_more text_center bg_color cursor" onclick="seeMoreDataStatistics()">查看更多</div>
+        <div class="see_more text_center bg_color cursor phone_font_size_1-4" onclick="seeMoreDataStatistics()">查看更多</div>
     </div>
     <!--球员积分排名（全国）-->
     <div class="player_score float_right">
         <h1 class="left_line_title">球员积分排名(全国)</h1>
         <div class="head">
-            <h1 class="rank float_left text_center">排名</h1>
-            <h1 class="team float_left text_center">球队</h1>
-            <h1 class="name float_left text_center">姓名</h1>
-            <h1 class="score float_left text_center">积分</h1>
+            <h1 class="rank float_left text_center phone_font_size_1-4">排名</h1>
+            <h1 class="team float_left text_center phone_font_size_1-4">球队</h1>
+            <h1 class="name float_left text_center phone_font_size_1-4">姓名</h1>
+            <h1 class="score float_left text_center phone_font_size_1-4">积分</h1>
             <div class="clear"></div>
         </div>
         <ul class="list">
             {volist name="player_score_ranking_list" id="vo"}
-            <li>
-                <h1 class="rank text_center">{$vo.ranking}</h1>
+            <li class="phone_list">
+                <h1 class="rank text_center phone_font_size_1-4">{$vo.ranking}</h1>
                 <div class="team">
                     <img src="{$vo.teamLogo}" class="big_img"/>
-                    <h1 class="team text_center">{$vo.teamName}</h1>
+                    <h1 class="team text_center phone_font_size_1-4">{$vo.teamName}</h1>
                 </div>
-                <h1 class="name text_center"><a href="{:url('/phone/player_score/details')}?userId={$vo.userId}">{$vo.playerName}</a></h1>
-                <h1 class="score text_center">{$vo.point}</h1>
+                <h1 class="name text_center phone_font_size_1-4"><a href="{:url('/phone/player_score/details')}?userId={$vo.userId}">{$vo.playerName}</a></h1>
+                <h1 class="score text_center phone_font_size_1-4">{$vo.point}</h1>
             </li>
             {/volist}
         </ul>
-        <div class="see_more text_center bg_color cursor" onclick="seeMorePlayerScore()">查看更多</div>
+        <div class="see_more text_center bg_color cursor phone_font_size_1-4" onclick="seeMorePlayerScore()">查看更多</div>
     </div>
     <div class="clear"></div>
 </div>

@@ -73,6 +73,9 @@
 .content .player_score_list .player_list .left .team{
     width: 30%;
     text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .content .player_score_list .player_list .left .team img{
     float: left;

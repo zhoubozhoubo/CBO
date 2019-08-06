@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Index</title>
     <link rel="stylesheet" href="/public__STATIC__/css/main.css">
+    <link rel="stylesheet" href="/public__STATIC__/css/phone.css">
     <link rel="stylesheet" href="/public__STATIC__/css/quill.snow.css">
     <link rel="stylesheet" href="/public__STATIC__/css/swiper/normal.css">
     <link rel="stylesheet" href="/public__STATIC__/css/swiper/swiper.min.css">
@@ -11,6 +12,7 @@
     <script src="/public__STATIC__/js/jquery.min.js" charset="utf-8"></script>
     <script src="/public__STATIC__/js/jquery.nicescroll.js"></script>
     <script src="/public__STATIC__/js/swiper/swiper.min.js"></script>
+    <meta content="width=device-width, initial-scale=0.1, maximum-scale=0.1, user-scalable=0;" name="viewport" />
 </head>
 <style>
     .ql-editor {
@@ -21,8 +23,8 @@
 <div class="bg">
     <div class="header">
         <div class="title_div">
-            <h1 class="title">中国篮球公开赛<span> (CHINA BASKETBALL OPEN)</span></h1>
-            <div class="sign_up bg_size cursor"><a href="{:url('/phone/competition_rules/index')}" onclick="goToSignUp()">我要报名</a></div>
+            <h1 class="title phone_font_size_2">中国篮球公开赛<span class="phone_font_size_1-2"> (CHINA BASKETBALL OPEN)</span></h1>
+            <div class="sign_up bg_size cursor"><a href="{:url('/phone/competition_rules/index')}" onclick="goToSignUp()" class="phone_font_size_1-4">我要报名</a></div>
         </div>
         <div class="swiper-container" id="swiper-container">
             <div class="swiper-wrapper">
@@ -43,13 +45,13 @@
             <img class="banner_text" src="/public__STATIC__/images/ldry.png"/>
         </div>-->
         <ul class="bar" id="table_bar">
-            <li><a href="{:url('/phone/index/index')}">首页</a></li>
-            <li><a href="{:url('/phone/match_synopsis/index')}">赛事简介</a></li>
-            <li><a href="{:url('/phone/message/index')}">官方消息</a></li>
-            <li><a href="{:url('/phone/news/index')}">新闻动态</a></li>
-            <li><a href="{:url('/phone/competition_rules/index')}">竞赛规程</a></li>
-            <li><a href="{:url('/phone/player_score/index')}">球员积分榜</a></li>
-            <li><a href="{:url('/phone/files/index')}">下载专区</a></li>
+            <li><a href="{:url('/phone/index/index')}" class="phone_font_size_1-6">首页</a></li>
+            <li><a href="{:url('/phone/match_synopsis/index')}" class="phone_font_size_1-6">赛事简介</a></li>
+            <li><a href="{:url('/phone/message/index')}" class="phone_font_size_1-6">官方消息</a></li>
+            <li><a href="{:url('/phone/news/index')}" class="phone_font_size_1-6">新闻动态</a></li>
+            <li><a href="{:url('/phone/competition_rules/index')}" class="phone_font_size_1-6">竞赛规程</a></li>
+            <li><a href="{:url('/phone/player_score/index')}" class="phone_font_size_1-6">球员积分榜</a></li>
+            <li><a href="{:url('/phone/files/index')}" class="phone_font_size_1-6">下载专区</a></li>
         </ul>
         <div class="clear"></div>
 <script>

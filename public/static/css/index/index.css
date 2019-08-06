@@ -99,6 +99,9 @@
     text-align: center;
 }
 .content .message .info li {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     width: 340px;
     padding: 32px 0 32px 40px;
     font-size: 14px;
@@ -138,6 +141,9 @@
     /*max-height: 100%;*/
 }
 .content .wonderful_images .image_title{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     position: absolute;
     color: #c9cacb;
     bottom: 0;

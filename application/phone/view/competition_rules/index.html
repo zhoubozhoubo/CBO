@@ -5,10 +5,10 @@
     <!--竞赛规程-->
     <div class="competition_rules">
         <ul class="second_bar">
-            <li class="bg_size cursor text_center action" onclick="actionPageTwo(0)">比赛时间及地点</li>
-            <li class="bg_size cursor text_center" onclick="actionPageTwo(1)">竞赛办法</li>
-            <li class="bg_size cursor text_center" onclick="actionPageTwo(2)">参赛资格</li>
-            <li class="bg_size cursor text_center" onclick="actionPageTwo(3)">报名方式</li>
+            <li class="bg_size cursor text_center phone_font_size_1-6 action" onclick="actionPageTwo(0)">比赛时间及地点</li>
+            <li class="bg_size cursor text_center phone_font_size_1-6" onclick="actionPageTwo(1)">竞赛办法</li>
+            <li class="bg_size cursor text_center phone_font_size_1-6" onclick="actionPageTwo(2)">参赛资格</li>
+            <li class="bg_size cursor text_center phone_font_size_1-6" onclick="actionPageTwo(3)">报名方式</li>
         </ul>
         <div class="clear"></div>
         <!--比赛时间及地点-->
@@ -18,8 +18,8 @@
             <ul class="match_time">
                 {volist name="match_time_address" id="vo"}
                 <li>
-                    <h1 class="title bold">{$vo.match_type}</h1>
-                    <p class="content">{$vo.match_time}</p>
+                    <h1 class="title bold phone_font_size_2">{$vo.match_type}</h1>
+                    <p class="content phone_font_size_1-6">{$vo.match_time}</p>
                 </li>
                 {/volist}
                 <!--<li>
@@ -45,8 +45,8 @@
             <ul class="match_time">
                 {volist name="match_time_address" id="vo"}
                 <li>
-                    <h1 class="title bold">{$vo.match_type}</h1>
-                    <p class="content">{$vo.match_address}</p>
+                    <h1 class="title bold phone_font_size_2">{$vo.match_type}</h1>
+                    <p class="content phone_font_size_1-6">{$vo.match_address}</p>
                 </li>
                 {/volist}
                 <!--<li>
@@ -73,8 +73,8 @@
             <div>
                 <div class="line"></div>
                 <div class="left_notice bg_color float_left">
-                    <h1 class="title">{$match_way[0]['match_type']}</h1>
-                    <p class="content">{$match_way[0]['match_way']}</p>
+                    <h1 class="title phone_font_size_2">{$match_way[0]['match_type']}</h1>
+                    <p class="content phone_font_size_1-6">{$match_way[0]['match_way']}</p>
                 </div>
                 <div class="right_rule float_right">
                     <h1 class="title text_center bg_color">第一阶段小组赛(单循环)每组别第一名晋级四强</h1>
@@ -126,8 +126,8 @@
             <div>
                 <div class="line"></div>
                 <div class="left_notice bg_color float_left">
-                    <h1 class="title">{$match_way[1]['match_type']}</h1>
-                    <p class="content">{$match_way[1]['match_way']}</p>
+                    <h1 class="title phone_font_size_2">{$match_way[1]['match_type']}</h1>
+                    <p class="content phone_font_size_1-6">{$match_way[1]['match_way']}</p>
                 </div>
                 <div class="right_rule float_right">
                     <h1 class="title text_center bg_color">第一阶段小组赛(单循环)每组别第一名晋级四强</h1>
@@ -179,8 +179,8 @@
             <div>
                 <div class="line"></div>
                 <div class="left_notice bg_color float_left">
-                    <h1 class="title">{$match_way[2]['match_type']}</h1>
-                    <p class="content">{$match_way[2]['match_way']}</p>
+                    <h1 class="title phone_font_size_2">{$match_way[2]['match_type']}</h1>
+                    <p class="content phone_font_size_1-6">{$match_way[2]['match_way']}</p>
                 </div>
                 <div class="right_rule float_right">
                     <h1 class="title text_center bg_color">第一阶段小组赛(单循环)每组别第一名晋级四强</h1>
@@ -232,8 +232,8 @@
             <div>
                 <div class="line"></div>
                 <div class="left_notice bg_color float_left">
-                    <h1 class="title">{$match_way[3]['match_type']}</h1>
-                    <p class="content">{$match_way[3]['match_way']}</p>
+                    <h1 class="title phone_font_size_2">{$match_way[3]['match_type']}</h1>
+                    <p class="content phone_font_size_1-6">{$match_way[3]['match_way']}</p>
                 </div>
                 <div class="right_rule float_right">
                     <h1 class="title text_center bg_color">第一阶段小组赛(单循环)每组别第一名晋级四强</h1>
@@ -290,7 +290,7 @@
             <div class="line"></div>
             <ul class="eligibility_list">
                 {volist name="eligibility_type_one" id="vo"}
-                <li>{$vo.letter}、{$vo.content}</li>
+                <li class="phone_font_size_1-6">{$vo.letter}、{$vo.content}</li>
                 {/volist}
             </ul>
             <div class="line"></div>
@@ -298,7 +298,7 @@
             <div class="line"></div>
             <ul class="eligibility_list">
                 {volist name="eligibility_type_two" id="vo"}
-                <li>{$vo.letter}、{$vo.content}</li>
+                <li class="phone_font_size_1-6">{$vo.letter}、{$vo.content}</li>
                 {/volist}
             </ul>
         </div>

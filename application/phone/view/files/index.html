@@ -5,27 +5,27 @@
     <!--下载专区-->
     <div class="files">
         <div class="search">
-            <div class="click_search bg_size cursor" onclick="search()">点击搜索</div>
+            <div class="click_search bg_size cursor phone_font_size_1-6" onclick="search()">点击搜索</div>
             <input class="search_input" name="search_value" type="text" placeholder="搜索您要下载的资料..."/>
             <div class="clear"></div>
         </div>
         <div class="table_head">
-            <div class="bg_color text_center">下载文件</div>
-            <div class="bg_color text_center">点击下载</div>
-            <div class="bg_color text_center updatt_time">更新时间</div>
+            <div class="bg_color text_center phone_font_size_1-6">下载文件</div>
+            <div class="bg_color text_center phone_font_size_1-6">点击下载</div>
+            <div class="bg_color text_center updatt_time phone_font_size_1-6">更新时间</div>
         </div>
         <ul class="list">
             {volist name="files_list" id="vo"}
             <li>
-                <h1 class="float_left" title="{$vo.synopsis}">{$vo.file_name}</h1>
+                <h1 class="float_left phone_font_size_1-6" title="{$vo.synopsis}">{$vo.file_name}</h1>
                 <a href="{$vo.file_url}" download="{$vo.file_name}">
                     <img class="download_icon bg_color cursor" src="/public__STATIC__/images/down.png"/>
                 </a>
-                <span class="time">{$vo.date}</span>
+                <span class="time phone_font_size_1-6">{$vo.date}</span>
             </li>
             {/volist}
         </ul>
-        <div class="see_more text_center bg_color cursor hide">暂无您想要的资料</div>
+        <div class="see_more text_center bg_color cursor hide phone_font_size_1-6">暂无您想要的资料</div>
     </div>
     <div class="clear"></div>
 </div>
@@ -57,11 +57,11 @@
                             // str += '<li>'+v.file_name+'<img class="download_icon bg_color cursor" src="/public__STATIC__/images/down.png"/><span class="time">'+v.date+'</span></li>'
                             str += '\n' +
                                 '            <li>\n' +
-                                '                <h1 class="float_left" title="'+v.synopsis+'">'+v.file_name+'</h1>\n' +
+                                '                <h1 class="float_left phone_font_size_1-6" title="'+v.synopsis+'">'+v.file_name+'</h1>\n' +
                                 '                <a href="'+v.file_url+'" download="'+v.file_name+'">\n' +
                                 '                    <img class="download_icon bg_color cursor" src="/public__STATIC__/images/down.png"/>\n' +
                                 '                </a>\n' +
-                                '                <span class="time">'+v.date+'</span>\n' +
+                                '                <span class="time phone_font_size_1-6">'+v.date+'</span>\n' +
                                 '            </li>'
                         })
                         $('.files .list').html(str)
