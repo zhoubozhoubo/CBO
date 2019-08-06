@@ -26,10 +26,11 @@
     font-size: 1.6rem!important;
 }
 .content .about {
-    height: 251px!important;
+    height: 271px!important;
 }
 .content .about .about_left p{
     font-size: 1.4rem!important;
+    line-height: 35px!important;
 }
 .content .message .info li {
     overflow: hidden;
@@ -84,11 +85,13 @@
 }
 .content .synopsis .ql-editor p{
     font-size: 1.6rem!important;
+    line-height: 35px!important;
 }
 
 /*message*/
 .content .details .ql-editor p{
     font-size: 1.6rem!important;
+    line-height: 35px!important;
 }
 .content .details .author{
     font-size: 1.6rem!important;
