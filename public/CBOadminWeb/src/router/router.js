@@ -98,14 +98,14 @@ export const appRouter = [
         title: '系统配置',
         component: Main,
         children: [
-            {
-                path: 'menu',
-                icon: 'md-menu',
-                name: 'menu',
-                access: 'admin/Menu/index',
-                title: '菜单维护',
-                component: () => import('@/views/system/menu.vue')
-            },
+            // {
+            //     path: 'menu',
+            //     icon: 'md-menu',
+            //     name: 'menu',
+            //     access: 'admin/Menu/index',
+            //     title: '菜单维护',
+            //     component: () => import('@/views/system/menu.vue')
+            // },
             {
                 path: 'user',
                 icon: 'ios-people',
