@@ -10,7 +10,7 @@ use think\Controller;
  * Class PlayerScore
  * @package app\index\controller
  */
-class PlayerScore extends Controller
+class PlayerScore extends Base
 {
     public function index()
     {
@@ -36,6 +36,7 @@ class PlayerScore extends Controller
             $playerScoreRankingPages = 0;
         }
 
+        $this->assign('banner', $this->banner);
         $this->assign('action_page', 5);
         $this->assign('player_score_ranking_list', $playerScoreRankingList);
         $this->assign('player_score_ranking_pages', $playerScoreRankingPages);
@@ -72,6 +73,7 @@ class PlayerScore extends Controller
             $playerTeamStatisticsPages = 0;
         }
 
+        $this->assign('banner', $this->banner);
         $this->assign('action_page', 5);
         $this->assign('user_id', $userId);
         $this->assign('player_team_statistics_list', $playerTeamStatisticsList);

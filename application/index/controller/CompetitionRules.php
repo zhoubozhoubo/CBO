@@ -13,7 +13,7 @@ use think\Controller;
  * Class CompetitionRules
  * @package app\index\controller
  */
-class CompetitionRules extends Controller{
+class CompetitionRules extends Base {
     public function index(){
         $websiteBottomConf = CboWebsiteBottomConf::where(['is_delete'=>0])->field('gmt_create,gmt_modified,is_delete', true)->select();
         //二级bar选中状态
@@ -50,6 +50,7 @@ class CompetitionRules extends Controller{
             $val['letter'] = $letter[$key];
         }
 
+        $this->assign('banner', $this->banner);
         $this->assign('action_page', 4);
         $this->assign('action_two', $actionTwo);
         $this->assign('match_time_address', $matchTimeAddress);

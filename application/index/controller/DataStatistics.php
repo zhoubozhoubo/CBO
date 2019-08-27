@@ -10,7 +10,7 @@ use think\Controller;
  * Class DataStatistics
  * @package app\index\controller
  */
-class DataStatistics extends Controller
+class DataStatistics extends Base
 {
     public function index()
     {
@@ -50,6 +50,7 @@ class DataStatistics extends Controller
             $playerTypeStatisticsPages = 0;
         }
 
+        $this->assign('banner', $this->banner);
         $this->assign('action_page', 7);
         $this->assign('player_type_statistics_list', $playerTypeStatisticsList);
         $this->assign('player_type_statistics_pages', $playerTypeStatisticsPages);

@@ -15,7 +15,7 @@ use think\Controller;
  * Class Index
  * @package app\index\controller
  */
-class Index extends Controller {
+class Index extends Base {
     public function index(){
         $websiteBottomConf = CboWebsiteBottomConf::where(['is_delete'=>0])->field('gmt_create,gmt_modified,is_delete', true)->select();
         //首页介绍
@@ -77,6 +77,7 @@ class Index extends Controller {
             $playerScoreRankingList=[];
         }
 
+        $this->assign('banner', $this->banner);
         $this->assign('action_page', 0);
         $this->assign('index_introduce', $indexIntroduce);
         $this->assign('news_list', $newsList);

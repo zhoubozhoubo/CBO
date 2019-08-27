@@ -98,14 +98,14 @@ export const appRouter = [
         title: '系统配置',
         component: Main,
         children: [
-            // {
-            //     path: 'menu',
-            //     icon: 'md-menu',
-            //     name: 'menu',
-            //     access: 'admin/Menu/index',
-            //     title: '菜单维护',
-            //     component: () => import('@/views/system/menu.vue')
-            // },
+            {
+                path: 'menu',
+                icon: 'md-menu',
+                name: 'menu',
+                access: 'admin/Menu/index',
+                title: '菜单维护',
+                component: () => import('@/views/system/menu.vue')
+            },
             {
                 path: 'user',
                 icon: 'ios-people',
@@ -205,6 +205,14 @@ export const appRouter = [
         title: "内容管理",
         component: Main,
         children: [
+            {
+                path: "banner",
+                icon: "ios-folder-open",
+                name: "banner",
+                access: 'admin/BasicConf/getDetails',
+                title: "banner图管理",
+                component: () => import('@/views/basic_conf/banner/index.vue')
+            },
             {
                 path: "news_list",
                 icon: "ios-folder-open",

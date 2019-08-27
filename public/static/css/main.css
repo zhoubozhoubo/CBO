@@ -55,6 +55,10 @@ ul,ol,li{
 .bg .header .sign_up a{
     display: inline-block;
 }
+.bg .header .swiper-container{
+    /*border-top: 2px solid #eaa232;*/
+    /*border-bottom: 2px solid #eaa232;*/
+}
 .bg .header .banner{
     /*width: 1200px;*/
     /*display: block;*/

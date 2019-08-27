@@ -11,7 +11,7 @@ use think\Controller;
  * Class Files
  * @package app\index\controller
  */
-class Files extends Controller{
+class Files extends Base {
     public function index(){
         $websiteBottomConf = CboWebsiteBottomConf::where(['is_delete'=>0])->field('gmt_create,gmt_modified,is_delete', true)->select();
         $file_name = $this->request->get('search_value');
@@ -22,6 +22,8 @@ class Files extends Controller{
             $where['file_name'] = ['like',"%{$file_name}%"];
         }
         $filesList = CboFiles::where($where)->field('gmt_modified,is_delete', true)->order('date desc, id desc')->select();
+
+        $this->assign('banner', $this->banner);
         $this->assign('action_page', 6);
         $this->assign('files_list', $filesList);
         $this->assign('website_bottom_conf', $websiteBottomConf);

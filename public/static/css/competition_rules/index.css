@@ -23,30 +23,64 @@
 }
 
 .content .competition_rules .line{
-    width: 1200px;
+    float: right;
+    width: 1080px;
     height: 1px;
     margin-bottom: 0;
     background-color: #15417e;
 }
+.content .competition_rules .match_time_address{
+    margin-bottom: 60px;
+}
 .content .competition_rules .match_time_address .match_time li{
-    padding: 20px 120px;
-    background: url("../../images/listicon.png") no-repeat 120px 30px;
+    /*padding: 20px 120px;*/
+    /*background: url("../../images/listicon.png") no-repeat 120px 30px;*/
+    padding: 20px 120px 20px 0px;
+    margin-left: 120px;
+    /*border-bottom: 1px solid #15417e;*/
+    background: url(../../images/listicon.png) no-repeat 0px 60px;
+    height: 90px;
+    position: relative;
+}
+.content .competition_rules .match_time_address .match_time li span{
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #15417e;
+    margin-left: -100px;
+    margin-top: 30px;
+    position: absolute;
 }
 .content .competition_rules .match_time_address .match_time li .title{
     font-size: 22px;
-    padding-left: 30px;
-    margin-bottom: 5px;
+    padding-left: 90px;
+    margin-bottom: 10px!important;
 }
 .content .competition_rules .match_time_address .match_time li .content{
     font-size: 16px;
     line-height: 30px;
     text-indent: 2em;
+    margin-bottom: 20px!important;
+    padding-left: 60px;
 }
-.content .competition_rules .match_time_address .bottom_line{
-    width: 1200px;
+.content .competition_rules .match_time_address .match_time li .line{
+    position: absolute;
+    width: 1080px;
     height: 1px;
-    margin: 40px 0 80px;
-    background-color: #eaa232;
+    bottom: 0;
+    background-color: #15417e;
+}
+.content .competition_rules .match_time_address .left_line{
+    width: 1px;
+    height: 520px;
+    /* margin: 40px 0 80px; */
+    background-color: #15417e;
+    position: absolute;
+    margin-left: 35px;
+}
+.content .competition_rules .match_time_address .left_line_title{
+    margin: 80px 0!important;
 }
 
 .content .competition_rules .match_way .line{

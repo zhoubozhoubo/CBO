@@ -11,7 +11,7 @@ use think\Controller;
  * Class MatchSynopsis
  * @package app\index\controller
  */
-class MatchSynopsis extends Controller{
+class MatchSynopsis extends Base {
     public function index(){
         $websiteBottomConf = CboWebsiteBottomConf::where(['is_delete'=>0])->field('gmt_create,gmt_modified,is_delete', true)->select();
         $where = [
@@ -20,6 +20,7 @@ class MatchSynopsis extends Controller{
         ];
         $matchSynopsis = CboBasicConf::where($where)->field('gmt_create,gmt_modified,is_delete', true)->find();
 
+        $this->assign('banner', $this->banner);
         $this->assign('action_page', 1);
         $this->assign('match_synopsis', $matchSynopsis);
         $this->assign('website_bottom_conf', $websiteBottomConf);

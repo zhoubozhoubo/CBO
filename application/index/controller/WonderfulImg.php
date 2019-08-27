@@ -11,7 +11,7 @@ use think\Controller;
  * Class WonderfulImg
  * @package app\index\controller
  */
-class WonderfulImg extends Controller
+class WonderfulImg extends Base
 {
     public function index()
     {
@@ -25,6 +25,7 @@ class WonderfulImg extends Controller
         $wonderfulImgListCount = CboWonderfulImg::where($where)->count();
         $wonderfulImgListPages = ceil($wonderfulImgListCount / $size);
 
+        $this->assign('banner', $this->banner);
         $this->assign('action_page', -1);
         $this->assign('wonderful_img_list', $wonderfulImgList);
         $this->assign('wonderful_img_pages', $wonderfulImgListPages);
@@ -47,6 +48,7 @@ class WonderfulImg extends Controller
         $wonderfulImg = CboWonderfulImg::where($where)->field('gmt_create,gmt_modified,is_delete', true)->page($page,1)->select();
         $wonderfulImgCount = CboWonderfulImg::where($where)->count();
 
+        $this->assign('banner', $this->banner);
         $this->assign('action_page', 7);
         $this->assign('date', $date);
         $this->assign('wonderful_img', $wonderfulImg);

@@ -15,11 +15,14 @@
         <div class="match_time_address show_div">
             <h1 class="left_line_title bold">比赛时间</h1>
             <div class="line"></div>
+            <div class="left_line"></div>
             <ul class="match_time">
                 {volist name="match_time_address" id="vo"}
                 <li>
+                    <span></span>
                     <h1 class="title bold">{$vo.match_type}</h1>
                     <p class="content">{$vo.match_time}</p>
+                    <div class="line"></div>
                 </li>
                 {/volist}
                 <!--<li>
@@ -39,14 +42,16 @@
                     <p class="content">为赛会制比赛,比赛时间为2019年10月16日至2019年10月23日举行举行(具体时间另行通知),各赛区城市申办举行,由各省推荐女子篮球队参加(球队16支,即:每个省或自治区报名一支参赛队,共涉及16个省),比赛为时5天。</p>
                 </li>-->
             </ul>
-            <div class="bottom_line"></div>
             <h1 class="left_line_title bold">比赛地点</h1>
             <div class="line"></div>
+            <div class="left_line"></div>
             <ul class="match_time">
                 {volist name="match_time_address" id="vo"}
                 <li>
+                    <span></span>
                     <h1 class="title bold">{$vo.match_type}</h1>
                     <p class="content">{$vo.match_address}</p>
+                    <div class="line"></div>
                 </li>
                 {/volist}
                 <!--<li>
