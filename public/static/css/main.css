@@ -26,7 +26,7 @@ ul,ol,li{
 .bg .header{
     /*width: 1200px;*/
     color: #FFFFFF;
-    /*position: relative;*/
+    position: relative;
 }
 .bg .header .title_div{
     width: 1200px;
@@ -67,6 +67,17 @@ ul,ol,li{
     border-top: 2px solid #eaa232;
     border-bottom: 2px solid #eaa232;
 }
+.bg .header .gradients{
+    position: absolute;
+    z-index: 1;
+    margin-top: -1px;
+    width: 100%;
+    height: 100px;
+    background: -webkit-linear-gradient(#742840, #192e61); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#742840, #192e61); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#742840, #192e61); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#742840, #192e61);
+}
 /*.bg .header .logo{
     position: absolute;
     top: 150px;
@@ -81,6 +92,10 @@ ul,ol,li{
 .bg .main{
     width: 1200px;
     margin: 0 auto;
+}
+.bg .main .bar{
+    z-index: 2;
+    position: relative;
 }
 .bg .main .bar li{
     float: left;
@@ -113,7 +128,8 @@ ul,ol,li{
     padding-left: 20px;
     color: #FFFFFF;
     margin: 25px 0!important;
-    line-height: 40px;
+    line-height: 30px;
+    font-size: 26px!important;
 }
 .bg .main .content .float_left{
     float: left;
@@ -135,7 +151,8 @@ ul,ol,li{
 }
 .bg .footer .line{
     display: block;
-    margin: 0 auto 80px;
+    /*margin: 0 auto 80px;*/
+    margin: 0 auto 50px;
 }
 .bg .footer .info{
     /*width: 1050px;*/
@@ -181,7 +198,8 @@ ul,ol,li{
     width: 100%;
     height: 40px;
     margin-top: 40px;
-    margin-bottom: 80px;
+    /*margin-bottom: 80px;*/
+    margin-bottom: 50px;
     line-height: 40px;
     font-size: 14px;
     color: #FFFFFF;

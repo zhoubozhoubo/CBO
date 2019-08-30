@@ -1,8 +1,8 @@
 .content .about {
-    width: 995px;
+    width: 1145px;
     height: 201px;
     padding: 20px 0 20px 45px;
-    margin: 0 auto 80px;
+    margin-bottom: 80px;
     color: #FFFFFF;
     background-image: url("../../images/dakuang.png");
 }
@@ -12,7 +12,7 @@
 }
 
 .content .about .about_left {
-    width: 770px;
+    width: 920px;
 }
 
 .content .about .about_right {
@@ -224,7 +224,8 @@
     padding-left: 10px;
     margin: 28px 20px 0 15px;
     line-height: 34px;
-    border: 1px solid #15417e;
+    /*border: 1px solid #15417e;*/
+    border: none;
     border-radius: 4px;
     color: #FFFFFF;
 }
@@ -421,6 +422,9 @@
 }
 .content .player_score .list li .name{
     width: 30%;
+}
+.content .player_score .list li .name a{
+    float: none;
 }
 .content .player_score .list li .score{
     width: 20%;

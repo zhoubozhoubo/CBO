@@ -12,17 +12,18 @@
     width: 273px;
     float: left;
     margin: 0 18px 30px;
+    overflow: hidden;
 }
 .content .wonderful_img .list li .image{
     width: 273px;
     height: 273px;
-    display: table-cell;
-    vertical-align:middle;
+    /*display: table-cell;*/
+    /*vertical-align:middle;*/
 }
 .content .wonderful_img .list li .image img{
-    float: left;
-    width: 100%;
-    max-height: 100%;
+    /*float: left;*/
+    /*width: 100%;*/
+    height: 100%;
 }
 .content .wonderful_img .list li .text{
     position: absolute;

@@ -60,9 +60,10 @@
 .content .competition_rules .match_time_address .match_time li .content{
     font-size: 16px;
     line-height: 30px;
-    text-indent: 2em;
+    /*text-indent: 2em;*/
     margin-bottom: 20px!important;
-    padding-left: 60px;
+    /*padding-left: 60px;*/
+    padding-left: 90px;
 }
 .content .competition_rules .match_time_address .match_time li .line{
     position: absolute;
