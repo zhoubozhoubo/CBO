@@ -236,6 +236,7 @@
     -webkit-appearance: none;
     /*appearance: none;*/
     background: url("../../images/select.png");
+    background-size: 100% 100%;
 }
 .content .team_situation .choose{
     float: right;
@@ -284,6 +285,7 @@
     -webkit-appearance: none;
     /*appearance: none;*/
     background: url("../../images/select.png");
+    background-size: 100% 100%;
 }
 .content .data_statistics .choose{
     float: right;

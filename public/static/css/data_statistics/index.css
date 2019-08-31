@@ -27,6 +27,11 @@
     border: 1px solid #15417e;
     border-radius: 4px;
     color: #FFFFFF;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    /*appearance: none;*/
+    background: url("../../images/select.png");
+    background-size: 100% 100%;
 }
 .content .data_statistics .choose{
     float: right;
