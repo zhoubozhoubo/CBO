@@ -232,6 +232,10 @@
     background-color: #15417e!important;
     border-radius: 4px;
     color: #FFFFFF;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    /*appearance: none;*/
+    background: url("../../images/select.png");
 }
 .content .team_situation .choose{
     float: right;
@@ -276,6 +280,10 @@
     border: 1px solid #15417e;
     border-radius: 4px;
     color: #FFFFFF;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    /*appearance: none;*/
+    background: url("../../images/select.png");
 }
 .content .data_statistics .choose{
     float: right;
