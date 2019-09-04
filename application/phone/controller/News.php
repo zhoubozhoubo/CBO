@@ -11,7 +11,7 @@ use think\Controller;
  * Class News
  * @package app\phone\controller
  */
-class News extends Controller
+class News extends Base
 {
     public function index()
     {
@@ -26,6 +26,7 @@ class News extends Controller
         $newsCount = CboNews::where($where)->count();
         $newsPages = ceil($newsCount / $size);
 
+        $this->assign('banner', $this->banner);
         $this->assign('action_page', 3);
         $this->assign('news_list_big', $newsListBig);
         $this->assign('news_list', $newsList);
@@ -49,6 +50,7 @@ class News extends Controller
         ];
         $news = CboNews::where($where)->field('gmt_modified,is_delete', true)->find($id);
 
+        $this->assign('banner', $this->banner);
         $this->assign('action_page', 3);
         $this->assign('news', $news);
         $this->assign('website_bottom_conf', $websiteBottomConf);

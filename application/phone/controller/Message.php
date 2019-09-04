@@ -11,7 +11,7 @@ use think\Controller;
  * Class Message
  * @package app\phone\controller
  */
-class Message extends Controller{
+class Message extends Base{
     public function index(){
         $websiteBottomConf = CboWebsiteBottomConf::where(['is_delete'=>0])->field('gmt_create,gmt_modified,is_delete', true)->select();
         $page = $this->request->get('page', 1);
@@ -23,6 +23,7 @@ class Message extends Controller{
         $messageCount = CboMessage::where($where)->count();
         $messagePages = ceil($messageCount/$size);
 
+        $this->assign('banner', $this->banner);
         $this->assign('action_page', 2);
         $this->assign('message_list', $messageList);
         $this->assign('message_pages', $messagePages);
@@ -45,6 +46,7 @@ class Message extends Controller{
         ];
         $message = CboMessage::where($where)->field('gmt_modified,is_delete', true)->find($id);
 
+        $this->assign('banner', $this->banner);
         $this->assign('action_page', 2);
         $this->assign('news', $message);
         $this->assign('website_bottom_conf', $websiteBottomConf);
