@@ -129,7 +129,8 @@ ul,ol,li{
 
 .bg .main .content .left_line_title{
     border-left: 6px solid #FFFFFF;
-    padding-left: 20px;
+    /*padding-left: 20px;*/
+    padding-left: 10px;
     color: #FFFFFF;
     margin: 15px 0 25px!important;
     line-height: 30px;
