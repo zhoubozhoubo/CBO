@@ -76,7 +76,7 @@
         <div class="match_way show_div hide">
             <h1 class="title bold text_center">采用中国篮协最新审定的《篮球规则》</h1>
             <div>
-                <div class="line"></div>
+                <div class="line bottom_line"></div>
                 <div class="left_notice bg_color float_left">
                     <h1 class="title">{$match_way[0]['match_type']}</h1>
                     <p class="content">{$match_way[0]['match_way']}</p>
@@ -129,7 +129,7 @@
                 <div class="clear"></div>
             </div>
             <div>
-                <div class="line"></div>
+                <div class="line bottom_line"></div>
                 <div class="left_notice bg_color float_left">
                     <h1 class="title">{$match_way[1]['match_type']}</h1>
                     <p class="content">{$match_way[1]['match_way']}</p>
@@ -182,7 +182,7 @@
                 <div class="clear"></div>
             </div>
             <div>
-                <div class="line"></div>
+                <div class="line bottom_line"></div>
                 <div class="left_notice bg_color float_left">
                     <h1 class="title">{$match_way[2]['match_type']}</h1>
                     <p class="content">{$match_way[2]['match_way']}</p>
@@ -235,7 +235,7 @@
                 <div class="clear"></div>
             </div>
             <div>
-                <div class="line"></div>
+                <div class="line bottom_line"></div>
                 <div class="left_notice bg_color float_left">
                     <h1 class="title">{$match_way[3]['match_type']}</h1>
                     <p class="content">{$match_way[3]['match_way']}</p>
@@ -292,15 +292,15 @@
         <!--参赛资格-->
         <div class="eligibility show_div hide">
             <h1 class="left_line_title bold">中国篮球公开赛城市赛参赛资格</h1>
-            <div class="line"></div>
+            <div class="bottom_line"></div>
             <ul class="eligibility_list">
                 {volist name="eligibility_type_one" id="vo"}
                 <li>{$vo.letter}、{$vo.content}</li>
                 {/volist}
             </ul>
-            <div class="line"></div>
+            <div class="bottom_line"></div>
             <h1 class="left_line_title bold">中国篮球公开赛女子冠军赛参赛资格</h1>
-            <div class="line"></div>
+            <div class="bottom_line"></div>
             <ul class="eligibility_list">
                 {volist name="eligibility_type_two" id="vo"}
                 <li>{$vo.letter}、{$vo.content}</li>

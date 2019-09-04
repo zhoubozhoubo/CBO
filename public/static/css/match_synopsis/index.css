@@ -2,12 +2,14 @@
     width: 86px;
     height: 86px;
     display: block;
-    margin: 0 auto 60px;
+    /*margin: 0 auto 60px;*/
+    margin: 0 auto 30px;
 }
 .content .synopsis {
     width: 950px;
     padding: 20px 45px 40px;
-    margin: 0 auto 80px;
+    /*margin: 0 auto 80px;*/
+    margin: 0 auto 30px;
     color: #FFFFFF;
     background-image: url("../../images/dakuang.png");
 }

@@ -121,5 +121,6 @@
 }
 .content .news .see_more {
     width: 1200px;
-    margin: 40px auto 80px;
+    /*margin: 40px auto 80px;*/
+    margin: 10px auto 30px;
 }
