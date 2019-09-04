@@ -63,8 +63,8 @@
     line-height: 30px;
     /*text-indent: 2em;*/
     margin-bottom: 20px!important;
-    /*padding-left: 60px;*/
-    padding-left: 90px;
+    padding-left: 50px;
+    /*padding-left: 90px;*/
 }
 .content .competition_rules .match_time_address .match_time li .line{
     position: absolute;
@@ -83,7 +83,7 @@
 }
 .content .competition_rules .match_time_address .left_line_title{
     /*margin: 80px 0!important;*/
-    margin: 20px 0!important;
+    margin: 20px 0 40px!important;
 }
 
 .content .competition_rules .match_way .line{
