@@ -45,6 +45,7 @@
             </ul>
             <p class="more cursor"><a href="{:url('index/message/index')}">更多<img class="more_icon" src="__STATIC__/images/pageright.png"></a></p>
         </div>
+        <div class="clear" style="margin-bottom: 45px;"></div>
     </div>
     <div class="clear"></div>
     <!--精彩图集-->
@@ -115,13 +116,16 @@
         </select>
         <p class="choose">选择赛季</p>
         <div class="clear"></div>
-        <div class="situation_data text_center">
-            <img class="big_img" src="__STATIC__/images/banner.png" />
+        <div class="situation_border">
+            <div class="situation_data text_center">
+                <img class="big_img" src="__STATIC__/images/banner.png" />
+            </div>
+            <div class="team_situation_img_page">
+                <img class="more_icon cursor" src="__STATIC__/images/pageleft.png" onclick="prevTeamSituationImg()">
+                <img class="more_icon cursor" src="__STATIC__/images/pageright.png" onclick="nextTeamSituationImg()">
+            </div>
         </div>
-        <div class="team_situation_img_page">
-            <img class="more_icon cursor" src="__STATIC__/images/pageleft.png" onclick="prevTeamSituationImg()">
-            <img class="more_icon cursor" src="__STATIC__/images/pageright.png" onclick="nextTeamSituationImg()">
-        </div>
+
         <div class="clear"></div>
     </div>
     <div class="clear"></div>

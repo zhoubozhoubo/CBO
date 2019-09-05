@@ -1,7 +1,10 @@
 .content .message {
     width: 1200px;
-    margin: 0 auto;
+    margin: 44px auto 0;
     color: #FFFFFF;
+}
+.content .message .list{
+    margin-bottom: 40px;
 }
 .content .message .list li{
     width: 1110px;

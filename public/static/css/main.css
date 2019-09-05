@@ -21,7 +21,7 @@ ul,ol,li{
     min-width: 1280px;
     overflow: hidden;
     background-image: url("../images/bg.png");
-    background-size: auto 3769px;
+    background-size: auto 100%;
 }
 .bg .header{
     /*width: 1200px;*/
@@ -101,16 +101,17 @@ ul,ol,li{
 .bg .main .bar li{
     float: left;
     width: 142px;
-    height: 57px;
+    height: 56px;
     /*margin: 60px 14px;*/
-    margin: 30px 14px;
+    margin: 66px 14px 88px;
+    /*margin: 30px 14px;*/
     text-align: center;
     /*font-size: 16px;*/
     font-size: 18px;
     color: #FFFFFF;
     line-height: 50px;
     background-image: url("../images/barbg.png");
-    background-size: 142px 57px;
+    background-size: 142px 56px;
     cursor: pointer;
 }
 .bg .main .bar li a{
@@ -123,7 +124,7 @@ ul,ol,li{
 .bg .main .line{
     display: block;
     /*margin: 0 auto 80px;*/
-    margin: 0 auto 30px;
+    margin: 0 auto 46px;
 }
 
 
@@ -132,7 +133,7 @@ ul,ol,li{
     /*padding-left: 20px;*/
     padding-left: 10px;
     color: #FFFFFF;
-    margin: 15px 0 25px!important;
+    margin: 35px 0 28px!important;
     line-height: 24px;
     font-size: 22px!important;
 }
@@ -157,11 +158,11 @@ ul,ol,li{
 .bg .footer .line{
     display: block;
     /*margin: 0 auto 80px;*/
-    margin: 0 auto 30px;
+    margin: 0 auto 105px;
 }
 .bg .footer .info{
     /*width: 1050px;*/
-    height: 330px;
+    height: 336px;
     /*background-color: #15417e;*/
 }
 .bg .footer .info .content{
@@ -204,7 +205,7 @@ ul,ol,li{
     height: 40px;
     /*margin-top: 40px;*/
     /*margin-bottom: 80px;*/
-    margin: 10px auto 30px;
+    margin: 24px auto 109px;
     line-height: 40px;
     font-size: 14px;
     color: #FFFFFF;
