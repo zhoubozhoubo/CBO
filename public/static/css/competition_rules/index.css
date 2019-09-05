@@ -7,8 +7,8 @@
 .content .competition_rules .second_bar{
     width: 880px;
     height: 35px;
-    /*margin: 0 auto 50px;*/
-    margin: 0 auto 30px;
+    margin: 0 auto 50px;
+    /*margin: 0 auto 30px;*/
 }
 .content .competition_rules .second_bar li{
     float: left;
@@ -162,5 +162,11 @@
     height: 1px;
     /*margin: 40px 0 80px;*/
     margin: 10px 0;
+    background-color: #15417e;
+}
+
+.sign_up_way .bottom_line{
+    width: 1200px;
+    height: 1px;
     background-color: #15417e;
 }

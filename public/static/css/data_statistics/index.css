@@ -10,8 +10,8 @@
     float: right;
     width: 138px;
     height: 34px;
-    /*margin-top: 28px;*/
-    margin-top: 13px;
+    margin-top: 28px;
+    /*margin-top: 13px;*/
     font-size: 14px;
     text-align: center;
     line-height: 34px;
@@ -23,8 +23,8 @@
     height: 34px;
     font-size: 14px;
     padding-left: 10px;
-    /*margin: 28px 20px 0 15px;*/
-    margin: 13px 20px 0 15px;
+    margin: 28px 20px 0 15px;
+    /*margin: 13px 20px 0 15px;*/
     line-height: 34px;
     border: 1px solid #15417e;
     border-radius: 4px;
@@ -38,8 +38,8 @@
 .content .data_statistics .choose{
     float: right;
     font-size: 14px;
-    /*line-height: 90px;*/
-    line-height: 60px;
+    line-height: 90px;
+    /*line-height: 60px;*/
 }
 .content .data_statistics .type_action{
     margin-top: 20px;
