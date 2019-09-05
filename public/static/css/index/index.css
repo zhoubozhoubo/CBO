@@ -46,6 +46,7 @@
 }
 
 .content .about p {
+    margin-top: 20px;
     font-size: 14px;
     line-height: 28px;
 }
