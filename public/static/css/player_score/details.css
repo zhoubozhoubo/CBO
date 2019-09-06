@@ -3,6 +3,9 @@
     margin: 0 auto;
     color: #FFFFFF;
 }
+.content .player_score .list{
+    margin-bottom: 90px;
+}
 .content .player_score .list li{
     width: 1200px;
     float: left;

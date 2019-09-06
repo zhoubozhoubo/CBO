@@ -64,7 +64,8 @@
             </li>-->
         </ul>
         <div class="clear"></div>
-        <div class="see_more text_center bg_color cursor" onclick="seeMore()">查看更多</div>
+        <div class="see_more text_center bg_color cursor" onclick="seeMore()" style="margin-bottom: 90px;">查看更多</div>
+        <div class="see_more mar_bot hide" style="margin-bottom: 90px;"></div>
         {/if}
     </div>
     <div class="clear"></div>
@@ -126,6 +127,7 @@
                     $('.player_score .list').append(str)
                     if(page === pages){
                         $('.see_more').addClass('hide')
+                        $('.mar_bot').removeClass('hide')
                     }
                 }
             })
